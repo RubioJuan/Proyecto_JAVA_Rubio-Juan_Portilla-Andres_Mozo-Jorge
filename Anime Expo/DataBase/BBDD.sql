@@ -1,373 +1,372 @@
-# **************************************
-# *** Base de datos - Anime Expo ***
-# **************************************
+# *********************************
+# *** DataBase - Anime Expo ***
+# *********************************
 
 create database AnimeExpo;
 
 use AnimeExpo;
 
 -- Tabla Eventos
-CREATE TABLE Eventos (
-    id_evento INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    pais VARCHAR(100),
-    ciudad VARCHAR(100),
-    direccion VARCHAR(255),
-    aforo_maximo INT,
-    fecha_hora DATETIME,
-    organizador VARCHAR(255),
-    clasificacion_edad VARCHAR(50),
-    estado ENUM('activo', 'finalizado', 'pendiente') NOT NULL,
-    edad_minima_con_acompaniante INT DEFAULT NULL, -- Edad mínima para ingresar con un adulto
-    edad_minima_sin_acompaniante INT DEFAULT NULL -- Edad mínima para ingresar solo
+CREATE TABLE Events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    country VARCHAR(100),
+    city VARCHAR(100),
+    address VARCHAR(255),
+    max_capacity INT,
+    date_time DATETIME,
+    organizer VARCHAR(255),
+    age_rating  VARCHAR(50),
+    status ENUM('activo', 'finalizado', 'pendiente') NOT NULL,
+    min_age_with_guardian  INT DEFAULT NULL, -- Edad mínima para ingresar con un adulto
+    min_age_without_guardian  INT DEFAULT NULL -- Edad mínima para ingresar solo
 );
 
 -- Tabla Personal_Eventos
-CREATE TABLE Personal_Eventos (
-    id_personal_evento INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    identificacion VARCHAR(100),
-    fecha_nacimiento DATE,
-    rol VARCHAR(100),
-    estado ENUM('asignado', 'sin tarea', 'despedido', 'incapacitado') NOT NULL,
-    id_evento INT,
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
+CREATE TABLE Event_Staff (
+    staff_id  INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    id_number VARCHAR(100),
+    birth_date DATE,
+    role VARCHAR(100),
+	status ENUM('assigned', 'no task', 'dismissed', 'incapacitated') NOT NULL,
+    event_id INT,
+    FOREIGN KEY (event_id) REFERENCES Events(event_id)
 );
 
--- Tabla Roles_Personal
-CREATE TABLE Roles_Personal (
-    id_rol INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100),
-    actividad_1 VARCHAR(255),
-    actividad_2 VARCHAR(255)
+-- Table Staff_Roles
+CREATE TABLE Staff_Roles (
+    role_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    task_1 VARCHAR(255),
+    task_2 VARCHAR(255)
 );
 
--- Tabla Inventario_Eventos
-CREATE TABLE Inventario_Eventos (
-    id_inventario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    cantidad INT,
-    estado ENUM('En almacén', 'En sitio'),
-    id_evento INT,
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
+-- Table Event_Inventory
+CREATE TABLE Event_Inventory (
+    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    quantity INT,
+    status ENUM('In warehouse', 'On site'),
+    event_id INT,
+    FOREIGN KEY (event_id) REFERENCES Events(event_id)
 );
 
--- Tabla Taquillas
-CREATE TABLE Taquillas (
-    id_taquilla INT AUTO_INCREMENT PRIMARY KEY,
-    id_evento INT,
-    ubicacion VARCHAR(255),
-    numero_contacto VARCHAR(100),
-    personal_encargado INT,
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
-    FOREIGN KEY (personal_encargado) REFERENCES Personal_Eventos(id_personal_evento)
+-- Table Ticket_Offices
+CREATE TABLE Ticket_Offices (
+    ticket_office_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT,
+    location VARCHAR(255),
+    contact_number VARCHAR(100),
+    manager INT,
+    FOREIGN KEY (event_id) REFERENCES Events(event_id),
+    FOREIGN KEY (manager) REFERENCES Event_Staff(staff_id)
 );
 
--- Tabla Tipos_Boletos
-CREATE TABLE Tipos_Boletos (
-    id_boleto INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    precio DECIMAL(10, 2),
-    clasificacion_edad VARCHAR(50),
-    costos_adicionales DECIMAL(10, 2) DEFAULT 0,
-    estado ENUM('pagado', 'reservado') NOT NULL
+-- Table Ticket_Types
+CREATE TABLE Ticket_Types (
+    ticket_type_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    price DECIMAL(10, 2),
+    age_rating VARCHAR(50),
+    additional_costs DECIMAL(10, 2) DEFAULT 0,
+    status ENUM('paid', 'reserved') NOT NULL
 );
 
--- Tabla Boletos
-CREATE TABLE Boletos (
-    id_boleto INT AUTO_INCREMENT PRIMARY KEY,
-    id_tipo_boleto INT,
-    cliente VARCHAR(255),
-    FOREIGN KEY (id_tipo_boleto) REFERENCES Tipos_Boletos(id_boleto)
+-- Table Tickets
+CREATE TABLE Tickets (
+    ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_type_id INT,
+    customer VARCHAR(255),
+    FOREIGN KEY (ticket_type_id) REFERENCES Ticket_Types(ticket_type_id)
 );
 
--- Tabla Visitantes
-CREATE TABLE Visitantes (
-    id_visitante INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    documento_identificacion VARCHAR(100),
-    genero ENUM('masculino', 'femenino', 'otro'),
-    fecha_nacimiento DATE,
-    correo_electronico VARCHAR(255),
-    numero_telefono VARCHAR(50),
-    id_taquilla INT,
-    FOREIGN KEY (id_taquilla) REFERENCES Taquillas(id_taquilla)
+-- Table Visitors
+CREATE TABLE Visitors (
+    visitor_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    id_number VARCHAR(100),
+    gender ENUM('male', 'female', 'other'),
+    birth_date DATE,
+    email VARCHAR(255),
+    phone_number VARCHAR(50),
+    ticket_office_id INT,
+    FOREIGN KEY (ticket_office_id) REFERENCES Ticket_Offices(ticket_office_id)
 );
 
--- Tabla Actividades
-CREATE TABLE Actividades (
-    id_actividad INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    tipo ENUM('Cosplay', 'Trivia'),
-    categoria VARCHAR(100),
-    numero_participantes INT,
-    id_evento INT,
-    hora_inicio TIME,
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
+-- Table Activities
+CREATE TABLE Activities (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    type ENUM('Cosplay', 'Trivia'),
+    category VARCHAR(100),
+    participant_count INT,
+    event_id INT,
+    start_time TIME,
+    FOREIGN KEY (event_id) REFERENCES Events(event_id)
 );
 
--- Tabla Premios
-CREATE TABLE Premios (
-    id_premio INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(100),
-    descripcion TEXT,
-    valor DECIMAL(10, 2),
-    estado ENUM('disponible', 'entregado'),
-    id_actividad INT,
-    id_participante INT,
-    FOREIGN KEY (id_actividad) REFERENCES Actividades(id_actividad),
-    FOREIGN KEY (id_participante) REFERENCES Visitantes(id_visitante)
+-- Table Prizes
+CREATE TABLE Prizes (
+    prize_id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(100),
+    description TEXT,
+    value DECIMAL(10, 2),
+    status ENUM('available', 'delivered'),
+    activity_id INT,
+    participant_id INT,
+    FOREIGN KEY (activity_id) REFERENCES Activities(activity_id),
+    FOREIGN KEY (participant_id) REFERENCES Visitors(visitor_id)
 );
 
--- Tabla Feedback_Visitantes
-CREATE TABLE Feedback_Visitantes (
-    id_feedback INT AUTO_INCREMENT PRIMARY KEY,
-    id_evento INT,
-    id_visitante INT,
-    comentario TEXT,
-    calificacion INT CHECK (calificacion BETWEEN 1 AND 5),
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
-    FOREIGN KEY (id_visitante) REFERENCES Visitantes(id_visitante)
+-- Table Visitor_Feedback
+CREATE TABLE Visitor_Feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT,
+    visitor_id INT,
+    comment TEXT,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    FOREIGN KEY (event_id) REFERENCES Events(event_id),
+    FOREIGN KEY (visitor_id) REFERENCES Visitors(visitor_id)
 );
 
--- Tabla Historial_Boletos
-CREATE TABLE Historial_Boletos (
-    id_historial INT AUTO_INCREMENT PRIMARY KEY,
-    id_boleto INT,
-    estado_anterior ENUM('pagado', 'reservado'),
-    estado_nuevo ENUM('pagado', 'reservado'),
-    fecha_cambio DATETIME,
-    FOREIGN KEY (id_boleto) REFERENCES Boletos(id_boleto)
+-- Table Ticket_History
+CREATE TABLE Ticket_History (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_id INT,
+    previous_status ENUM('paid', 'reserved'),
+    new_status ENUM('paid', 'reserved'),
+    change_date DATETIME,
+    FOREIGN KEY (ticket_id) REFERENCES Tickets(ticket_id)
 );
 
--- Tabla Historial_Inventario
-CREATE TABLE Historial_Inventario (
-    id_historial INT AUTO_INCREMENT PRIMARY KEY,
-    id_inventario INT,
-    cantidad_anterior INT,
-    cantidad_nueva INT,
-    fecha_cambio DATETIME,
-    FOREIGN KEY (id_inventario) REFERENCES Inventario_Eventos(id_inventario)
+-- Table Inventory_History
+CREATE TABLE Inventory_History (
+    history_id INT AUTO_INCREMENT PRIMARY KEY,
+    inventory_id INT,
+    previous_quantity INT,
+    new_quantity INT,
+    change_date DATETIME,
+    FOREIGN KEY (inventory_id) REFERENCES Event_Inventory(inventory_id)
 );
 
--- Tabla Usuarios
-CREATE TABLE Usuarios (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_usuario VARCHAR(255) UNIQUE,
-    contrasena VARCHAR(255),
-    rol ENUM('admin', 'encargado', 'visitante')
+-- Table Users
+CREATE TABLE Users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    role ENUM('admin', 'manager', 'visitor')
 );
 
--- Tabla Cajas
-CREATE TABLE Cajas (
-    id_caja INT AUTO_INCREMENT PRIMARY KEY,
-    estado ENUM('activa', 'inactiva') DEFAULT 'inactiva',
-    operario INT,
-    monto_apertura DECIMAL(10, 2),
-    monto_cierre DECIMAL(10, 2),
-    FOREIGN KEY (operario) REFERENCES Personal_Eventos(id_personal_evento)
+-- Table Cash_Registers
+CREATE TABLE Cash_Registers (
+    register_id INT AUTO_INCREMENT PRIMARY KEY,
+    status ENUM('active', 'inactive') DEFAULT 'inactive',
+    operator INT,
+    opening_amount DECIMAL(10, 2),
+    closing_amount DECIMAL(10, 2),
+    FOREIGN KEY (operator) REFERENCES Event_Staff(staff_id)
 );
 
--- Tabla Tiendas
-CREATE TABLE Tiendas (
-    id_tienda INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    descripcion TEXT,
-    promociones enum("Combos","2X1","Mejor precio por cantidad","Pague 2 lleve 1"),
-    responsable INT,
-    FOREIGN KEY (responsable) REFERENCES Personal_Eventos(id_personal_evento)
+-- Table Stores
+CREATE TABLE Stores (
+    store_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    promotions ENUM("Combos", "2-for-1", "Best price for quantity", "Buy 2 get 1"),
+    manager INT,
+    FOREIGN KEY (manager) REFERENCES Event_Staff(staff_id)
 );
 
--- Tabla Pedidos
-CREATE TABLE Pedidos (
-    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
-    id_tienda INT,
-    id_caja INT,
-    cajero INT,
-    valor_total DECIMAL(10, 2),
-    estado ENUM('registrado', 'pagado', 'entregado'),
-    FOREIGN KEY (id_tienda) REFERENCES Tiendas(id_tienda),
-    FOREIGN KEY (id_caja) REFERENCES Cajas(id_caja),
-    FOREIGN KEY (cajero) REFERENCES Personal_Eventos(id_personal_evento)
+-- Table Orders
+CREATE TABLE Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    store_id INT,
+    register_id INT,
+    cashier INT,
+    total_amount DECIMAL(10, 2),
+    status ENUM('registered', 'paid', 'delivered'),
+    FOREIGN KEY (store_id) REFERENCES Stores(store_id),
+    FOREIGN KEY (register_id) REFERENCES Cash_Registers(register_id),
+    FOREIGN KEY (cashier) REFERENCES Event_Staff(staff_id)
 );
 
--- Tabla Detalle_Pedidos
-CREATE TABLE Detalle_Pedidos (
-    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
-    id_pedido INT,
-    producto VARCHAR(255),
-    cantidad INT,
-    valor_individual DECIMAL(10, 2),
-    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido)
+-- Table Order_Details
+CREATE TABLE Order_Details (
+    detail_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    product VARCHAR(255),
+    quantity INT,
+    unit_price DECIMAL(10, 2),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
 );
 
--- Tabla Inventario_Tiendas
-CREATE TABLE Inventario_Tiendas (
-    id_inventario INT AUTO_INCREMENT PRIMARY KEY,
-    id_tienda INT,
-    nombre_producto VARCHAR(255),
-    descripcion TEXT,
-    fabricante VARCHAR(255),
-    tipo VARCHAR(100),
-    cantidad INT,
-    precio DECIMAL(10, 2),
-    FOREIGN KEY (id_tienda) REFERENCES Tiendas(id_tienda)
+-- Table Store_Inventory
+CREATE TABLE Store_Inventory (
+    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    store_id INT,
+    product_name VARCHAR(255),
+    description TEXT,
+    manufacturer VARCHAR(255),
+    type VARCHAR(100),
+    quantity INT,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (store_id) REFERENCES Stores(store_id)
 );
 
--- Tabla Restaurantes
-CREATE TABLE Restaurantes (
-    id_restaurante INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255),
-    responsable INT,
-    FOREIGN KEY (responsable) REFERENCES Personal_Eventos(id_personal_evento)
+-- Table Restaurants
+CREATE TABLE Restaurants (
+    restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    manager INT,
+    FOREIGN KEY (manager) REFERENCES Event_Staff(staff_id)
 );
 
--- Tabla Menu_Restaurantes
-CREATE TABLE Menu_Restaurantes (
-    id_menu INT AUTO_INCREMENT PRIMARY KEY,
-    id_restaurante INT,
-    nombre_plato VARCHAR(255),
-    descripcion TEXT,
-    tipo ENUM('Entrada', 'Bebida', 'Plato fuerte', "Postres", "Corrientazo", "Comida"),
-    tiempo_preparacion INT,
-    FOREIGN KEY (id_restaurante) REFERENCES Restaurantes(id_restaurante)
+-- Table Restaurant_Menu
+CREATE TABLE Restaurant_Menu (
+    menu_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurant_id INT,
+    dish_name VARCHAR(255),
+    description TEXT,
+    type ENUM('Appetizer', 'Drink', 'Main course', "Dessert", "Special combo", "Meal"),
+    prep_time INT,
+    FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id)
 );
 
--- Tabla Inventario_Ingredientes
-CREATE TABLE Inventario_Ingredientes (
-    id_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
-    id_restaurante INT,
-    nombre_ingrediente VARCHAR(255),
-    cantidad INT,
-    FOREIGN KEY (id_restaurante) REFERENCES Restaurantes(id_restaurante)
+-- Table Ingredient_Inventory
+CREATE TABLE Ingredient_Inventory (
+    ingredient_id INT AUTO_INCREMENT PRIMARY KEY,
+    restaurant_id INT,
+    ingredient_name VARCHAR(255),
+    quantity INT,
+    FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id)
 );
 
--- Tabla Actividades_Premios
-CREATE TABLE Actividades_Premios (
-    id_actividad_premio INT AUTO_INCREMENT PRIMARY KEY,
-    id_actividad INT,
-    id_premio INT,
-    FOREIGN KEY (id_actividad) REFERENCES Actividades(id_actividad),
-    FOREIGN KEY (id_premio) REFERENCES Premios(id_premio)
+-- Table Activity_Prizes
+CREATE TABLE Activity_Prizes (
+    activity_prize_id INT AUTO_INCREMENT PRIMARY KEY,
+    activity_id INT,
+    prize_id INT,
+    FOREIGN KEY (activity_id) REFERENCES Activities(activity_id),
+    FOREIGN KEY (prize_id) REFERENCES Prizes(prize_id)
 );
 
--- Tabla de Jurados
-CREATE TABLE Jurados (
-    id_jurado INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    documento_identificacion VARCHAR(100) UNIQUE NOT NULL,
-    fecha_nacimiento DATE,
-    correo_electronico VARCHAR(255),
-    numero_telefono VARCHAR(50),
-    especialidad VARCHAR(255),
-    id_evento INT,
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento)
+-- Table Judges
+CREATE TABLE Judges (
+    judge_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    id_number VARCHAR(100) UNIQUE NOT NULL,
+    birth_date DATE,
+    email VARCHAR(255),
+    phone_number VARCHAR(50),
+    specialty VARCHAR(255),
+    event_id INT,
+    FOREIGN KEY (event_id) REFERENCES Events(event_id)
 );
 
--- Tabla Participantes
-CREATE TABLE Participantes (
-    id_participante INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    id_actividad INT,
-    FOREIGN KEY (id_actividad) REFERENCES Actividades(id_actividad)
+-- Table Participants
+CREATE TABLE Participants (
+    participant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    activity_id INT,
+    FOREIGN KEY (activity_id) REFERENCES Activities(activity_id)
 );
 
--- Tabla Calificaciones
-CREATE TABLE Calificaciones (
-    id_calificacion INT AUTO_INCREMENT PRIMARY KEY,
-    id_participante INT,
-    id_jurado INT,
-    puntuacion DECIMAL(3, 1) CHECK (puntuacion BETWEEN 0 AND 10),
-    FOREIGN KEY (id_participante) REFERENCES Participantes(id_participante),
-    FOREIGN KEY (id_jurado) REFERENCES Jurados(id_jurado)
+-- Table Scores
+CREATE TABLE Scores (
+    score_id INT AUTO_INCREMENT PRIMARY KEY,
+    participant_id INT,
+    judge_id INT,
+    score DECIMAL(3, 1) CHECK (score BETWEEN 0 AND 10),
+    FOREIGN KEY (participant_id) REFERENCES Participants(participant_id),
+    FOREIGN KEY (judge_id) REFERENCES Judges(judge_id)
 );
 
--- Tabla Resultados de la actividad
-CREATE TABLE Resultados_Actividad (
-    id_resultado INT AUTO_INCREMENT PRIMARY KEY,
-    id_actividad INT,
-    id_participante INT,
-    puntuacion_promedio DECIMAL(5, 2),
-    FOREIGN KEY (id_actividad) REFERENCES Actividades(id_actividad),
-    FOREIGN KEY (id_participante) REFERENCES Participantes(id_participante)
+-- Table Activity_Results
+CREATE TABLE Activity_Results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    activity_id INT,
+    participant_id INT,
+    average_score DECIMAL(5, 2),
+    FOREIGN KEY (activity_id) REFERENCES Activities(activity_id),
+    FOREIGN KEY (participant_id) REFERENCES Participants(participant_id)
 );
 
-
--- Tabla Reportes
-CREATE TABLE Reportes (
-    id_reporte INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_reporte VARCHAR(255),
-    tipo_reporte ENUM('General', 'Evento', 'Tienda', 'Restaurante', 'Actividad'),
-    descripcion TEXT,
-    fecha_generacion DATE,
-    datos_reporte JSON,
-    id_evento INT,
-    id_tienda INT,
-    id_restaurante INT,
-    id_actividad INT,
-    FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
-    FOREIGN KEY (id_tienda) REFERENCES Tiendas(id_tienda),
-    FOREIGN KEY (id_restaurante) REFERENCES Restaurantes(id_restaurante),
-    FOREIGN KEY (id_actividad) REFERENCES Actividades(id_actividad)
+-- Table Reports
+CREATE TABLE Reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    report_name VARCHAR(255),
+    report_type ENUM('General', 'Event', 'Store', 'Restaurant', 'Activity'),
+    description TEXT,
+    generation_date DATE,
+    report_data JSON,
+    event_id INT,
+    store_id INT,
+    restaurant_id INT,
+    activity_id INT,
+    FOREIGN KEY (event_id) REFERENCES Events(event_id),
+    FOREIGN KEY (store_id) REFERENCES Stores(store_id),
+    FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id),
+    FOREIGN KEY (activity_id) REFERENCES Activities(activity_id)
 );
 
--- Tabla de Cateogria Cosplay
-CREATE TABLE Categorias_Cosplay (
-    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_categoria VARCHAR(255) NOT NULL
+-- Table for Cosplay Categories
+CREATE TABLE Cosplay_Categories (
+    id_category INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Cosplay_Participantes (
-    id_cosplay_participante INT AUTO_INCREMENT PRIMARY KEY,
-    id_participante INT,
-    id_categoria INT,
-    puntaje DECIMAL(5, 2),
-    FOREIGN KEY (id_participante) REFERENCES Participantes(id_participante),
-    FOREIGN KEY (id_categoria) REFERENCES Categorias_Cosplay(id_categoria)
+CREATE TABLE Cosplay_Participants (
+    id_cosplay_participant INT AUTO_INCREMENT PRIMARY KEY,
+    id_participant INT,
+    id_category INT,
+    score DECIMAL(5, 2),
+    FOREIGN KEY (id_participant) REFERENCES Participants(participant_id ),
+    FOREIGN KEY (id_category) REFERENCES Cosplay_Categories(id_category)
 );
 
-CREATE TABLE Preguntas (
-    id_pregunta INT AUTO_INCREMENT PRIMARY KEY,
-    pregunta TEXT NOT NULL,
-    respuesta_correcta VARCHAR(255) NOT NULL,
-    categoria VARCHAR(255) NOT NULL,
-    dificultad ENUM('Fácil', 'Intermedio', 'Difícil') NOT NULL
+CREATE TABLE Questions (
+    id_question INT AUTO_INCREMENT PRIMARY KEY,
+    question TEXT NOT NULL,
+    correct_answer VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    difficulty ENUM('Easy', 'Intermediate', 'Hard') NOT NULL
 );
 
-CREATE TABLE Rondas (
-    id_ronda INT AUTO_INCREMENT PRIMARY KEY,
-    id_actividad INT,
-    ronda_numero INT,
-    FOREIGN KEY (id_actividad) REFERENCES Actividades(id_actividad)
+CREATE TABLE Rounds (
+    id_round INT AUTO_INCREMENT PRIMARY KEY,
+    id_activity INT,
+    round_number INT,
+    FOREIGN KEY (id_activity) REFERENCES Activities(activity_id )
 );
 
-CREATE TABLE Enfrentamientos (
-    id_enfrentamiento INT AUTO_INCREMENT PRIMARY KEY,
-    id_ronda INT,
-    id_participante1 INT,
-    id_participante2 INT,
-    ganador INT,
-    FOREIGN KEY (id_ronda) REFERENCES Rondas(id_ronda),
-    FOREIGN KEY (id_participante1) REFERENCES Participantes(id_participante),
-    FOREIGN KEY (id_participante2) REFERENCES Participantes(id_participante),
-    FOREIGN KEY (ganador) REFERENCES Participantes(id_participante)
+CREATE TABLE Matchups (
+    id_matchup INT AUTO_INCREMENT PRIMARY KEY,
+    id_round INT,
+    id_participant1 INT,
+    id_participant2 INT,
+    winner INT,
+    FOREIGN KEY (id_round) REFERENCES Rounds(id_round),
+    FOREIGN KEY (id_participant1) REFERENCES Participants(participant_id ),
+    FOREIGN KEY (id_participant2) REFERENCES Participants(participant_id ),
+    FOREIGN KEY (winner) REFERENCES Participants(participant_id )
 );
 
-CREATE TABLE Categorías_Preguntas (
-    id_categoria_pregunta INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_categoria VARCHAR(255) NOT NULL
+CREATE TABLE Question_Categories (
+    id_question_category INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Inventario_Preguntas (
-    id_pregunta INT AUTO_INCREMENT PRIMARY KEY,
-    id_categoria_pregunta INT,
-    pregunta TEXT NOT NULL,
-    respuesta_correcta VARCHAR(255) NOT NULL,
-    FOREIGN KEY (id_categoria_pregunta) REFERENCES Categorías_Preguntas(id_categoria_pregunta)
+CREATE TABLE Question_Inventory (
+    id_question INT AUTO_INCREMENT PRIMARY KEY,
+    id_question_category INT,
+    question TEXT NOT NULL,
+    correct_answer VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_question_category) REFERENCES Question_Categories(id_question_category)
 );
 
 show tables;
 
-# Verificar información de alguna tabla
-select * from Eventos; 
-# Se cambia el nombre "Eventos"  se pone el nombre de la tabla que se desea ver la información
+# Check information from a table
+select* from Events; 
+# Change the name "Events" to the name of the table you want to view the information from
