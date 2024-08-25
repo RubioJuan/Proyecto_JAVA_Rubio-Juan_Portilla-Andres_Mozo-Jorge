@@ -266,9 +266,10 @@ CREATE TABLE Judges (
 
 -- Table Participants
 CREATE TABLE Participants (
-    participant_id INT AUTO_INCREMENT PRIMARY KEY,
+    participant_id INT  PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     activity_id INT,
+    foreign key(participant_id)references Visitors(visitor_id),
     FOREIGN KEY (activity_id) REFERENCES Activities(activity_id)
 );
 
