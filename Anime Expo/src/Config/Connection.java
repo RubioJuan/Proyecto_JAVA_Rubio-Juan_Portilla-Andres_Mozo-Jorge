@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
  * @author Juan Felipe Rubio
  */
 
-public class Connection {
+public class Conection {
+    
     private Connection con;
 
     public Connection conectarMySQL() {
