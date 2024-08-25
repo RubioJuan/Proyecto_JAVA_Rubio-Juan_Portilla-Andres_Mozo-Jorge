@@ -1,6 +1,6 @@
 # Proyecto de Java - Anime Expo
 
-<img src="../Readme/IMG/logo_Proyecto.png">
+<img src="./Resources/IMG/logo_Proyecto.png">
 
 ### Integrantes: 
 
