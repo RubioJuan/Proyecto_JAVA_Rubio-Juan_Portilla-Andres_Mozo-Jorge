@@ -21,11 +21,27 @@ Anime Expo, enfrentando dificultades para gestionar eventos simultáneos en dive
 ***********
 ## Patrones arquitectonicos y de diseño
 
-**Tecnologias:** 
+**Tecnologias:**
+* MySQL
+* Java
 *************
 **Dependencias:**
+* Apache Ant
 ********
 **Librerias:**
+* JDBC Driver
+********
+**Api:**
+* Api Stream
+********
+**Herramientas:**
+* Draw.io
+* Apache NeatBeans
+* Visual Studio Code
+* MySQL Worbench
+* StarUML
+* Notion
+* Chagpt
 ********
 **Link de documentación:**
 
