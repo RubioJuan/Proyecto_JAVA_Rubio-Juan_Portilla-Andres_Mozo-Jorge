@@ -25,7 +25,7 @@ public class EventView {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
-         System.out.println("Ingrese los detalles del evento:");
+        System.out.println("Ingrese los detalles del evento:");
 
         String name = "";
         boolean validName = false;
@@ -54,7 +54,7 @@ public class EventView {
 
         LocalDate eventDate = null;
         boolean validDate = false;
-         while (!validDate) {
+        while (!validDate) {
             System.out.print("Fecha (formato yyyy-MM-dd): ");
             String dateInput = scanner.nextLine();
             try {
@@ -71,9 +71,20 @@ public class EventView {
             }
         }
 
-        System.out.print("Hora (formato HH:mm): ");
-        String timeInput = scanner.nextLine();
-        LocalDateTime dateTime = eventDate.atTime(LocalDateTime.parse(timeInput, timeFormatter).toLocalTime());
+        LocalDateTime dateTime = null;
+        boolean validTime = false;
+        while (!validTime) {
+            System.out.print("Hora (formato HH:mm): ");
+            String timeInput = scanner.nextLine();
+            try {
+                // Verifica que la entrada tenga el formato correcto
+                LocalDateTime tempDateTime = LocalDateTime.parse("2000-01-01T" + timeInput + ":00", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+                dateTime = eventDate.atTime(tempDateTime.toLocalTime());
+                validTime = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de hora inválido. Intente nuevamente.");
+            }
+        }
 
         System.out.print("Organizador: ");
         String organizer = scanner.nextLine();

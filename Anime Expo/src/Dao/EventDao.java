@@ -14,7 +14,7 @@ import java.util.List;
 // folder import
 import Model.Event;
 import Connection.MySQLDataSource;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -22,9 +22,9 @@ import java.sql.Date;
  */
 
 public class EventDao {
-     private MySQLDataSource conexion = new MySQLDataSource();
+       private MySQLDataSource conexion = new MySQLDataSource();
 
-     public boolean InsertEvent(Event event) {
+    public boolean InsertEvent(Event event) {
         String sql = "INSERT INTO Events(name, country, city, address, max_capacity, date_time, organizer, age_rating, status, min_age_with_guardian, min_age_without_guardian) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = conexion.conectarMySQL();
              PreparedStatement stms = conn.prepareStatement(sql)) {
@@ -34,7 +34,7 @@ public class EventDao {
             stms.setString(3, event.getCity());
             stms.setString(4, event.getAddress());
             stms.setInt(5, event.getMax_capacity());
-            stms.setDate(6, new Date(event.getDate_time().getTime()));
+            stms.setTimestamp(6, new Timestamp(event.getDate_time().getTime()));
             stms.setString(7, event.getOrganizer());
             stms.setString(8, event.getAge_rating());
             stms.setString(9, event.getStatus());
@@ -49,59 +49,64 @@ public class EventDao {
         }
     }
 
-    
-    public Event ViewEventID(int id){
+    public Event ViewEventID(int id) {
         String sql = "SELECT * FROM Events WHERE event_id = ?";
-        try(Connection conn = new MySQLDataSource().conectarMySQL();
-                PreparedStatement stms = conn.prepareStatement(sql)){
-            
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stms = conn.prepareStatement(sql)) {
+
             stms.setInt(1, id);
-            
+
             ResultSet rs = stms.executeQuery();
-            
-            if (rs.next()){
-                return new Event(rs.getInt("EventID"), rs.getString("Name"), rs.getString("Country"), rs.getString("City"), rs.getString("Address"),
-                rs.getInt("max_capacity"), rs.getDate("date_time"), rs.getString("organizer"), rs.getString("age_rating"),
-                rs.getString("Status"), rs.getInt("min_age_with_guardian"), rs.getInt("min_age_without_guardian"));
+
+            if (rs.next()) {
+                return new Event(
+                    rs.getInt("event_id"), 
+                    rs.getString("name"), 
+                    rs.getString("country"), 
+                    rs.getString("city"), 
+                    rs.getString("address"),
+                    rs.getInt("max_capacity"), 
+                    rs.getTimestamp("date_time"), 
+                    rs.getString("organizer"), 
+                    rs.getString("age_rating"),
+                    rs.getString("status"), 
+                    rs.getInt("min_age_with_guardian"), 
+                    rs.getInt("min_age_without_guardian")
+                );
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-    
-    public List<Event> ViewEvent(){
-        List<Event> event = new ArrayList<>();
-        try(Connection conn = new MySQLDataSource().conectarMySQL()){
-            String sql = "SELECT * FROM Event";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                int event_id = rs.getInt("EventID");
-                String name = rs.getString("Name"); 
-                String country = rs.getString("Country"); 
-                String city = rs.getString("City");
-                String address = rs.getString("Address");
-                int max_capacity = rs.getInt("MaxPersonCapacity");
-                Date date_time = rs.getDate("MaxStoreCapacity");
-                String organizer = rs.getString("MaxRestaurantCapacity");
-                String age_rating = rs.getString("Date");
-                String status = rs.getString("Time"); 
-                int min_age_with_guardian = rs.getInt("Organizer");
-                int min_age_without_guardian = rs.getInt("AgeRating"); 
-                
-                Event events = new Event(event_id, name, country, city, address, 
-                        max_capacity, date_time, organizer, age_rating,
-                        status, min_age_with_guardian, min_age_without_guardian);
-                event.add(events);
+
+    public List<Event> ViewEvent() {
+        List<Event> events = new ArrayList<>();
+        String sql = "SELECT * FROM Events";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Event event = new Event(
+                    rs.getInt("event_id"),
+                    rs.getString("name"),
+                    rs.getString("country"),
+                    rs.getString("city"),
+                    rs.getString("address"),
+                    rs.getInt("max_capacity"),
+                    rs.getTimestamp("date_time"),
+                    rs.getString("organizer"),
+                    rs.getString("age_rating"),
+                    rs.getString("status"),
+                    rs.getInt("min_age_with_guardian"),
+                    rs.getInt("min_age_without_guardian")
+                );
+                events.add(event);
             }
-            
-            
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return event;
-        
+        return events;
     }
 }
