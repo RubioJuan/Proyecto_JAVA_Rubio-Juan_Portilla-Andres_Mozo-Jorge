@@ -24,7 +24,7 @@ public class MySQLDataSource {
     public Connection conectarMySQL() {
   
         Properties props = new Properties();
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("Config.properties")) {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("Connection/DataBaseConfig.properties")) {
             if (input == null) {
                 throw new IllegalStateException("Archivo Config.properties no encontrado");
             }
