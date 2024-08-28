@@ -75,7 +75,7 @@ public class VisitorView {
         }
         
         System.out.println("Lista de todos los visitantes:");
-        controller.getAllVisitors().forEach(System.out::println);
+        controller.getAllVisitorss().forEach(System.out::println);
         
         scanner.close();
     }
