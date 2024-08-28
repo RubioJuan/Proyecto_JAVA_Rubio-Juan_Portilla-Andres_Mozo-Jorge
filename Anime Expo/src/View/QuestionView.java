@@ -29,13 +29,13 @@ public class QuestionView {
 
     public Question getNewQuestionDetails() {
         System.out.println("Ingrese los detalles de la nueva pregunta:");
-        System.out.print("Texto de la pregunta: ");
+        System.out.println("Texto de la pregunta: ");
         String questionText = scanner.nextLine();
-        System.out.print("Respuesta correcta: ");
+        System.out.println("Respuesta correcta: ");
         String correctAnswer = scanner.nextLine();
-        System.out.print("Categoría: ");
+        System.out.println("Categoría: ");
         String category = scanner.nextLine();
-        System.out.print("Dificultad (Easy, Intermediate, Hard): ");
+        System.out.println("Dificultad (Easy, Intermediate, Hard): ");
         String difficulty = scanner.nextLine();
         return new Question(0, questionText, correctAnswer, category, difficulty);
     }
