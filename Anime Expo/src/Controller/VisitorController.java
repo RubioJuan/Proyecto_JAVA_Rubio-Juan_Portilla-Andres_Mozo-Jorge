@@ -29,7 +29,7 @@ public class VisitorController {
         return false;
     }
 
-    public List<Visitor> getAllVisitors(){
+    public List<Visitor> getAllVisitorss(){
         return visitorDao.viewVisitors();
     }
     

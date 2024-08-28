@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 // folder import
-import Model.Event;
 import Connection.MySQLDataSource;
 import Model.Visitor;
 import java.sql.Date;
@@ -26,7 +25,7 @@ public class VisitorDao {
     private MySQLDataSource conexion = new MySQLDataSource(); 
     
     public boolean insertVisitor(Visitor visitor){
-        String sql = "INSERT INTO Visitors(name, id_number, gender, birth_date, email, phone_number, ticket_office_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Visitors(name, id_number, gender, birth_date, email, phone_number, ticket_type_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try(Connection conn = conexion.conectarMySQL();
             PreparedStatement stms = conn.prepareStatement(sql)) {
             
@@ -36,7 +35,7 @@ public class VisitorDao {
             stms.setDate(4, new Date(visitor.getBirth_date().getTime()));
             stms.setString(5, visitor.getEmail());
             stms.setString(6, visitor.getPhone_number());
-            stms.setInt(7, visitor.getTicket_office_id());
+            stms.setInt(7, visitor.getTicket_type_id());
             
             int rowsAffected = stms.executeUpdate();
             return rowsAffected > 0; // Devuelve true si se insertaron filas, false si no
@@ -88,7 +87,7 @@ public class VisitorDao {
                     rs.getDate("birth_date"),
                     rs.getString("email"),
                     rs.getString("phone_number"),
-                    rs.getInt("ticket_office_id")
+                    rs.getInt("ticket_type_id")
                 );
                 visitors.add(visitor);
             }

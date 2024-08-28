@@ -10,6 +10,7 @@ import java.util.Date;
  *
  * @author Juan Felipe Rubio
  */
+
 public class Visitor {
     private int visitor_id;
     private String name;
@@ -18,9 +19,9 @@ public class Visitor {
     private Date birth_date;
     private String email;
     private String phone_number;
-    private int ticket_office_id;
+    private int ticket_type_id;
     
-    public Visitor(int visitor_id, String name, String id_number,String gender,Date birth_date, String email, String phone_number, int ticket_office_id){
+    public Visitor(int visitor_id, String name, String id_number,String gender,Date birth_date, String email, String phone_number, int ticket_type_id){
        this.visitor_id = visitor_id;
        this.name = name;
        this.id_number = id_number;
@@ -28,7 +29,7 @@ public class Visitor {
        this.birth_date = birth_date;
        this.email = email;
        this.phone_number = phone_number;
-       this.ticket_office_id = ticket_office_id;
+       this.ticket_type_id = ticket_type_id;
     }
     
       public int getVisitor_id() {
@@ -87,12 +88,12 @@ public class Visitor {
         this.phone_number = phone_number;
     }
 
-    public int getTicket_office_id() {
-        return ticket_office_id;
+    public int getTicket_type_id() {
+        return ticket_type_id;
     }
 
-    public void setTicket_office_id(int ticket_office_id) {
-        this.ticket_office_id = ticket_office_id;
+    public void setTicket_type_id(int ticket_type_id) {
+        this.ticket_type_id = ticket_type_id;
     }
 
     @Override
@@ -105,7 +106,7 @@ public class Visitor {
                 ", birth_date=" + birth_date +
                 ", email='" + email + '\'' +
                 ", phone_number='" + phone_number + '\'' +
-                ", ticket_office_id=" + ticket_office_id +
+                ", ticket_type_id=" + ticket_type_id +
                 '}';
     }
 }
