@@ -1,7 +1,9 @@
 # *********************************
 # *** DataBase - Anime Expo ***
 # *********************************
-
+select * from Ticket_Types;
+select * from Events;
+select * from Visitors;
 create database AnimeExpo;
 
 use AnimeExpo;
@@ -66,8 +68,8 @@ CREATE TABLE Ticket_Offices (
 -- Table Ticket_Types
 CREATE TABLE Ticket_Types (
     ticket_type_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    price DECIMAL(10, 2),
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2)NOT NULL,
     age_rating VARCHAR(50),
     additional_costs DECIMAL(10, 2) DEFAULT 0,
     status ENUM('paid', 'reserved') NOT NULL
@@ -81,17 +83,16 @@ CREATE TABLE Tickets (
     FOREIGN KEY (ticket_type_id) REFERENCES Ticket_Types(ticket_type_id)
 );
 
--- Table Visitors
 CREATE TABLE Visitors (
     visitor_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    id_number VARCHAR(100),
-    gender ENUM('male', 'female', 'other'),
-    birth_date DATE,
-    email VARCHAR(255),
-    phone_number VARCHAR(50),
-    ticket_office_id INT,
-    FOREIGN KEY (ticket_office_id) REFERENCES Ticket_Offices(ticket_office_id)
+    name VARCHAR(255) NOT NULL,
+    id_number VARCHAR(100) NOT NULL UNIQUE,
+    gender ENUM('male', 'female', 'other') NOT NULL,
+    birth_date DATE NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(50) NOT NULL,
+    ticket_type_id INT NOT NULL,
+    FOREIGN KEY (ticket_type_id) REFERENCES Ticket_Types(ticket_type_id)
 );
 
 -- Table Activities
