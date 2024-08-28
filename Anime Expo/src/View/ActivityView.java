@@ -2,116 +2,87 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view;
 
-import controller.ActivityController;
-import model.Activity;
+package View;
+
+import Controller.ActivityController;
+import Dao.ActivityDao;
+import Model.Activity;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class ActivityView {
 
-    private final ActivityController controller;
     private final Scanner scanner;
+    private  ActivityController activityController;
 
-    public ActivityView() {
-        this.controller = new ActivityController();
+    public ActivityView(ActivityController activityController) {
         this.scanner = new Scanner(System.in);
+        this.activityController = activityController;
+    }
+
+    public void displayActivityList(List<Activity> activities) {
+        System.out.println("Lista de Actividades:");
+        for (Activity activity : activities) {
+            System.out.println(activity);
+        }
+    }
+
+    public Activity getNewActivityDetails() {
+        System.out.println("Ingrese los detalles de la nueva actividad:");
+        System.out.println("Nombre: ");
+        String name = scanner.nextLine();
+        System.out.println("Tipo (Cosplay/Trivia): ");
+        String type = scanner.nextLine();
+        System.out.println("Categoría: ");
+        String category = scanner.nextLine();
+        System.out.println("Número de participantes: ");
+        int participantCount = scanner.nextInt();
+        System.out.println("ID del evento: ");
+        int eventId = scanner.nextInt();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.println("Hora de inicio (HH:MM:SS): ");
+        String startTime = scanner.nextLine();
+
+        return new Activity(0, name, type, category, participantCount, eventId, startTime);
     }
 
     public void showMenu() {
         int option;
         do {
-            System.out.println("\n--- Gestión de Actividades ---");
-            System.out.println("1. Crear Actividad");
-            System.out.println("2. Ver Todas las Actividades");
-            System.out.println("3. Actualizar Actividad");
-            System.out.println("4. Eliminar Actividad");
-            System.out.println("5. Salir");
-            System.out.println("\n Seleccione una opción: ");
+            System.out.println("\n--- Menú de Gestión de Actividades ---");
+            System.out.println("1. Listar todas las actividades");
+            System.out.println("2. Crear una nueva actividad");
+            System.out.println("3. Salir");
+            System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
 
             switch (option) {
                 case 1:
-                    createActivity();
+                    activityController.listAllActivities();
                     break;
                 case 2:
-                    displayAllActivities();
+                    activityController.createNewActivity();
                     break;
                 case 3:
-                    updateActivity();
-                    break;
-                case 4:
-                    deleteActivity();
-                    break;
-                case 5:
-                    System.out.println("Saliendo del sistema...");
+                    System.out.println("Saliendo del programa...");
                     break;
                 default:
-                    System.out.println("Opción inválida. Intente de nuevo.");
+                    System.out.println("Opción no válida. Intente de nuevo.");
             }
-        } while (option != 5);
+        } while (option != 3);
     }
 
-    private void createActivity() {
-        System.out.println("Nombre de la actividad: ");
-        String name = scanner.next();
-        System.out.println("Tipo (Cosplay/Trivia): ");
-        String type = scanner.next();
-        System.out.println("Categoría: ");
-        String category = scanner.next();
-        System.out.println("Cantidad de participantes: ");
-        int participantCount = scanner.nextInt();
-        System.out.println("ID del evento: ");
-        int eventId = scanner.nextInt();
-        System.out.println("Hora de inicio (HH:MM:SS): ");
-        String startTime = scanner.next();
+public static void main(String[] args) {
+    ActivityDao activityDao = new ActivityDao();
+    ActivityView activityView = new ActivityView(null); // Inicialmente nulo
+    ActivityController activityController = new ActivityController(activityDao, activityView);
 
-        Activity activity = new Activity(0, name, type, category, participantCount, eventId, startTime);
-        controller.createActivity(activity);
-    }
+    activityView = new ActivityView(activityController);
 
-    private void displayAllActivities() {
-        List<Activity> activities = controller.getAllActivities();
-        if (activities != null) {
-            for (Activity activity : activities) {
-                System.out.println(activity);
-            }
-        } else {
-            System.out.println("No se pudieron obtener las actividades.");
-        }
-    }
+    activityView.showMenu();
+}
 
-    private void updateActivity() {
-        System.out.print("ID de la actividad a actualizar: ");
-        int activityId = scanner.nextInt();
-        System.out.print("Nuevo nombre de la actividad: ");
-        String name = scanner.next();
-        System.out.print("Nuevo tipo (Cosplay/Trivia): ");
-        String type = scanner.next();
-        System.out.print("Nueva categoría: ");
-        String category = scanner.next();
-        System.out.print("Nueva cantidad de participantes: ");
-        int participantCount = scanner.nextInt();
-        System.out.print("Nuevo ID del evento: ");
-        int eventId = scanner.nextInt();
-        System.out.print("Nueva hora de inicio (HH:MM:SS): ");
-        String startTime = scanner.next();
-
-        Activity activity = new Activity(activityId, name, type, category, participantCount, eventId, startTime);
-        controller.updateActivity(activity);
-    }
-
-    private void deleteActivity() {
-        System.out.print("ID de la actividad a eliminar: ");
-        int activityId = scanner.nextInt();
-        controller.deleteActivity(activityId);
-    }
-
-    // Método main para ejecutar el menú
-    public static void main(String[] args) {
-        ActivityView activityView = new ActivityView();
-        activityView.showMenu();
-    }
 }
