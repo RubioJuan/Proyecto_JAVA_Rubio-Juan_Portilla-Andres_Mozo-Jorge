@@ -91,7 +91,7 @@ CREATE TABLE Visitors (
     email VARCHAR(255),
     phone_number VARCHAR(50),
     ticket_office_id INT,
-    FOREIGN KEY (ticket_office_id) REFERENCES Ticket_Offices(ticket_office_id)
+    FOREIGN KEY (ticket_office_id) REFERENCES  Ticket_Types (ticket_type_id)
 );
 
 -- Table Activities
