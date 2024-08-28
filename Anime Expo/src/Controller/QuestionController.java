@@ -4,10 +4,30 @@
  */
 package Controller;
 
-/**
- *
- * @author Juan Felipe Rubio
- */
+
+import Dao.QuestionDao;
+import Model.Question;
+import View.QuestionView;
+
+import java.util.List;
+
 public class QuestionController {
-    
+    private QuestionDao questionDao;
+    private QuestionView questionView;
+
+    public QuestionController(QuestionDao questionDao, QuestionView questionView) {
+        this.questionDao = questionDao;
+        this.questionView = questionView;
+    }
+
+    public void listAllQuestions() {
+        List<Question> questions = questionDao.getAllQuestions();
+        questionView.displayQuestionList(questions);
+    }
+
+    public void createNewQuestion() {
+        Question question = questionView.getNewQuestionDetails();
+        questionDao.addQuestion(question);
+        System.out.println("Nueva pregunta añadida con éxito.");
+    }
 }
