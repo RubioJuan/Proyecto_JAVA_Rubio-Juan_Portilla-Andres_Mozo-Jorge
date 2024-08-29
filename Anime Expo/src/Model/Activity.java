@@ -18,11 +18,9 @@ public class Activity {
     private int eventId;
     private String startTime;
 
-    // Constructor vacío
     public Activity() {
     }
 
-    // Constructor con parámetros
     public Activity(int activityId, String name, String type, String category, int participantCount, int eventId, String startTime) {
         this.activityId = activityId;
         this.name = name;
@@ -33,7 +31,6 @@ public class Activity {
         this.startTime = startTime;
     }
 
-    // Getters y Setters
     public int getActivityId() {
         return activityId;
     }

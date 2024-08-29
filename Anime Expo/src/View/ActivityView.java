@@ -41,7 +41,7 @@ public class ActivityView {
         int participantCount = scanner.nextInt();
         System.out.println("ID del evento: ");
         int eventId = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
         System.out.println("Hora de inicio (HH:MM:SS): ");
         String startTime = scanner.nextLine();
 
@@ -57,7 +57,7 @@ public class ActivityView {
             System.out.println("3. Salir");
             System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:

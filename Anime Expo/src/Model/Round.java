@@ -17,7 +17,6 @@ public class Round {
         this.description = description;
     }
 
-    // Getters y setters
     public int getRoundId() {
         return roundId;
     }

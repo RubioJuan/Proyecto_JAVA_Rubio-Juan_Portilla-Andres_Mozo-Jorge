@@ -43,8 +43,7 @@ public class CosplayCategoryView {
             System.out.println("3. Salir");
             System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
-
+            scanner.nextLine(); 
             switch (option) {
                 case 1:
                     cosplayCategoryController.listAllCategories();
@@ -63,7 +62,7 @@ public class CosplayCategoryView {
 
     public static void main(String[] args) {
         CosplayCategoryDao cosplayCategoryDao = new CosplayCategoryDao();
-        CosplayCategoryView cosplayCategoryView = new CosplayCategoryView(null); // Inicialmente nulo
+        CosplayCategoryView cosplayCategoryView = new CosplayCategoryView(null); 
         CosplayCategoryController cosplayCategoryController = new CosplayCategoryController(cosplayCategoryDao, cosplayCategoryView);
 
         cosplayCategoryView.cosplayCategoryController = cosplayCategoryController;

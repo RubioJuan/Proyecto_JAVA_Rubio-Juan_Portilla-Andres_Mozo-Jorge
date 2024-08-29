@@ -17,7 +17,6 @@ public class Report {
         this.content = content;
     }
 
-    // Getters y setters
     public int getReportId() {
         return reportId;
     }

@@ -19,7 +19,6 @@ public class Question {
         this.difficulty = difficulty;
     }
 
-    // Getters y setters
     public int getIdQuestion() { return idQuestion; }
     public void setIdQuestion(int idQuestion) { this.idQuestion = idQuestion; }
     public String getQuestionText() { return questionText; }
