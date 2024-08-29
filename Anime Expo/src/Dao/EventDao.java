@@ -14,7 +14,7 @@ import java.util.List;
 // folder import
 import Model.Event;
 import Connection.MySQLDataSource;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 /**
  *

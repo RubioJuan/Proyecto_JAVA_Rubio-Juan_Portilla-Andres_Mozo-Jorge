@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package Model;
 
 
 /**
  *
  * @author Andres Felipe Portilla Amorocho 
  */
-
 public class Activity {
     private int activityId;
     private String name;
@@ -19,7 +18,11 @@ public class Activity {
     private int eventId;
     private String startTime;
 
-    // Constructor
+    // Constructor vacío
+    public Activity() {
+    }
+
+    // Constructor con parámetros
     public Activity(int activityId, String name, String type, String category, int participantCount, int eventId, String startTime) {
         this.activityId = activityId;
         this.name = name;
@@ -85,5 +88,18 @@ public class Activity {
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "activityId=" + activityId +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", category='" + category + '\'' +
+                ", participantCount=" + participantCount +
+                ", eventId=" + eventId +
+                ", startTime='" + startTime + '\'' +
+                '}';
     }
 }
