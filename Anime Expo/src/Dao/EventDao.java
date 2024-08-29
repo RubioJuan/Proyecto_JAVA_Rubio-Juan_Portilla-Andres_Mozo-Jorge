@@ -13,8 +13,8 @@ import java.util.List;
 
 // folder import
 import Model.Event;
-import Connection.MySQLDataSource;
-import java.sql.Date;
+import connection.MySQLDataSource;
+import java.sql.Timestamp;
 
 /**
  *
