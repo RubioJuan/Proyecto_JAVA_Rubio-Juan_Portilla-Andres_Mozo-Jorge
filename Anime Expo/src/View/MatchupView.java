@@ -30,13 +30,13 @@ public class MatchupView {
 
     public Matchup getNewMatchupDetails() {
         System.out.println("Ingrese los detalles del nuevo enfrentamiento:");
-        System.out.print("ID de la ronda: ");
+        System.out.println("ID de la ronda: ");
         int roundId = scanner.nextInt();
-        System.out.print("ID del primer participante: ");
+        System.out.println("ID del primer participante: ");
         int participant1Id = scanner.nextInt();
-        System.out.print("ID del segundo participante: ");
+        System.out.println("ID del segundo participante: ");
         int participant2Id = scanner.nextInt();
-        System.out.print("ID del ganador (dejar vacío si aún no hay ganador): ");
+        System.out.println("ID del ganador (dejar vacío si aún no hay ganador): ");
         Integer winnerId = scanner.nextInt();
         scanner.nextLine(); // Limpiar buffer
 
@@ -50,7 +50,7 @@ public class MatchupView {
             System.out.println("1. Listar todos los enfrentamientos");
             System.out.println("2. Crear un nuevo enfrentamiento");
             System.out.println("3. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
 
