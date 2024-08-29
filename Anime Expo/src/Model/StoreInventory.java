@@ -9,7 +9,7 @@ package Model;
  *
  * @author Jorge Luis Mozo
  */
-public class StoreInventory extends Store {
+public class StoreInventory {
     private int inventory_id;
     private String product_name;
     private String description;
@@ -40,11 +40,9 @@ public class StoreInventory extends Store {
     public void setProduct_name (String product_name){
         this.product_name = product_name;
     }
-    @Override
     public String getDescription (){
         return description;
     }
-    @Override
     public void setDescription (String description){
         this.description = description;
     }
