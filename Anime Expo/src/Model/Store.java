@@ -6,7 +6,7 @@ package Model;
 
 /**
  *
- * @author Juan Felipe Rubio
+ * @author Jorge Luis Mozo
  */
 public class Store {
     private int store_id;
