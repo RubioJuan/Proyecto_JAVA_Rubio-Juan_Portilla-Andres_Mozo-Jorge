@@ -1,9 +1,7 @@
 # *********************************
 # *** DataBase - Anime Expo ***
 # *********************************
-select * from Ticket_Types;
-select * from Events;
-select * from Visitors;
+
 create database AnimeExpo;
 
 use AnimeExpo;
@@ -370,5 +368,5 @@ CREATE TABLE Question_Inventory (
 show tables;
 
 # Check information from a table
-select* from Events; 
+#select* from Events; 
 # Change the name "Events" to the name of the table you want to view the information from
