@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Connection;
+package connection;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,8 +46,12 @@ public class MySQLDataSource {
         } catch (IOException | ClassNotFoundException | SQLException | IllegalStateException e) {
             System.err.println("Error en la conexión :(, error: " + e);
             JOptionPane.showMessageDialog(null, "Error en la conexión: " + e.toString());
+
+            
         }
         return con;
+
+        
     }
 }
     
