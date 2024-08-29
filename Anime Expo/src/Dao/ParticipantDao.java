@@ -13,7 +13,7 @@ import java.util.List;
 
 // folder import
 import Model.Participant;
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 
 /**
  *

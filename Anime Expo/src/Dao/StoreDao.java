@@ -12,8 +12,7 @@ import java.util.List;
 
 // folder import
 import Model.Store;
-import Connection.MySQLDataSource;
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 import java.sql.Timestamp;
 
 /**

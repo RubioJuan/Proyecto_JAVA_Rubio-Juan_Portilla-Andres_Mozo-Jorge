@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 // folder import
 import Model.Ticket;
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 
 /**
  *
