@@ -33,7 +33,7 @@ public class RoundView {
         int eventId = scanner.nextInt();
         System.out.print("Número de la ronda: ");
         int roundNumber = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
         System.out.print("Descripción de la ronda: ");
         String description = scanner.nextLine();
 
@@ -49,7 +49,7 @@ public class RoundView {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:
@@ -69,13 +69,11 @@ public class RoundView {
 
     public static void main(String[] args) {
         RoundDao roundDao = new RoundDao();
-        RoundView roundView = new RoundView(null); // Inicialmente nulo
+        RoundView roundView = new RoundView(null); 
         RoundController roundController = new RoundController(roundDao, roundView);
 
-        // Asignar el controlador a la vista
         roundView.roundController = roundController;
 
-        // Mostrar el menú
         roundView.showMenu();
     }
 }

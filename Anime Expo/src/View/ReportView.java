@@ -32,7 +32,7 @@ public class ReportView {
         System.out.println("Ingrese los detalles del nuevo reporte:");
         System.out.println("ID del evento: ");
         int eventId = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
         System.out.println("Tipo de reporte: ");
         String reportType = scanner.nextLine();
         System.out.println("Contenido del reporte: ");
@@ -50,7 +50,7 @@ public class ReportView {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:
@@ -70,13 +70,11 @@ public class ReportView {
 
     public static void main(String[] args) {
         ReportDao reportDao = new ReportDao();
-        ReportView reportView = new ReportView(null); // Inicialmente nulo
+        ReportView reportView = new ReportView(null); 
         ReportController reportController = new ReportController(reportDao, reportView);
 
-        // Asignar el controlador a la vista
         reportView.reportController = reportController;
 
-        // Mostrar el menú
         reportView.showMenu();
     }
 }

@@ -14,7 +14,6 @@ public class QuestionCategory {
         this.categoryName = categoryName;
     }
 
-    // Getters y setters
     public int getIdCategory() { return idCategory; }
     public void setIdCategory(int idCategory) { this.idCategory = idCategory; }
     public String getCategoryName() { return categoryName; }

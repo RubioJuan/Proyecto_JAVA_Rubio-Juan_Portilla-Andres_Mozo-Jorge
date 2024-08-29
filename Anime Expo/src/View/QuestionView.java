@@ -49,7 +49,7 @@ public class QuestionView {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:
@@ -69,13 +69,11 @@ public class QuestionView {
 
     public static void main(String[] args) {
         QuestionDao questionDao = new QuestionDao();
-        QuestionView questionView = new QuestionView(null); // Inicialmente nulo
+        QuestionView questionView = new QuestionView(null); 
         QuestionController questionController = new QuestionController(questionDao, questionView);
 
-        // Asignar el controlador a la vista
         questionView.questionController = questionController;
 
-        // Mostrar el menú
         questionView.showMenu();
     }
 }

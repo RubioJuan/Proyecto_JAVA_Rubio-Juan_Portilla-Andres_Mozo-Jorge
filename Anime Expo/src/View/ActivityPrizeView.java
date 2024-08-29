@@ -34,14 +34,14 @@ public class ActivityPrizeView {
         String description = scanner.nextLine();
         System.out.println("Valor: ");
         double value = scanner.nextDouble();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
         System.out.println("Estado (available/delivered): ");
         String status = scanner.nextLine();
         System.out.println("ID de la actividad: ");
         int activityId = scanner.nextInt();
         System.out.println("ID del participante: ");
         int participantId = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         return new ActivityPrize(0, type, description, value, status, activityId, participantId);
     }
@@ -55,7 +55,7 @@ public class ActivityPrizeView {
             System.out.println("3. Salir");
             System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:

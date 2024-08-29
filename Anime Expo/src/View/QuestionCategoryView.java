@@ -43,7 +43,7 @@ public class QuestionCategoryView {
             System.out.println("3. Salir");
             System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
@@ -66,10 +66,8 @@ public class QuestionCategoryView {
         QuestionCategoryView categoryView = new QuestionCategoryView(null); 
         QuestionCategoryController categoryController = new QuestionCategoryController(categoryDao, categoryView);
 
-        // Asignar el controlador a la vista
         categoryView.categoryController = categoryController;
 
-        // Mostrar el menú
         categoryView.showMenu();
     }
 }

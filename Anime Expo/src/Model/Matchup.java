@@ -9,7 +9,7 @@ public class Matchup {
     private int roundId;
     private int participant1Id;
     private int participant2Id;
-    private Integer winnerId; // Puede ser null si no hay un ganador aún
+    private Integer winnerId; 
 
     public Matchup(int matchupId, int roundId, int participant1Id, int participant2Id, Integer winnerId) {
         this.matchupId = matchupId;
@@ -19,7 +19,6 @@ public class Matchup {
         this.winnerId = winnerId;
     }
 
-    // Getters y setters
     public int getMatchupId() { return matchupId; }
     public void setMatchupId(int matchupId) { this.matchupId = matchupId; }
     public int getRoundId() { return roundId; }

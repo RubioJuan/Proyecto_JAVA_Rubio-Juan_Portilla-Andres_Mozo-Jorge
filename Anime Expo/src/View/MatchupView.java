@@ -38,7 +38,7 @@ public class MatchupView {
         int participant2Id = scanner.nextInt();
         System.out.println("ID del ganador (dejar vacío si aún no hay ganador): ");
         Integer winnerId = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         return new Matchup(0, roundId, participant1Id, participant2Id, winnerId == 0 ? null : winnerId);
     }
@@ -52,7 +52,7 @@ public class MatchupView {
             System.out.println("3. Salir");
             System.out.println("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:
@@ -72,13 +72,11 @@ public class MatchupView {
 
     public static void main(String[] args) {
         MatchupDao matchupDao = new MatchupDao();
-        MatchupView matchupView = new MatchupView(null); // Inicialmente nulo
+        MatchupView matchupView = new MatchupView(null);
         MatchupController matchupController = new MatchupController(matchupDao, matchupView);
 
-        // Asignar el controlador a la vista
         matchupView.matchupController = matchupController;
 
-        // Mostrar el menú
         matchupView.showMenu();
     }
 }

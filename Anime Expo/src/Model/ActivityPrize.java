@@ -19,7 +19,6 @@ public class ActivityPrize {
         this.participantId = participantId;
     }
 
-    // Getters y setters
     public int getPrizeId() { return prizeId; }
     public void setPrizeId(int prizeId) { this.prizeId = prizeId; }
     public String getType() { return type; }

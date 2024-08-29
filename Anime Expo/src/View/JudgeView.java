@@ -45,7 +45,7 @@ public class JudgeView {
         String specialty = scanner.nextLine();
         System.out.println("ID del evento: ");
         int eventId = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         return new Judge(0, name, idNumber, birthDate, email, phoneNumber, specialty, eventId);
     }
@@ -59,7 +59,7 @@ public class JudgeView {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
             option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (option) {
                 case 1:
@@ -79,13 +79,11 @@ public class JudgeView {
 
     public static void main(String[] args) {
         JudgeDao judgeDao = new JudgeDao();
-        JudgeView judgeView = new JudgeView(null); // Inicialmente nulo
+        JudgeView judgeView = new JudgeView(null); 
         JudgeController judgeController = new JudgeController(judgeDao, judgeView);
 
-        // Asignar el controlador a la vista
         judgeView.judgeController = judgeController;
 
-        // Mostrar el menú
         judgeView.showMenu();
     }
 }

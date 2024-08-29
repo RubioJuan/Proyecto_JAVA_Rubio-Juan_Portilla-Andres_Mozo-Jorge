@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Juan Felipe Rubio
+ * @author Andres Portilla
  */
 
 public class MySQLDataSource {
