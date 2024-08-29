@@ -33,17 +33,17 @@ public class JudgeView {
         System.out.println("Ingrese los detalles del nuevo juez:");
         System.out.print("Nombre: ");
         String name = scanner.nextLine();
-        System.out.print("Número de identificación: ");
+        System.out.println("Número de identificación: ");
         String idNumber = scanner.nextLine();
-        System.out.print("Fecha de nacimiento (YYYY-MM-DD): ");
+        System.out.println("Fecha de nacimiento (YYYY-MM-DD): ");
         Date birthDate = Date.valueOf(scanner.nextLine());
-        System.out.print("Correo electrónico: ");
+        System.out.println("Correo electrónico: ");
         String email = scanner.nextLine();
-        System.out.print("Número de teléfono: ");
+        System.out.println("Número de teléfono: ");
         String phoneNumber = scanner.nextLine();
-        System.out.print("Especialidad: ");
+        System.out.println("Especialidad: ");
         String specialty = scanner.nextLine();
-        System.out.print("ID del evento: ");
+        System.out.println("ID del evento: ");
         int eventId = scanner.nextInt();
         scanner.nextLine(); // Limpiar buffer
 
