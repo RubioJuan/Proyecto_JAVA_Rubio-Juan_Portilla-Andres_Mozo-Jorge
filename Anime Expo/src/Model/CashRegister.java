@@ -67,8 +67,4 @@ public class CashRegister {
     public void setClosing_amount(BigDecimal closing_amount) {
         this.closing_amount = closing_amount;
     }
-
-    public int getRegister_id() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

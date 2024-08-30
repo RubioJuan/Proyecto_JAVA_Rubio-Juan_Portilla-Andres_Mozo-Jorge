@@ -42,7 +42,8 @@ public class CashRegisterDao {
         }
     
         public CashRegister ViewCashRegisterID(int id){
-            String sql = "SELECT * FROM CashRegister WHERE register_id = ?";
+            String sql = "INSERT INTO CashRegister(register_id, status, operator, opening_amount, closing_amount) VALUES(?, ?, ?, ?, ?)";
+
             try(Connection conn = new MySQLDataSource().conectarMySQL();
                 PreparedStatement stms = conn.prepareStatement(sql)) {
                 
@@ -72,15 +73,15 @@ public class CashRegisterDao {
                  ResultSet rs = stmt.executeQuery()) {
                  
              while (rs.next()) {
-                    CashRegister cashRegisters = new CashRegister (
-                            rs.getInt("register_id"),
-                            rs.getString("status"),
-                            rs.getInt("operator"),
-                            rs.getBigDecimal("opening_amount"),
-                            rs.getBigDecimal("closing_amount")
-                    );
-                    cashRegisters.add(cashRegister);
-         }
+    CashRegister cashRegister = new CashRegister (
+            rs.getInt("register_id"),
+            rs.getString("status"),
+            rs.getInt("operator"),
+            rs.getBigDecimal("opening_amount"),
+            rs.getBigDecimal("closing_amount")
+    );
+    cashRegisters.add(cashRegister);
+}
         }catch (SQLException e) {
              e.printStackTrace();
          }

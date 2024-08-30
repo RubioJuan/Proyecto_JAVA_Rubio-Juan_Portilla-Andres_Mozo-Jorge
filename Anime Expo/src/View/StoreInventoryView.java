@@ -30,8 +30,7 @@ public class StoreInventoryView {
                validName = true;
            }
            System.out.print("Description: ");
-         String String = scanner.nextLine();   
     }
-       
+    }
 }
 
