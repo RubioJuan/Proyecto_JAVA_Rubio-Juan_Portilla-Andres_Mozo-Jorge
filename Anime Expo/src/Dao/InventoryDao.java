@@ -12,7 +12,7 @@ import java.util.List;
 
 //folder import  
 import  Model.Inventory;
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 
 /**
  *

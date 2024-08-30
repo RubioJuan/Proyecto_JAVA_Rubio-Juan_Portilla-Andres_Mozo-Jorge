@@ -5,7 +5,7 @@
 package Dao;
 
 
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 import Model.IngredientInventory;
 
 import java.sql.*;

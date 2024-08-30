@@ -4,7 +4,7 @@
  */
 package Dao;
 
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 import Model.RestaurantMenu;
 
 import java.sql.*;
