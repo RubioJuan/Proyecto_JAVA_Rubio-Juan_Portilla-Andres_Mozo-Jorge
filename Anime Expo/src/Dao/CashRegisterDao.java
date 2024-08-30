@@ -12,7 +12,7 @@ import java.util.List;
 
 //Folder Import 
 import Model.CashRegister;
-import Connection.MySQLDataSource;
+import connection.MySQLDataSource;
 
 /**
  *
