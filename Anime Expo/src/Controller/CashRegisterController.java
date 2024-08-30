@@ -4,10 +4,34 @@
  */
 package Controller;
 
+import Model.CashRegister;
+import Dao.CashRegisterDao;
+import java.util.List;
+
 /**
  *
- * @author Juan Felipe Rubio
+ * @author Jorge Luis Mozo
  */
 public class CashRegisterController {
+    private CashRegisterDao cashRegisterDao;
     
+    public CashRegisterController(){
+        this.cashRegisterDao = new CashRegisterDao();
+    }
+    public void createCashRegister (CashRegister cashRegister) {
+        try {
+            CashRegisterDao.createCashRegister(cashRegister);
+        }catch (Exception e) {
+            System.err.println("Error al crear la registradora " + e.getMessage());
+        }
+    }
+    
+    public List<CashRegister> getAllCashRegisters() {
+         try {
+             return CashRegisterDao.getAllCashRegisters();
+         } catch (Exception e) {
+             System.err.println("Error al obtener las registradoraslas tiendas: " + e.getMessage());
+             return null;
+         }
+     }
 }

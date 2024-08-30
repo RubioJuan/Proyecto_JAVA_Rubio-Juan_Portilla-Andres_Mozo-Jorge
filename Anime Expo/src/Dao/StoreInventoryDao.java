@@ -75,7 +75,7 @@ public class StoreInventoryDao {
         }
         return null;   
    }
-   public List<StoreInventory> ViewStore (){
+   public List<StoreInventory> ViewStoreInventory (){
          List<StoreInventory> storeInventorys = new ArrayList <>();
          String sql = "SELECT * FROM StoreInventory";
          try (Connection conn = conexion.conectarMySQL();
