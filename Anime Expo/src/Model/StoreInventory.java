@@ -9,16 +9,8 @@ package Model;
  *
  * @author Jorge Luis Mozo
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
-public class StoreInventory {
-=======
-public class StoreInventory  {
->>>>>>> f33fb4c29a60f70914f15876f2d8495cebc85389
-=======
-public class StoreInventory  {
 
->>>>>>> 1bbd38aea08e1efc59a050bd2d740574eeff4391
+public class StoreInventory {
     private int inventory_id;
     private String product_name;
     private String description;
