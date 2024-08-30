@@ -4,9 +4,8 @@
  */
 package View;
 import Controller.StoreController;
-import Model.Store;
 import java.util.Scanner;
-
+ 
 
 /**
  *
@@ -21,7 +20,7 @@ public class StoreView {
             String name;
        boolean validName = false;
        while (!validName) {
-           System.out.print("Nombre de la tienda: ");
+           System.out.println("Nombre de la tienda: ");
            name = scanner.nextLine();
 
 
@@ -31,7 +30,7 @@ public class StoreView {
                validName = true;
            }
        }
-        System.out.print("Manager: ");
+        System.out.println("Manager: ");
          String String = scanner.nextLine();
    }
 
