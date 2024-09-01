@@ -95,18 +95,22 @@ public class Visitor {
     public void setTicket_type_id(int ticket_type_id) {
         this.ticket_type_id = ticket_type_id;
     }
-
+    
     @Override
     public String toString() {
-        return "Visitor{" +
-                "visitor_id=" + visitor_id +
-                ", name='" + name + '\'' +
-                ", id_number='" + id_number + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birth_date=" + birth_date +
-                ", email='" + email + '\'' +
-                ", phone_number='" + phone_number + '\'' +
-                ", ticket_type_id=" + ticket_type_id +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Visitor Details                                      \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Visitor ID         : %-45d \n", visitor_id));
+        sb.append(String.format("║ Name               : %-45s \n", name));
+        sb.append(String.format("║ ID Number          : %-45s \n", id_number));
+        sb.append(String.format("║ Gender             : %-45s \n", gender));
+        sb.append(String.format("║ Birth Date         : %-45s \n", birth_date));
+        sb.append(String.format("║ Email              : %-45s \n", email));
+        sb.append(String.format("║ Phone Number       : %-45s \n", phone_number));
+        sb.append(String.format("║ Ticket Type ID     : %-45d \n", ticket_type_id));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

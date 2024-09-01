@@ -1,8 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package View;
+ */package View;
 
 import Controller.VisitorController;
 import Model.Visitor;
@@ -19,8 +18,19 @@ import java.util.Scanner;
  */
 
 public class VisitorView {
-    public static void main(String[] args) {
-        VisitorController controller = new VisitorController();
+    private VisitorController visitorController;
+
+    // Constructor que acepta un controlador
+    public VisitorView(VisitorController visitorController) {
+        this.visitorController = visitorController;
+    }
+
+    // Método para asignar el controlador
+    public void setVisitorController(VisitorController visitorController) {
+        this.visitorController = visitorController;
+    }
+
+    public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Ingrese los datos del visitante:");
@@ -31,7 +41,7 @@ public class VisitorView {
             System.out.println("Nombre del visitante: ");
             name = scanner.nextLine();
             
-            if(controller.isVisitorNameExists(name)){
+            if(visitorController.isVisitorNameExists(name)){
                 System.out.println("Lastimosamente ya existe un visitante con este nombre, por favor ingrese un nombre diferente.");
             } else{
                 validName = true;
@@ -68,14 +78,14 @@ public class VisitorView {
             0, name, id_number, gender, birth_date, email, phone_number, ticket_office_id
         );
         
-        if(controller.addVisitor(visitor)){
+        if(visitorController.addVisitor(visitor)){
             System.out.println("Visitante añadido exitosamente.");
         } else {
             System.out.println("No se pudo añadir el visitante.");
         }
         
         System.out.println("Lista de todos los visitantes:");
-        controller.getAllVisitorss().forEach(System.out::println);
+        visitorController.getAllVisitorss().forEach(System.out::println);
         
         scanner.close();
     }
