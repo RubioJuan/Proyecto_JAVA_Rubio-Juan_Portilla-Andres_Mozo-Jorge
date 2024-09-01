@@ -48,15 +48,19 @@ public class Judge {
 
     @Override
     public String toString() {
-        return "Judge{" +
-                "judgeId=" + judgeId +
-                ", name='" + name + '\'' +
-                ", idNumber='" + idNumber + '\'' +
-                ", birthDate=" + birthDate +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", specialty='" + specialty + '\'' +
-                ", eventId=" + eventId +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Judge Details                                      \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Judge ID           : %-45d \n", judgeId));
+        sb.append(String.format("║ Name               : %-45s \n", name));
+        sb.append(String.format("║ ID Number          : %-45s \n", idNumber));
+        sb.append(String.format("║ Birth Date         : %-45s \n", birthDate));
+        sb.append(String.format("║ Email              : %-45s \n", email));
+        sb.append(String.format("║ Phone Number       : %-45s \n", phoneNumber));
+        sb.append(String.format("║ Specialty          : %-45s \n", specialty));
+        sb.append(String.format("║ Event ID           : %-45d \n", eventId));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }
