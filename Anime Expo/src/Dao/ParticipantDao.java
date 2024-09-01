@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dao;
 
 import java.sql.Connection;
@@ -11,20 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// folder import
 import Model.Participant;
 import connection.MySQLDataSource;
 
-/**
- *
- * @author Juan Felipe Rubio
- */
-
 public class ParticipantDao {
-   private MySQLDataSource conexion = new MySQLDataSource();
+    private MySQLDataSource conexion = new MySQLDataSource();
 
-     public boolean InsertParticipant(Participant participant) {
-        String sql = "INSERT INTO Participants(name,activity_id) VALUES(?, ?)";
+    public boolean InsertParticipant(Participant participant) {
+        String sql = "INSERT INTO Participants(name, activity_id) VALUES(?, ?)";
         try (Connection conn = conexion.conectarMySQL();
              PreparedStatement stms = conn.prepareStatement(sql)) {
 
@@ -32,53 +22,49 @@ public class ParticipantDao {
             stms.setInt(2, participant.getActivity_id());
 
             int rowsAffected = stms.executeUpdate();
-            return rowsAffected > 0; // Devuelve true si se insertaron filas, false si no
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; // Devuelve false si ocurre una excepción
+            return false;
         }
     }
 
-    
-    public Participant ViewParticipantID(int id){
+    public Participant ViewParticipantID(int id) {
         String sql = "SELECT * FROM Participants WHERE participant_id = ?";
-        try(Connection conn = new MySQLDataSource().conectarMySQL();
-                PreparedStatement stms = conn.prepareStatement(sql)){
-            
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stms = conn.prepareStatement(sql)) {
+
             stms.setInt(1, id);
-            
             ResultSet rs = stms.executeQuery();
-            
-            if (rs.next()){
-                return new Participant(rs.getInt("participant_id"), rs.getString("Name"), rs.getInt("activity_id"));
+
+            if (rs.next()) {
+                return new Participant(rs.getInt("participant_id"), rs.getString("name"), rs.getInt("activity_id"));
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-    
-    public List<Participant> ViewParticipant(){
-        List<Participant> participant = new ArrayList<>();
-        try(Connection conn = new MySQLDataSource().conectarMySQL()){
-            String sql = "SELECT * FROM Event";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                int event_id = rs.getInt("participant_id");
-                String name = rs.getString("Name"); 
+
+    public List<Participant> ViewParticipant() {
+        List<Participant> participants = new ArrayList<>();
+        String sql = "SELECT * FROM Participants"; // Cambiado de "Event" a "Participants"
+
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int participant_id = rs.getInt("participant_id");
+                String name = rs.getString("name"); // Corregido el nombre del campo
                 int activity_id = rs.getInt("activity_id");
-                
-                Participant participants = new Participant(event_id, name, activity_id);
-                participant.add(participants);
+
+                Participant participant = new Participant(participant_id, name, activity_id);
+                participants.add(participant);
             }
-            
-            
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return participant;
-        
+        return participants;
     }
 }

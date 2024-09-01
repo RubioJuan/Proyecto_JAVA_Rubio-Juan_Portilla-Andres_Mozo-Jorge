@@ -1,25 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
-// folder import
 import Model.Participant;
 import Dao.ParticipantDao;
+import View.ParticipantView;
 
 import java.util.List;
 
-/**
- *
- * @author Juan Felipe Rubio
- */
-
 public class ParticipantController {
     
-     private ParticipantDao participantDao = new ParticipantDao();
+    private ParticipantDao participantDao;
+    private ParticipantView participantView;
 
-      public boolean isEventNameExists(String name) {
+    public ParticipantController(ParticipantDao participantDao, ParticipantView participantView) {
+        this.participantDao = participantDao;
+        this.participantView = participantView;
+    }
+
+    public boolean isEventNameExists(String name) {
         List<Participant> participants = participantDao.ViewParticipant();
         for (Participant eventstaff : participants) {
             if (eventstaff.getName().equals(name)) {
@@ -32,7 +29,13 @@ public class ParticipantController {
     public List<Participant> getAllEventsStaff() {
         return participantDao.ViewParticipant();
     }
-    public boolean AddEventStaff(Participant participant){
-        return participantDao.InsertParticipant(participant); 
+
+    public boolean addEventStaff(Participant participant) {
+        return participantDao.InsertParticipant(participant);
+    }
+
+    public void showParticipantList() {
+        List<Participant> participants = getAllEventsStaff();
+        participantView.displayParticipants(participants);
     }
 }
