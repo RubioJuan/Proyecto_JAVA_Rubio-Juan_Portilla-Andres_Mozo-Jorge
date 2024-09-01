@@ -4,7 +4,6 @@
  */
 package Controller;
 
-// folder import
 import Model.VisitorFeedback;
 import Dao.VisitorFeedbackDao;
 
@@ -14,28 +13,30 @@ import java.util.List;
  *
  * @author Juan Felipe Rubio
  */
-
 public class VisitorFeedbackController {
     
-    private VisitorFeedbackDao visitorfeedbackDao = new VisitorFeedbackDao();
+    private VisitorFeedbackDao visitorFeedbackDao;
 
-     
-    public boolean isVisitorFeedbackExists(int event_id) {
-    List<VisitorFeedback> visitorfeedbacks = visitorfeedbackDao.ViewVisitorFeedback();
-    for (VisitorFeedback visitorfeedback : visitorfeedbacks) {
-        if (visitorfeedback.getEvent_id() == event_id) {
-            return true;
-        }
+    // Constructor que recibe el DAO
+    public VisitorFeedbackController(VisitorFeedbackDao visitorFeedbackDao) {
+        this.visitorFeedbackDao = visitorFeedbackDao;
     }
-    return false;
-}
 
+    public boolean isVisitorFeedbackExists(int event_id) {
+        List<VisitorFeedback> visitorfeedbacks = visitorFeedbackDao.ViewVisitorFeedback();
+        for (VisitorFeedback visitorfeedback : visitorfeedbacks) {
+            if (visitorfeedback.getEvent_id() == event_id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public List<VisitorFeedback> getAllVisitorFeedback() {
-        return visitorfeedbackDao.ViewVisitorFeedback();
+        return visitorFeedbackDao.ViewVisitorFeedback();
     }
     
-    public boolean AddVisitorFeedback(VisitorFeedback visitorfeedback){
-        return visitorfeedbackDao.InsertVisitorFeedback(visitorfeedback); 
+    public boolean AddVisitorFeedback(VisitorFeedback visitorfeedback) {
+        return visitorFeedbackDao.InsertVisitorFeedback(visitorfeedback); 
     }
 }

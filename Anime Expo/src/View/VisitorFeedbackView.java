@@ -6,17 +6,26 @@ package View;
 
 import Controller.VisitorFeedbackController;
 import Model.VisitorFeedback;
-
 import java.util.Scanner;
 
 /**
  *
  * @author Juan Felipe Rubio
  */
-
 public class VisitorFeedbackView {
-    public static void main(String[] args) {
-        VisitorFeedbackController controller = new VisitorFeedbackController();
+    private VisitorFeedbackController visitorFeedbackController;
+
+    // Constructor vacío
+    public VisitorFeedbackView() {
+    }
+
+    // Método para asignar el controlador
+    public void setVisitorFeedbackController(VisitorFeedbackController visitorFeedbackController) {
+        this.visitorFeedbackController = visitorFeedbackController;
+    }
+
+    // Método para mostrar el menú e interactuar con el usuario
+    public void showMenu() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Ingrese los datos del feedback del visitante:");
@@ -27,7 +36,7 @@ public class VisitorFeedbackView {
             System.out.println("Ingrese el id del evento: ");
             try {
                 event_id = Integer.parseInt(scanner.nextLine());
-                if (controller.isVisitorFeedbackExists(event_id)) {
+                if (visitorFeedbackController.isVisitorFeedbackExists(event_id)) {
                     System.out.println("Lamentablemente, ya existe un feedback para este evento. Por favor, ingrese un id de evento diferente.");
                 } else {
                     validEventId = true;
@@ -56,18 +65,18 @@ public class VisitorFeedbackView {
             return;
         }
 
-        VisitorFeedback visitorfeedback = new VisitorFeedback(
+        VisitorFeedback visitorFeedback = new VisitorFeedback(
             0, event_id, visitor_id, comment, rating
         );
 
-        if (controller.AddVisitorFeedback(visitorfeedback)) {
+        if (visitorFeedbackController.AddVisitorFeedback(visitorFeedback)) {
             System.out.println("Feedback añadido exitosamente.");
         } else {
             System.out.println("No se pudo añadir el feedback.");
         }
 
         System.out.println("Lista de todos los feedbacks de visitantes:");
-        controller.getAllVisitorFeedback().forEach(System.out::println);
+        visitorFeedbackController.getAllVisitorFeedback().forEach(System.out::println);
 
         scanner.close();
     }
