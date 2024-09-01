@@ -1,108 +1,93 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-// folder import
 import Model.StoreInventory;
 import connection.MySQLDataSource;
 
-/**
- *
- * @author Juan Felipe Rubio
- */
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class StoreInventoryDao {
+    private MySQLDataSource conexion = new MySQLDataSource();
 
-    public static void createStoreInventory(StoreInventory storeInventory) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public static List<StoreInventory> getAllStores_Inventorys() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-   private MySQLDataSource conexion = new MySQLDataSource(); 
-   
-   public boolean InsertStoreInventory(StoreInventory storeInventory){
-       String sql =  "INSERT INTO StoreInventory(inventory_id, product_name, description, manufacter, type, quantity, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public boolean createStoreInventory(StoreInventory storeInventory) {
+        String sql = "INSERT INTO Store_Inventory (product_name, description, manufacturer, type, quantity, price) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = conexion.conectarMySQL();
              PreparedStatement stms = conn.prepareStatement(sql)) {
-            
-            stms.setInt(1, storeInventory.getInventory_id());
-            stms.setString(2, storeInventory.getProduct_name());
-            stms.setString(3, storeInventory.getDescription());
-            stms.setString(4, storeInventory.getManufacter());
-            stms.setString(5, storeInventory.getType());
-            stms.setInt (6, storeInventory.getQuantity());
-            stms.setInt (7, storeInventory.getPrice());
-            
+
+            stms.setString(1, storeInventory.getProduct_name());
+            stms.setString(2, storeInventory.getDescription());
+            stms.setString(3, storeInventory.getManufacturer());
+            stms.setString(4, storeInventory.getType());
+            stms.setInt(5, storeInventory.getQuantity());
+            stms.setInt(6, storeInventory.getPrice());
+
             int rowsAffected = stms.executeUpdate();
-            return rowsAffected > 0; 
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; 
+            return false;
         }
-        }
-   
-   public StoreInventory ViewStoreInventoryID(int id){
-        String sql = "SELECT * FROM Events WHERE inventory_id = ?";
-        try(Connection conn = new MySQLDataSource().conectarMySQL();
-                PreparedStatement stms = conn.prepareStatement(sql)){
-            
-            stms.setInt(1, id);
-            
-            ResultSet rs = stms.executeQuery();
-            
-            if (rs.next()){
-                return new StoreInventory (
+    }
+
+    public List<StoreInventory> getAllStoresInventory() {
+        List<StoreInventory> inventories = new ArrayList<>();
+        String sql = "SELECT * FROM Store_Inventory";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                StoreInventory inventory = new StoreInventory(
                         rs.getInt("inventory_id"),
                         rs.getString("product_name"),
                         rs.getString("description"),
-                        rs.getString("manufacter"),
+                        rs.getString("manufacturer"),
                         rs.getString("type"),
                         rs.getInt("quantity"),
-                        rs.getInt ("price")
+                        rs.getInt("price")
                 );
+                inventories.add(inventory);
             }
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;   
-   }
-   public List<StoreInventory> ViewStoreInventory (){
-         List<StoreInventory> storeInventorys = new ArrayList <>();
-         String sql = "SELECT * FROM StoreInventory";
-         try (Connection conn = conexion.conectarMySQL();
-                 PreparedStatement stmt = conn.prepareStatement(sql);
-                 ResultSet rs = stmt.executeQuery()) {
-             
-             while (rs.next()) {
-                 StoreInventory storeInventory = new StoreInventory (
-                      rs.getInt("inventory_id"),
-                        rs.getString("product_name"),
-                        rs.getString("description"),
-                        rs.getString("manufacter"),
-                        rs.getString("type"),
-                        rs.getInt("quantity"),
-                        rs.getInt ("price")
-                ); 
-                 storeInventorys.add(storeInventory);
-             }
-         } catch (SQLException e) {
-             e.printStackTrace();
-         }
-         return storeInventorys;
-   }
-   public void updateStoreInventory(StoreInventory storeInventory) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return inventories;
     }
-   public void deleteStoreInventory(int inventory_Id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+    public boolean updateStoreInventory(StoreInventory storeInventory) {
+        String sql = "UPDATE Store_Inventory SET product_name = ?, description = ?, manufacturer = ?, type = ?, quantity = ?, price = ? WHERE inventory_id = ?";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stms = conn.prepareStatement(sql)) {
+
+            stms.setString(1, storeInventory.getProduct_name());
+            stms.setString(2, storeInventory.getDescription());
+            stms.setString(3, storeInventory.getManufacturer());
+            stms.setString(4, storeInventory.getType());
+            stms.setInt(5, storeInventory.getQuantity());
+            stms.setInt(6, storeInventory.getPrice());
+            stms.setInt(7, storeInventory.getInventory_id());
+
+            int rowsAffected = stms.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteStoreInventory(int inventoryId) {
+        String sql = "DELETE FROM Store_Inventory WHERE inventory_id = ?";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stms = conn.prepareStatement(sql)) {
+
+            stms.setInt(1, inventoryId);
+
+            int rowsAffected = stms.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

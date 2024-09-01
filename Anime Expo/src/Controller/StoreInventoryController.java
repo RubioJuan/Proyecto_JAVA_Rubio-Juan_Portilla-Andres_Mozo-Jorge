@@ -1,56 +1,56 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import Model.StoreInventory;
 import Dao.StoreInventoryDao;
+import View.StoreInventoryView;
+
 import java.util.List;
-/**
- *
- * @author Jorge Luis Mozo
- */
+
 public class StoreInventoryController {
     private StoreInventoryDao storeInventoryDao;
-    
-    public StoreInventoryController(){
-        this.storeInventoryDao =  new StoreInventoryDao();
+    private StoreInventoryView storeInventoryView;
+
+    public StoreInventoryController(StoreInventoryDao storeInventoryDao, StoreInventoryView storeInventoryView) {
+        this.storeInventoryDao = storeInventoryDao;
+        this.storeInventoryView = storeInventoryView;
     }
-    public void createStore(StoreInventory storeInventory) {
-        try {
-            StoreInventoryDao.createStoreInventory(storeInventory);
-        } catch (Exception e) {
-            System.err.println("Error al crear el inventoario de la tienda: " + e.getMessage());
+
+    public void createStoreInventory(StoreInventory storeInventory) {
+        if (storeInventoryDao.createStoreInventory(storeInventory)) {
+            System.out.println("Producto creado exitosamente.");
+        } else {
+            System.out.println("Error al crear el producto.");
         }
     }
-    
-    public List<StoreInventory> getAllStores_Inventorys() {
-         try {
-             return StoreInventoryDao.getAllStores_Inventorys();
-         } catch (Exception e) {
-             System.err.println("Error al obtener los inventarios de las tiendas: " + e.getMessage());
-             return null;
-         }
-     }
-    
+
+    public void listAllStoreInventories() {
+        List<StoreInventory> inventories = storeInventoryDao.getAllStoresInventory();
+        storeInventoryView.displayStoreInventoryList(inventories);
+    }
+
     public void updateStoreInventory(StoreInventory storeInventory) {
-         try {
-             storeInventoryDao.updateStoreInventory(storeInventory);
-         } catch (Exception e) {
-             System.err.println("Error al actualizar la tienda: " + e.getMessage());
-         }
-     }
-    
-    public void deleteStoreInventory(int inventory_id) {
-         try {
-             storeInventoryDao.deleteStoreInventory(inventory_id);
-         } catch (Exception e) {
-             System.err.println("Error al eliminar el inventario de la tienda: " + e.getMessage());
-         }
-     }
-    
+        if (storeInventoryDao.updateStoreInventory(storeInventory)) {
+            System.out.println("Producto actualizado exitosamente.");
+        } else {
+            System.out.println("Error al actualizar el producto.");
+        }
+    }
+
+    public void deleteStoreInventory(int inventoryId) {
+        if (storeInventoryDao.deleteStoreInventory(inventoryId)) {
+            System.out.println("Producto eliminado exitosamente.");
+        } else {
+            System.out.println("Error al eliminar el producto.");
+        }
+    }
+
     public boolean isStoreNameExists(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<StoreInventory> inventories = storeInventoryDao.getAllStoresInventory();
+        for (StoreInventory inventory : inventories) {
+            if (inventory.getProduct_name().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
