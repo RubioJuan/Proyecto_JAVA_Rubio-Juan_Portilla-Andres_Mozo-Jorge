@@ -89,14 +89,18 @@ public class Activity {
 
     @Override
     public String toString() {
-        return "Activity{" +
-                "activityId=" + activityId +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", category='" + category + '\'' +
-                ", participantCount=" + participantCount +
-                ", eventId=" + eventId +
-                ", startTime='" + startTime + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Activity Details                           \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Activity ID        : %-45d \n", activityId));
+        sb.append(String.format("║ Name               : %-45s \n", name));
+        sb.append(String.format("║ Type               : %-45s \n", type));
+        sb.append(String.format("║ Category           : %-45s \n", category));
+        sb.append(String.format("║ Participant Count  : %-45d \n", participantCount));
+        sb.append(String.format("║ Event ID           : %-45d \n", eventId));
+        sb.append(String.format("║ Start Time         : %-45s \n", startTime));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }
