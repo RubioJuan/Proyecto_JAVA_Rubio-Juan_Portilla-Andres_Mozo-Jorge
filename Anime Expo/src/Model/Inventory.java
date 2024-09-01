@@ -4,46 +4,59 @@
  */
 package Model;
 
-/**
- *
- * @author Jorge Luis Mozo
- */
 public class Inventory {
     private int inventory_id;
     private String name;
     private int quantity;
     private String status;
-    
-    
-    public Inventory (int inventory_id, String name, int quantity, String status) {
-        this.inventory_id = inventory_id ;
-        this.name = name ;
-        this.quantity = quantity ;
+    private int eventId; // Nuevo campo para relacionar con eventos
+
+    public Inventory(int inventory_id, String name, int quantity, String status, int eventId) {
+        this.inventory_id = inventory_id;
+        this.name = name;
+        this.quantity = quantity;
         this.status = status;
+        this.eventId = eventId;
     }
-    public int getInventory_id (){
+
+    // Getters y Setters
+    public int getInventory_id() {
         return inventory_id;
     }
-    public void SetInventory_id (int inventory_id){
+
+    public void setInventory_id(int inventory_id) {
         this.inventory_id = inventory_id;
     }
-    public String getName (){
+
+    public String getName() {
         return name;
     }
-    public void SetName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    public int getQuantity (){
+
+    public int getQuantity() {
         return quantity;
     }
-    public void SetQuantity (int quantity){
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public String getStatus (){
+
+    public String getStatus() {
         return status;
     }
-    public void SetStatus(String status){
+
+    public void setStatus(String status) {
         this.status = status;
     }
-    
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
 }

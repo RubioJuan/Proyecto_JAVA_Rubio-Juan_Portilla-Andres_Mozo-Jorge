@@ -8,46 +8,38 @@ import Model.Inventory;
 import Dao.InventoryDao;
 import java.util.List;
 
-/**
- *
- * @author Juan Felipe Rubio
- */
 public class InventoryController {
     private InventoryDao inventoryDao;
-    
-    public InventoryController(){
-        this.inventoryDao = new InventoryDao();
+
+    public InventoryController(InventoryDao inventoryDao) {
+        this.inventoryDao = inventoryDao;
     }
+
     public void createInventory(Inventory inventory) {
-        try {
-            inventoryDao.InsertInventory(inventory); 
-        } catch (Exception e) {
-            System.err.println("Error al crear el inventario: " + e.getMessage());
+        if (inventoryDao.InsertInventory(inventory)) {
+            System.out.println("Inventario creado exitosamente.");
+        } else {
+            System.err.println("Error al crear el inventario.");
         }
     }
+
     public List<Inventory> getAllInventorys() {
-        try {
-            return inventoryDao.ViewInventory();
-        } catch (Exception e) {
-            System.err.println("Error al obtener los inventarios: " + e.getMessage());
-            return null;
-        }
+        return inventoryDao.ViewInventory();
     }
+
+    public Inventory getInventoryById(int id) {
+        return inventoryDao.ViewInventoryID(id);
+    }
+
     public void updateInventory(Inventory inventory) {
-         try {
-             inventoryDao.updateInventory(inventory);
-         } catch (Exception e) {
-             System.err.println("Error al actualizar el inventario " + e.getMessage());
-         }
-     }
-    public void deleteInventory(int inventary_id) {
-         try {
-             inventoryDao.deleteInventory(inventary_id);
-         } catch (Exception e) {
-             System.err.println("Error al eliminar el inventario: " + e.getMessage());
-         }
-     }
+        inventoryDao.updateInventory(inventory);
+    }
+
+    public void deleteInventory(int inventory_id) {
+        inventoryDao.deleteInventory(inventory_id);
+    }
+
     public boolean isInventoryIDExists(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return getInventoryById(id) != null;
     }
 }
