@@ -90,14 +90,18 @@ public class EventStaff {
     // Override toString method
     @Override
     public String toString() {
-        return "EventStaff{" +
-                "staff_id=" + staff_id +
-                ", name='" + name + '\'' +
-                ", id_number='" + id_number + '\'' +
-                ", birth_date=" + birth_date +
-                ", role='" + role + '\'' +
-                ", status='" + status + '\'' +
-                ", event_id=" + event_id +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Event Staff Details                                \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Staff ID           : %-45d \n", staff_id));
+        sb.append(String.format("║ Name               : %-45s \n", name));
+        sb.append(String.format("║ ID Number          : %-45s \n", id_number));
+        sb.append(String.format("║ Birth Date         : %-45s \n", birth_date));
+        sb.append(String.format("║ Role               : %-45s \n", role));
+        sb.append(String.format("║ Status             : %-45s \n", status));
+        sb.append(String.format("║ Event ID           : %-45d \n", event_id));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

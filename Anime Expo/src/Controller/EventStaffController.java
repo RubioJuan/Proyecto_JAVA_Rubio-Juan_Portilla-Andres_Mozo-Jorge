@@ -19,6 +19,11 @@ public class EventStaffController {
         
  private EventStaffDao eventStaffDao = new EventStaffDao();
 
+   // Constructor que acepta el DAO
+    public EventStaffController(EventStaffDao eventStaffDao) {
+        this.eventStaffDao = eventStaffDao;
+    }
+    
     public boolean isEventNameExists(String name) {
         List<EventStaff> eventstaffs = eventStaffDao.ViewEvent();
         for (EventStaff eventstaff : eventstaffs) {
