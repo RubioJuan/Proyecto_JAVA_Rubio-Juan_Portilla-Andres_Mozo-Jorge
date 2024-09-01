@@ -32,12 +32,16 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
-                "idQuestion=" + idQuestion +
-                ", questionText='" + questionText + '\'' +
-                ", correctAnswer='" + correctAnswer + '\'' +
-                ", category='" + category + '\'' +
-                ", difficulty='" + difficulty + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                    Question Details                                   \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ ID Question         : %-45d \n", idQuestion));
+        sb.append(String.format("║ Question Text       : %-45s \n", questionText));
+        sb.append(String.format("║ Correct Answer      : %-45s \n", correctAnswer));
+        sb.append(String.format("║ Category            : %-45s \n", category));
+        sb.append(String.format("║ Difficulty          : %-45s \n", difficulty));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

@@ -49,13 +49,17 @@ public class Score {
         this.score = score;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Score{" +
-                "scoreId=" + scoreId +
-                ", participantId=" + participantId +
-                ", activityId=" + activityId +
-                ", score=" + score +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Score Details                                       \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Score ID            : %-45d \n", scoreId));
+        sb.append(String.format("║ Participant ID      : %-45d \n", participantId));
+        sb.append(String.format("║ Activity ID         : %-45d \n", activityId));
+        sb.append(String.format("║ Score               : %-45d \n", score));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

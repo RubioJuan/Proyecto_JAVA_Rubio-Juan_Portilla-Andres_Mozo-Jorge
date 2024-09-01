@@ -51,11 +51,15 @@ public class Report {
 
     @Override
     public String toString() {
-        return "Report{" +
-                "reportId=" + reportId +
-                ", eventId=" + eventId +
-                ", reportType='" + reportType + '\'' +
-                ", content='" + content + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Report Details                                        \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Report ID           : %-45d \n", reportId));
+        sb.append(String.format("║ Event ID            : %-45d \n", eventId));
+        sb.append(String.format("║ Report Type         : %-45s \n", reportType));
+        sb.append(String.format("║ Content             : %-45s \n", content));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

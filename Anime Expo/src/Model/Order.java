@@ -41,6 +41,14 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{id=" + id + ", status='" + status + "', total=" + total + "}";
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                    Order Details                                    \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ ID                 : %-45d \n", id));
+        sb.append(String.format("║ Status             : %-45s \n", status));
+        sb.append(String.format("║ Total              : %-45.2f \n", total));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

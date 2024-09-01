@@ -78,8 +78,18 @@ public class StoreInventory {
 
     @Override
     public String toString() {
-        return "ID: " + inventory_id + ", Product: " + product_name + ", Description: " + description + 
-               ", Manufacturer: " + manufacturer + ", Type: " + type + ", Quantity: " + quantity + 
-               ", Price: " + price;
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Inventory Details                                    \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ ID                  : %-45d \n", inventory_id));
+        sb.append(String.format("║ Product             : %-45s \n", product_name));
+        sb.append(String.format("║ Description         : %-45s \n", description));
+        sb.append(String.format("║ Manufacturer        : %-45s \n", manufacturer));
+        sb.append(String.format("║ Type                : %-45s \n", type));
+        sb.append(String.format("║ Quantity            : %-45d \n", quantity));
+        sb.append(String.format("║ Price               : %-45.2f \n", price));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

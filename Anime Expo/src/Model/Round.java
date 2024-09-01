@@ -49,13 +49,17 @@ public class Round {
         this.description = description;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Round{" +
-                "roundId=" + roundId +
-                ", eventId=" + eventId +
-                ", roundNumber=" + roundNumber +
-                ", description='" + description + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Round Details                                        \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Round ID            : %-45d \n", roundId));
+        sb.append(String.format("║ Event ID            : %-45d \n", eventId));
+        sb.append(String.format("║ Round Number        : %-45d \n", roundNumber));
+        sb.append(String.format("║ Description         : %-45s \n", description));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

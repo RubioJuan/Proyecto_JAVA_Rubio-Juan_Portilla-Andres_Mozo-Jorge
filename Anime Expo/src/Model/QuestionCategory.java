@@ -19,11 +19,15 @@ public class QuestionCategory {
     public String getCategoryName() { return categoryName; }
     public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
 
-    @Override
+   @Override
     public String toString() {
-        return "QuestionCategory{" +
-                "idCategory=" + idCategory +
-                ", categoryName='" + categoryName + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Question Category Details                              \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ ID Category         : %-45d \n", idCategory));
+        sb.append(String.format("║ Category Name       : %-45s \n", categoryName));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

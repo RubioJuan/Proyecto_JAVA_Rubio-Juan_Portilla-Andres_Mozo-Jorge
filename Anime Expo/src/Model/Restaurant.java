@@ -44,10 +44,14 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "restaurantId=" + restaurantId +
-                ", name='" + name + '\'' +
-                ", managerId=" + managerId +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                 Restaurant Details                                   \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Restaurant ID       : %-45d \n", restaurantId));
+        sb.append(String.format("║ Name                : %-45s \n", name));
+        sb.append(String.format("║ Manager ID          : %-45d \n", managerId));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

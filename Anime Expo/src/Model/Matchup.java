@@ -32,12 +32,16 @@ public class Matchup {
 
     @Override
     public String toString() {
-        return "Matchup{" +
-                "matchupId=" + matchupId +
-                ", roundId=" + roundId +
-                ", participant1Id=" + participant1Id +
-                ", participant2Id=" + participant2Id +
-                ", winnerId=" + winnerId +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Matchup Details                                    \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Matchup ID         : %-45d \n", matchupId));
+        sb.append(String.format("║ Round ID           : %-45d \n", roundId));
+        sb.append(String.format("║ Participant 1 ID   : %-45d \n", participant1Id));
+        sb.append(String.format("║ Participant 2 ID   : %-45d \n", participant2Id));
+        sb.append(String.format("║ Winner ID          : %-45d \n", winnerId));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

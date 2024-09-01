@@ -75,13 +75,17 @@ public class RestaurantMenu {
 
     @Override
     public String toString() {
-        return "RestaurantMenu{" +
-                "menuId=" + menuId +
-                ", restaurantId=" + restaurantId +
-                ", dishName='" + dishName + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", prepTime=" + prepTime +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                               Restaurant Menu Details                                 \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Menu ID             : %-45d \n", menuId));
+        sb.append(String.format("║ Restaurant ID       : %-45d \n", restaurantId));
+        sb.append(String.format("║ Dish Name           : %-45s \n", dishName));
+        sb.append(String.format("║ Description         : %-45s \n", description));
+        sb.append(String.format("║ Type                : %-45s \n", type));
+        sb.append(String.format("║ Preparation Time    : %-45d \n", prepTime));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }
