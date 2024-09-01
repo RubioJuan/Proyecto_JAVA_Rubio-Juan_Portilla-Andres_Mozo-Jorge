@@ -1,8 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package View;
+ */package View;
 
 import Controller.EventController;
 import Model.Event;
@@ -19,8 +18,15 @@ import java.util.Scanner;
  */
 
 public class EventView {
-     public static void main(String[] args) {
-        EventController controller = new EventController();
+    private EventController eventController; // Referencia al controlador
+
+    // Método para asignar el controlador
+    public void setEventController(EventController eventController) {
+        this.eventController = eventController;
+    }
+
+    // Método para mostrar el menú e interactuar con el usuario
+    public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
@@ -33,7 +39,7 @@ public class EventView {
             System.out.print("Nombre del Evento: ");
             name = scanner.nextLine();
 
-            if (controller.isEventNameExists(name)) {
+            if (eventController.isEventNameExists(name)) {
                 System.out.println("Ya existe un evento con este nombre. Por favor, ingrese un nombre diferente.");
             } else {
                 validName = true;
@@ -116,14 +122,14 @@ public class EventView {
                 minAgeWithoutGuardian
         );
 
-        if (controller.addEvent(event)) {
+        if (eventController.addEvent(event)) {
             System.out.println("Evento añadido exitosamente.");
         } else {
             System.out.println("No se pudo añadir el evento.");
         }
 
         System.out.println("Lista de todos los eventos:");
-        controller.getAllEvents().forEach(System.out::println);
+        eventController.getAllEvents().forEach(System.out::println);
 
         scanner.close();
     }

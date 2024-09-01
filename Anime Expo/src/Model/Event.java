@@ -142,6 +142,23 @@ public class Event {
 
     @Override
     public String toString() {
-        return "EventModel{" + "EventID= " + event_id + ", Name= " + name + ", Country= " + country + ", City= " + city + ", Address= " + address + ", max_capacity= " + max_capacity + ", date_time= " + date_time + ", organizer= " + organizer + ", age_rating= " + age_rating + ", status= " + status + ", min_age_with_guardian= " + min_age_with_guardian + ", min_age_without_guardian= " + min_age_without_guardian +'}';
-    }  
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                               Event Details                                        \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Event ID           : %-45d \n", event_id));
+        sb.append(String.format("║ Name               : %-45s \n", name));
+        sb.append(String.format("║ Country            : %-45s \n", country));
+        sb.append(String.format("║ City               : %-45s \n", city));
+        sb.append(String.format("║ Address            : %-45s \n", address));
+        sb.append(String.format("║ Max Capacity       : %-45d \n", max_capacity));
+        sb.append(String.format("║ Date and Time      : %-45s \n", date_time));
+        sb.append(String.format("║ Organizer          : %-45s \n", organizer));
+        sb.append(String.format("║ Age Rating         : %-45s \n", age_rating));
+        sb.append(String.format("║ Status             : %-45s \n", status));
+        sb.append(String.format("║ Min Age with Guardian : %-45d \n", min_age_with_guardian));
+        sb.append(String.format("║ Min Age without Guardian: %-45d \n", min_age_without_guardian));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
+    }
 }

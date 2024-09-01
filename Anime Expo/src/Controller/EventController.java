@@ -7,6 +7,7 @@ package Controller;
 // folder import
 import Model.Event;
 import Dao.EventDao;
+import View.EventView;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -19,8 +20,14 @@ import java.util.List;
 
 public class EventController {
     
- private EventDao eventDao = new EventDao();
+private EventDao eventDao;
+    private EventView eventView;
 
+    public EventController(EventDao eventDao, EventView eventView) {
+        this.eventDao = eventDao;
+        this.eventView = eventView;
+    }
+    
     public boolean addEvent(Event event) {
         if (isValidDate(LocalDateTime.ofInstant(event.getDate_time().toInstant(), ZoneId.systemDefault()))) {
             return eventDao.InsertEvent(event);
@@ -30,10 +37,8 @@ public class EventController {
         }
     }
 
-    // Método para validar la fecha
     private boolean isValidDate(LocalDateTime dateTime) {
         LocalDateTime currentDateTime = LocalDateTime.now();
-        // Verificar que la fecha del evento sea al menos 7 días en el futuro
         return dateTime.isAfter(currentDateTime.plusDays(7));
     }
 
