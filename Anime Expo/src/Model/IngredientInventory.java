@@ -55,11 +55,15 @@ public class IngredientInventory {
 
     @Override
     public String toString() {
-        return "IngredientInventory{" +
-                "ingredientId=" + ingredientId +
-                ", restaurantId=" + restaurantId +
-                ", ingredientName='" + ingredientName + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                            Ingredient Inventory Details                             \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Ingredient ID      : %-45d \n", ingredientId));
+        sb.append(String.format("║ Restaurant ID      : %-45d \n", restaurantId));
+        sb.append(String.format("║ Ingredient Name    : %-45s \n", ingredientName));
+        sb.append(String.format("║ Quantity           : %-45d \n", quantity));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }
