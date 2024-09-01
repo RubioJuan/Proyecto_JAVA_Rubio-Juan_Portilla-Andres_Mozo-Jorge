@@ -1,59 +1,56 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import Model.Store;
 import Dao.StoreDao;
+import View.StoreView;
+
 import java.util.List;
 
-
-/**
- *
- * @author Jorge Luis Mozo
- */
 public class StoreController {
     private StoreDao storeDao;
-    
-    public StoreController(){
-        this.storeDao =  new StoreDao();
+    private StoreView storeView;
+
+    public StoreController(StoreDao storeDao, StoreView storeView) {
+        this.storeDao = storeDao;
+        this.storeView = storeView;
     }
-    
+
     public void createStore(Store store) {
-        try {
-            StoreDao.createStore(store);
-        } catch (Exception e) {
-            System.err.println("Error al crear la tienda: " + e.getMessage());
+        if (storeDao.createStore(store)) {
+            System.out.println("Tienda creada exitosamente.");
+        } else {
+            System.out.println("Error al crear la tienda.");
         }
     }
-    
-    public List<Store> getAllStores() {
-         try {
-             return StoreDao.getAllStores();
-         } catch (Exception e) {
-             System.err.println("Error al obtener las tiendas: " + e.getMessage());
-             return null;
-         }
-     }
-    
+
+    public void listAllStores() {
+        List<Store> stores = storeDao.getAllStores();
+        storeView.displayScoreList(stores);
+    }
+
     public void updateStore(Store store) {
-         try {
-             storeDao.updateStore(store);
-         } catch (Exception e) {
-             System.err.println("Error al actualizar la tienda: " + e.getMessage());
-         }
-     }
-    
-    public void deleteStore(int store_id) {
-         try {
-             storeDao.deleteStore(store_id);
-         } catch (Exception e) {
-             System.err.println("Error al eliminar la tienda: " + e.getMessage());
-         }
-     }
+        if (storeDao.updateStore(store)) {
+            System.out.println("Tienda actualizada exitosamente.");
+        } else {
+            System.out.println("Error al actualizar la tienda.");
+        }
+    }
+
+    public void deleteStore(int storeId) {
+        if (storeDao.deleteStore(storeId)) {
+            System.out.println("Tienda eliminada exitosamente.");
+        } else {
+            System.out.println("Error al eliminar la tienda.");
+        }
+    }
 
     public boolean isStoreNameExists(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Store> stores = storeDao.getAllStores();
+        for (Store store : stores) {
+            if (store.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
