@@ -20,9 +20,13 @@ public class CosplayCategory {
 
     @Override
     public String toString() {
-        return "CosplayCategory{" +
-                "idCategory=" + idCategory +
-                ", categoryName='" + categoryName + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                               Cosplay Category Details                            \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Category ID        : %-45d \n", idCategory));
+        sb.append(String.format("║ Category Name      : %-45s \n", categoryName));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }
