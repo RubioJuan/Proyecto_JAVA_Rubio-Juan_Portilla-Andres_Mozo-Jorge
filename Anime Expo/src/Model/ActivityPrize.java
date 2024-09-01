@@ -36,14 +36,18 @@ public class ActivityPrize {
 
     @Override
     public String toString() {
-        return "ActivityPrize{" +
-                "prizeId=" + prizeId +
-                ", type='" + type + '\'' +
-                ", description='" + description + '\'' +
-                ", value=" + value +
-                ", status='" + status + '\'' +
-                ", activityId=" + activityId +
-                ", participantId=" + participantId +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                               Activity Prize Details                              \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Prize ID           : %-45d \n", prizeId));
+        sb.append(String.format("║ Type               : %-45s \n", type));
+        sb.append(String.format("║ Description        : %-45s \n", description));
+        sb.append(String.format("║ Value              : %-45d \n", value));
+        sb.append(String.format("║ Status             : %-45s \n", status));
+        sb.append(String.format("║ Activity ID        : %-45d \n", activityId));
+        sb.append(String.format("║ Participant ID     : %-45d \n", participantId));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }
