@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
-
 
 import Dao.RestaurantDao;
 import Model.Restaurant;
@@ -11,10 +6,10 @@ import Model.Restaurant;
 import java.util.List;
 
 public class RestaurantController {
-    private RestaurantDao restaurantDao;
+    private final RestaurantDao restaurantDao;
 
-    public RestaurantController() {
-        restaurantDao = new RestaurantDao();
+    public RestaurantController(RestaurantDao restaurantDao) {
+        this.restaurantDao = restaurantDao;
     }
 
     public boolean addRestaurant(String name, int managerId) {

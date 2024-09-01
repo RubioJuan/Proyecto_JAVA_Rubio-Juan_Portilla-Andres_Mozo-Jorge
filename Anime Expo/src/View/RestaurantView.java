@@ -5,6 +5,7 @@
 package View;
 
 import Controller.RestaurantController;
+import Dao.RestaurantDao;
 import Model.Restaurant;
 
 import java.util.List;
@@ -101,7 +102,8 @@ public class RestaurantView {
     }
 
     public static void main(String[] args) {
-        RestaurantController controller = new RestaurantController();
+        RestaurantDao restaurantDao = new RestaurantDao();
+        RestaurantController controller = new RestaurantController(restaurantDao);
         RestaurantView view = new RestaurantView(controller);
         view.displayMenu();
     }

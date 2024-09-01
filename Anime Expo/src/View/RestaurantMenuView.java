@@ -1,19 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package View;
 
 import Controller.RestaurantMenuController;
+import Dao.RestaurantMenuDao;
 import Model.RestaurantMenu;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class RestaurantMenuView {
-    private final RestaurantMenuController menuController;
+    private RestaurantMenuController menuController;
 
     public RestaurantMenuView(RestaurantMenuController menuController) {
+        this.menuController = menuController;
+    }
+
+    public void setMenuController(RestaurantMenuController menuController) {
         this.menuController = menuController;
     }
 
@@ -27,7 +28,7 @@ public class RestaurantMenuView {
             System.out.println("3. Actualizar Plato");
             System.out.println("4. Eliminar Plato");
             System.out.println("5. Salir");
-            System.out.println("Elige una opción: ");
+            System.out.print("Elige una opción: ");
             option = scanner.nextInt();
 
             switch (option) {
@@ -53,15 +54,15 @@ public class RestaurantMenuView {
     }
 
     private void addDish(Scanner scanner) {
-        System.out.println("Introduce el ID del restaurante: ");
+        System.out.print("Introduce el ID del restaurante: ");
         int restaurantId = scanner.nextInt();
-        System.out.println("Introduce el nombre del plato: ");
+        System.out.print("Introduce el nombre del plato: ");
         String dishName = scanner.next();
-        System.out.println("Introduce la descripción del plato: ");
+        System.out.print("Introduce la descripción del plato: ");
         String description = scanner.next();
-        System.out.println("Introduce el tipo de plato (Appetizer, Drink, Main course, Dessert, Special combo, Meal): ");
+        System.out.print("Introduce el tipo de plato (Appetizer, Drink, Main course, Dessert, Special combo, Meal): ");
         String type = scanner.next();
-        System.out.println("Introduce el tiempo de preparación en minutos: ");
+        System.out.print("Introduce el tiempo de preparación en minutos: ");
         int prepTime = scanner.nextInt();
         if (menuController.addDish(restaurantId, dishName, description, type, prepTime)) {
             System.out.println("Plato agregado exitosamente.");
@@ -71,7 +72,7 @@ public class RestaurantMenuView {
     }
 
     private void viewAllDishes(Scanner scanner) {
-        System.out.println("Introduce el ID del restaurante para ver sus platos: ");
+        System.out.print("Introduce el ID del restaurante para ver sus platos: ");
         int restaurantId = scanner.nextInt();
         List<RestaurantMenu> dishes = menuController.getAllDishes(restaurantId);
         if (dishes.isEmpty()) {
@@ -85,15 +86,15 @@ public class RestaurantMenuView {
     }
 
     private void updateDish(Scanner scanner) {
-        System.out.println("Introduce el ID del plato a actualizar: ");
+        System.out.print("Introduce el ID del plato a actualizar: ");
         int menuId = scanner.nextInt();
-        System.out.println("Introduce el nuevo nombre del plato: ");
+        System.out.print("Introduce el nuevo nombre del plato: ");
         String dishName = scanner.next();
-        System.out.println("Introduce la nueva descripción del plato: ");
+        System.out.print("Introduce la nueva descripción del plato: ");
         String description = scanner.next();
-        System.out.println("Introduce el nuevo tipo de plato (Appetizer, Drink, Main course, Dessert, Special combo, Meal): ");
+        System.out.print("Introduce el nuevo tipo de plato (Appetizer, Drink, Main course, Dessert, Special combo, Meal): ");
         String type = scanner.next();
-        System.out.println("Introduce el nuevo tiempo de preparación en minutos: ");
+        System.out.print("Introduce el nuevo tiempo de preparación en minutos: ");
         int prepTime = scanner.nextInt();
         if (menuController.updateDish(menuId, dishName, description, type, prepTime)) {
             System.out.println("Plato actualizado exitosamente.");
@@ -110,11 +111,5 @@ public class RestaurantMenuView {
         } else {
             System.out.println("No se pudo eliminar el plato.");
         }
-    }
-
-    public static void main(String[] args) {
-        RestaurantMenuController controller = new RestaurantMenuController();
-        RestaurantMenuView view = new RestaurantMenuView(controller);
-        view.displayMenu();
     }
 }

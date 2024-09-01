@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
-
 
 import Dao.RestaurantMenuDao;
 import Model.RestaurantMenu;
@@ -11,10 +6,11 @@ import Model.RestaurantMenu;
 import java.util.List;
 
 public class RestaurantMenuController {
-    private RestaurantMenuDao menuDao;
+    private final RestaurantMenuDao menuDao;
 
-    public RestaurantMenuController() {
-        menuDao = new RestaurantMenuDao();
+    // Modificado para aceptar un RestaurantMenuDao
+    public RestaurantMenuController(RestaurantMenuDao menuDao) {
+        this.menuDao = menuDao;
     }
 
     public boolean addDish(int restaurantId, String dishName, String description, String type, int prepTime) {
