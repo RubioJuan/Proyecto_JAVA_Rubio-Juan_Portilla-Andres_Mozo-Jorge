@@ -67,8 +67,8 @@ public class ActivityView {
                     activityController.createNewActivity();
                     break;
                 case 3:
-                    System.out.println("Saliendo del programa...");
-                    break;
+                    System.out.println("Volviendo al menú...");
+                    return;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
