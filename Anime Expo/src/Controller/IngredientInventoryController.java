@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
-
 
 import Dao.IngredientInventoryDao;
 import Model.IngredientInventory;
@@ -11,10 +6,10 @@ import Model.IngredientInventory;
 import java.util.List;
 
 public class IngredientInventoryController {
-    private IngredientInventoryDao ingredientDao;
+    private final IngredientInventoryDao ingredientDao;
 
-    public IngredientInventoryController() {
-        ingredientDao = new IngredientInventoryDao();
+    public IngredientInventoryController(IngredientInventoryDao ingredientDao) {
+        this.ingredientDao = ingredientDao;
     }
 
     public boolean addIngredient(int restaurantId, String ingredientName, int quantity) {
