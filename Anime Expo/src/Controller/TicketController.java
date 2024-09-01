@@ -1,12 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Controller;
+ */package Controller;
 
-// folder import
 import Model.Ticket;
 import Dao.TicketDao;
+import View.TicketView;
 
 import java.util.List;
 
@@ -16,12 +15,19 @@ import java.util.List;
  */
 
 public class TicketController {
- private TicketDao ticketDao = new TicketDao();
+    private TicketDao ticketDao;
+    private TicketView ticketView;
+
+    // Constructor que acepta el DAO y la Vista
+    public TicketController(TicketDao ticketDao, TicketView ticketView) {
+        this.ticketDao = ticketDao;
+        this.ticketView = ticketView;
+    }
 
     public boolean isEventNameExists(String name) {
-        List<Ticket> eventstaffs = ticketDao.ViewTicket();
-        for (Ticket eventstaff : eventstaffs) {
-            if (eventstaff.getName().equals(name)) {
+        List<Ticket> tickets = ticketDao.ViewTicket();
+        for (Ticket ticket : tickets) {
+            if (ticket.getName().equals(name)) {
                 return true;
             }
         }
@@ -31,7 +37,8 @@ public class TicketController {
     public List<Ticket> getAllEventsStaff() {
         return ticketDao.ViewTicket();
     }
-    public boolean AddEventStaff(Ticket ticket){
-        return ticketDao.InsertTicket(ticket); 
+
+    public boolean AddEventStaff(Ticket ticket) {
+        return ticketDao.InsertTicket(ticket);
     }
 }

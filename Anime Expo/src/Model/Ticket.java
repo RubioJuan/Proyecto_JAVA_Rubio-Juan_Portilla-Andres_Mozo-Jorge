@@ -78,16 +78,19 @@ public class Ticket {
         this.status = status;
     }
 
-    // Override toString method
-    @Override
+   @Override
     public String toString() {
-        return "Ticket{" +
-                "ticket_type_id=" + ticket_type_id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", age_rating='" + age_rating + '\'' +
-                ", additional_costs=" + additional_costs +
-                ", status='" + status + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("╔════════════════════════════════════════════════════════════════════════════════════╗\n");
+        sb.append("                                Ticket Details                                      \n");
+        sb.append("╠════════════════════════════════════════════════════════════════════════════════════╣\n");
+        sb.append(String.format("║ Ticket Type ID      : %-45d \n", ticket_type_id));
+        sb.append(String.format("║ Name               : %-45s \n", name));
+        sb.append(String.format("║ Price              : %-45.2f \n", price));
+        sb.append(String.format("║ Age Rating         : %-45s \n", age_rating));
+        sb.append(String.format("║ Additional Costs   : %-45.2f \n", additional_costs));
+        sb.append(String.format("║ Status             : %-45s \n", status));
+        sb.append("╚════════════════════════════════════════════════════════════════════════════════════╝");
+        return sb.toString();
     }
 }

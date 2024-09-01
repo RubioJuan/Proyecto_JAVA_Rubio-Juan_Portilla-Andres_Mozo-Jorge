@@ -1,13 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package View;
+ */package View;
 
 import Controller.TicketController;
 import Model.Ticket;
 import java.math.BigDecimal;
-
 import java.util.Scanner;
 
 /**
@@ -16,8 +14,19 @@ import java.util.Scanner;
  */
 
 public class TicketView {
-    public static void main(String[] args) {
-        TicketController controller = new TicketController();
+    private TicketController ticketController;
+
+    // Constructor que acepta un controlador
+    public TicketView(TicketController ticketController) {
+        this.ticketController = ticketController;
+    }
+
+    // Método para asignar el controlador
+    public void setTicketController(TicketController ticketController) {
+        this.ticketController = ticketController;
+    }
+
+    public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Obtener ticket:");
@@ -29,7 +38,7 @@ public class TicketView {
             System.out.println("Nombre del visitante: ");
             name = scanner.nextLine();
             
-            if (controller.isEventNameExists(name)) {
+            if (ticketController.isEventNameExists(name)) {
                 System.out.println("Lamentablemente ya existe un visitante con este nombre, por favor ingrese un nombre diferente.");
             } else {
                 validName = true;
@@ -74,7 +83,7 @@ public class TicketView {
         );
         
         // Añadir el participante
-        if (controller.AddEventStaff(ticket)) {
+        if (ticketController.AddEventStaff(ticket)) {
             System.out.println("Ticket obtenido exitosamente.");
         } else {
             System.out.println("No se pudo obtener el ticket.");
@@ -82,7 +91,7 @@ public class TicketView {
         
         // Mostrar la lista de participantes
         System.out.println("Lista de todos los tickets:");
-        controller.getAllEventsStaff().forEach(System.out::println);
+        ticketController.getAllEventsStaff().forEach(System.out::println);
         
         // Cerrar el escáner
         scanner.close();
