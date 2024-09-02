@@ -1,0 +1,7 @@
+"visitor_id","name","id_number","gender","birth_date","email","phone_number","ticket_type_id"
+1,Liam Adams,V12345,male,2000-01-10,liam@example.com,555-0101,1
+2,Olivia Smith,V12346,female,1995-07-22,olivia@example.com,555-0102,2
+3,Noah Brown,V12347,male,1992-05-30,noah@example.com,555-0103,3
+4,Emma Wilson,V12348,female,1989-09-15,emma@example.com,555-0104,4
+5,Ava Johnson,V12349,female,1996-12-01,ava@example.com,555-0105,5
+6,s,12,male,2007-02-11,df,15,1

@@ -133,7 +133,7 @@ public class Main {
             System.out.println("║1. Gestionar eventos                                                         ║");
             System.out.println("║2. Revisar informes                                                          ║");
             System.out.println("║3. Configurar eventos                                                        ║");
-            System.out.println("║4. Panel de gestion contable                                                 ║");
+            System.out.println("║4. Panel de archivo Excel CRM                                                ║");
             System.out.println("║5. Inventario del evento                                                     ║");
             System.out.println("║6. Volver                                                                    ║");
             System.out.println("║══════════════════════════════════════════════════════════════════════════════════════════║");
@@ -149,7 +149,8 @@ public class Main {
                     case 1:
                         System.out.println("Seleccionaste gestionar eventos.");
                         EventDao eventDao = new EventDao();
-                        EventView eventView = new EventView();
+                        EventView
+                         eventView = new EventView();
                         EventController eventController = new EventController(eventDao, eventView);
                         eventView.setEventController(eventController);
                         eventView.showMenu();
@@ -171,8 +172,8 @@ public class Main {
                         eventStaffView.showMenu();
                         break;
                     case 4:
-                        System.out.println("Seleccionaste el panel de gestión de contabilidad.");
-                        // Falta
+                        System.out.println("Seleccionaste el panel de CRM.");
+                        ExportVisitors.showMenu();
                         break;
                     case 5:
                         System.out.println("Seleccionaste el inventario de eventos");
