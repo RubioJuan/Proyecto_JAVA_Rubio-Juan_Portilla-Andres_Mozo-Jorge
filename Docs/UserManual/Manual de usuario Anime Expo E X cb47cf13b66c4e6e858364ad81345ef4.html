@@ -1,0 +1,726 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manual de usuario Anime Expo E/X</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="cb47cf13-b66c-4e6e-8583-64ad81345ef4" class="page sans"><header><img class="page-cover-image" src="Manual%20de%20usuario%20Anime%20Expo%20E%20X%20cb47cf13b66c4e6e858364ad81345ef4/Anime_Expo.png" style="object-position:center 40.62%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/user-circle-filled_gray.svg"/></div><h1 class="page-title">Manual de usuario Anime Expo E/X</h1><p class="page-description"></p></header><div class="page-body"><hr id="f044ee5b-cc77-40e3-8c0b-1f0245b148b4"/><h1 id="98dfd4c0-39b4-4752-9893-6adab4b5b4bf" class="">📝 <strong>Manual de Usuario de Anime Expo</strong></h1><p id="bb5f072f-dcd2-48d5-8a4e-0398dc7267ab" class="">¡Bienvenido al manual de usuario del software especializado de Anime Expo! 🎉 Este manual está diseñado para ayudarte a aprovechar al máximo nuestro software para la gestión de eventos de anime a nivel global. Aquí encontrarás instrucciones detalladas, explicaciones claras y soluciones a problemas comunes, ¡todo para hacer tu experiencia lo más fluida posible!</p><h2 id="ea2497ad-a589-4a50-bdd9-4828b7bbf7b6" class="">📌 <strong>¿A Quién Está Dirigido Este Manual?</strong></h2><p id="a26b8873-5250-4db3-ae61-a0d357c1a1b5" class="">Este manual está dirigido a:</p><ul id="b49e0047-b9e8-4723-bc4c-a23166b3419b" class="bulleted-list"><li style="list-style-type:disc"><strong>Organizadores de eventos</strong> de Anime Expo</li></ul><ul id="8143084b-8141-48d0-9faf-2c0cd97bf6e4" class="bulleted-list"><li style="list-style-type:disc"><strong>Personal de administración</strong></li></ul><ul id="f6df5547-5a67-41dc-b4a6-8958bb14589a" class="bulleted-list"><li style="list-style-type:disc"><strong>Equipos de marketing</strong></li></ul><ul id="73d1b2e3-70f7-4683-b7af-6150969b0342" class="bulleted-list"><li style="list-style-type:disc"><strong>Nuevos empleados</strong> o colaboradores</li></ul><p id="85fb2599-cd20-4a3e-a023-e04a72906be2" class="">También es útil para cualquier persona involucrada en la planificación y ejecución de eventos relacionados con el anime y la cultura japonesa. 🌟</p><h2 id="47319f68-fa6a-4571-85c0-9f1adede6108" class="">🚀 <strong>Funcionalidades Principales</strong></h2><p id="40fe091a-5458-4d15-82cc-b7f7c287cb1d" class="">Aquí te mostramos lo que nuestro software puede hacer por ti:</p><ul id="9aa06931-7636-4b66-a7be-68e0a3418e71" class="bulleted-list"><li style="list-style-type:disc"><strong>Gestión de Eventos:</strong> Planifica y organiza múltiples eventos al mismo tiempo. 🗓️ Herramientas para programación, asignación de recursos y seguimiento del progreso.</li></ul><ul id="153d77ff-8c4d-44b9-9219-450e863bc031" class="bulleted-list"><li style="list-style-type:disc"><strong>Coordinación Centralizada:</strong> Una plataforma para coordinar todas las actividades del evento. 🏢 Incluye gestión de registros, asignación de espacios y logística general.</li></ul><ul id="68c80159-c1df-475b-b0d2-37fcc5c48c56" class="bulleted-list"><li style="list-style-type:disc"><strong>Automatización de Tareas:</strong> Automatiza tareas repetitivas como inscripciones, envíos de confirmaciones, recordatorios y recopilación de feedback. 🔄</li></ul><p id="d5777062-d5a3-4f7d-aa52-868a375684e1" class="">Además, el software incluye un <strong>script especializado</strong> que genera automáticamente un archivo .csv para gestionar relaciones con los clientes (CRM). 📊 Este archivo es compatible con Excel y te ayudará a implementar campañas de email marketing, enviar recordatorios de cumpleaños y mucho más. 🎂</p><h2 id="779c065e-e7e1-4487-9b21-d5d72b0e4f02" class="">🛠️ <strong>Requisitos Previos</strong></h2><p id="1932accf-b213-423c-a6db-c64536494dfc" class="">Antes de instalar y configurar el software, asegúrate de que cumples con los requisitos previos para una experiencia óptima. A continuación, te detallamos lo que necesitas:</p><h3 id="273cd045-d357-4669-9cd6-58570ba63448" class="">🖥️ <strong>Requisitos de Hardware</strong></h3><ul id="58b5ccd1-238f-42fe-9f9e-e46ee0b9dce7" class="bulleted-list"><li style="list-style-type:disc"><strong>Procesador:</strong> Mínimo de 4 núcleos.</li></ul><ul id="9c1a1abe-c045-47ac-9f13-d51114313272" class="bulleted-list"><li style="list-style-type:disc"><strong>Memoria RAM:</strong> Al menos 6 GB.</li></ul><ul id="cef9a370-43a2-4f27-b628-be803ffea283" class="bulleted-list"><li style="list-style-type:disc"><strong>Espacio en Disco:</strong> 20 GB de espacio libre.</li></ul><ul id="ef62aa18-5b18-4f27-8229-a12a043d52a2" class="bulleted-list"><li style="list-style-type:disc"><strong>Resolución de Pantalla:</strong> 1024x768 píxeles como mínimo.</li></ul><h3 id="b132cb17-f2cb-40fb-ba18-13892a3dcd9b" class="">💻 <strong>Requisitos de Software</strong></h3><ul id="04f061ce-cdc0-42d6-8030-98db0d2ac61c" class="bulleted-list"><li style="list-style-type:disc"><strong>Sistemas Operativos Compatibles:</strong><ul id="c364d938-e9eb-46e2-947b-9b911783d887" class="bulleted-list"><li style="list-style-type:circle">Windows 10 o superior (recomendado)</li></ul><ul id="7836b1be-155d-468c-8933-b801813a8934" class="bulleted-list"><li style="list-style-type:circle">Linux (distribuciones como Ubuntu 18.04+)</li></ul><ul id="7047b184-1345-4865-8be4-f9b4201e8136" class="bulleted-list"><li style="list-style-type:circle">macOS 10.14 (Mojave) o superior</li></ul></li></ul><ul id="9432465f-5c79-417c-9344-2f9e3af68375" class="bulleted-list"><li style="list-style-type:disc"><strong>Java:</strong> Asegúrate de tener instalada la última versión de Java 8 o superior. ☕</li></ul><ul id="e4ca1da9-dcd6-42a8-9e0e-78ca93ece7f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Otros Requisitos:</strong> No se necesitan frameworks adicionales. Mantén tu sistema operativo actualizado. 🔒</li></ul><h3 id="ef847117-8309-4cc8-8838-3ced77b829c1" class="">🌐 <strong>Requisitos de Red</strong></h3><ul id="41d508fc-4650-456e-96bb-4f3a8f241d2b" class="bulleted-list"><li style="list-style-type:disc"><strong>Conectividad:</strong> El software requiere una dirección IP específica para funcionar correctamente. 🚀</li></ul><ul id="04571514-22e0-4ee0-9bc1-83c669746894" class="bulleted-list"><li style="list-style-type:disc"><strong>Configuración de IP:</strong> Puedes modificar la configuración en la sección de archivos <code>properties</code>. Más detalles en la configuración avanzada.</li></ul><ul id="1f9332f9-135e-4f59-b53e-e18709093fd7" class="bulleted-list"><li style="list-style-type:disc"><strong>Puertos:</strong> Asegúrate de que los puertos necesarios estén abiertos en tu firewall. 🚪</li></ul><ul id="66e9bfcb-a4f3-4cf3-9f2b-57215efc23fb" class="bulleted-list"><li style="list-style-type:disc"><strong>Ancho de Banda:</strong> Recomendamos una conexión de banda ancha estable para una sincronización en tiempo real. 📶</li></ul><p id="406c31a3-9c1e-4052-8e85-7d6e585356df" class="">Asegúrese de cumplir con todos estos requisitos previos antes de proceder con la instalación del software para garantizar una experiencia sin inconvenientes y maximizar la eficiencia en la gestión de eventos de Anime Expo.</p><hr id="0a0772ee-41ed-4b3f-8b6f-58d5e9a74e3b"/><h1 id="0901facc-c6cf-4af4-b57a-8dff9c4f0db3" class="">🛠️ <strong>Proceso de Instalación</strong></h1><p id="a129b5ec-32c2-48ba-b31d-27ace068cae5" class="">Aquí te mostramos cómo instalar y configurar el software de gestión de eventos de Anime Expo. Sigue cada paso con atención para asegurar una instalación exitosa y un rendimiento óptimo del sistema. ¡Vamos allá! 🚀</p><h2 id="d4bc29fa-ce97-4971-899a-a44f48247c09" class="">📥 <strong>1. Descarga del Software</strong></h2><p id="5c36ed79-26d6-4090-8ebe-99fd1415f01f" class="">Antes de comenzar, necesitas descargar algunos componentes clave. Aquí te explicamos cómo hacerlo:</p><h3 id="4ca52fdd-bc78-4633-b906-8d313a54c845" class=""><strong>Instalación de Apache NetBeans IDE 18:</strong></h3><ol type="1" id="08c5a8e7-6e49-434b-9dad-b51817d9b9bd" class="numbered-list" start="1"><li><strong>Accede al Sitio Oficial:</strong><ul id="33d01096-8327-4b86-80d4-d9d938dba53a" class="bulleted-list"><li style="list-style-type:disc">Abre tu navegador y ve a <a href="https://netbeans.apache.org/download/nb18/nb18.html">NetBeans Descarga</a>. 🌐</li></ul></li></ol><ol type="1" id="b719dd7b-a686-4c93-be7f-0ac1fb80a893" class="numbered-list" start="2"><li><strong>Selecciona la Versión Adecuada:</strong><ul id="9ecd106a-938d-48b5-99eb-7240d2e30a17" class="bulleted-list"><li style="list-style-type:disc">Elige la versión que corresponde a tu sistema operativo (Windows, macOS o Linux).</li></ul></li></ol><ol type="1" id="5d3ca634-58df-4b1d-9b1a-34c9c1418c60" class="numbered-list" start="3"><li><strong>Descarga el Instalador:</strong><ul id="b2011ad5-eb9b-43d7-bf5c-7bde2b84ce29" class="bulleted-list"><li style="list-style-type:disc">Haz clic en el enlace de descarga para tu sistema operativo. 🖱️</li></ul></li></ol><ol type="1" id="59e7194c-a3bf-4a61-8905-1252240aba21" class="numbered-list" start="4"><li><strong>Instala Apache NetBeans:</strong><ul id="d43f4973-c845-408d-8eaa-47ece508d235" class="bulleted-list"><li style="list-style-type:disc">Ejecuta el instalador descargado.</li></ul><ul id="988a847b-6757-42e4-ba66-1cad31cb03d3" class="bulleted-list"><li style="list-style-type:disc">Sigue las instrucciones del asistente de instalación:<ul id="c680c097-6721-4060-9804-aa719e999614" class="bulleted-list"><li style="list-style-type:circle">Acepta los términos y condiciones.</li></ul><ul id="9a7b1fda-2adc-47af-aad2-93182c115868" class="bulleted-list"><li style="list-style-type:circle">Selecciona el directorio de instalación (la ubicación predeterminada suele estar bien).</li></ul><ul id="e3955fcd-2421-4d2d-8913-dacf81506571" class="bulleted-list"><li style="list-style-type:circle">Asegúrate de incluir los módulos relacionados con Java. ☕</li></ul></li></ul><ul id="fe72a536-ab9b-4579-bfdf-52bc71784ccf" class="bulleted-list"><li style="list-style-type:disc">Haz clic en “Instalar” y espera a que termine el proceso.</li></ul><ul id="5d6f0855-e560-4e9c-95c8-16af22cf5f3c" class="bulleted-list"><li style="list-style-type:disc">Una vez finalizado, haz clic en “Finalizar”.</li></ul></li></ol><h3 id="2066bc70-9913-4441-8241-40b6fb0bf8a7" class=""><strong>Instalación de Visual Studio Code (Opcional):</strong></h3><ol type="1" id="65229b43-dfb0-4471-bda8-4e6314e9fa89" class="numbered-list" start="1"><li><strong>Descarga Visual Studio Code:</strong><ul id="d7e0cf06-061e-4d39-8715-86fa5470da2d" class="bulleted-list"><li style="list-style-type:disc">Visita <a href="https://code.visualstudio.com/Download">Visual Studio Code</a>. 📥</li></ul><ul id="f6911be4-850c-4ef1-9c4b-1fe3aaa95010" class="bulleted-list"><li style="list-style-type:disc">Selecciona tu sistema operativo y descarga el archivo.</li></ul></li></ol><ol type="1" id="d4e114cf-c48d-4880-b233-2b7f53916cbd" class="numbered-list" start="2"><li><strong>Instala Visual Studio Code:</strong><ul id="2f08bcfe-5bcf-4086-9129-34fad8dd38ce" class="bulleted-list"><li style="list-style-type:disc">Ejecuta el archivo de instalación.</li></ul><ul id="5427478a-98a7-4e7f-90b4-5936f21b34b4" class="bulleted-list"><li style="list-style-type:disc">Sigue las instrucciones del instalador:<ul id="a17ccf4e-ab83-4100-8850-22f745663842" class="bulleted-list"><li style="list-style-type:circle">Acepta los términos y condiciones.</li></ul><ul id="8bb15c90-6f8d-4c65-86a0-5f991843bd79" class="bulleted-list"><li style="list-style-type:circle">Selecciona un directorio de instalación.</li></ul><ul id="5528a874-f4c8-4a83-b332-4c1dd6505a50" class="bulleted-list"><li style="list-style-type:circle">Opcional: Agrega Visual Studio Code al PATH para facilitar su uso desde la línea de comandos. 🛠️</li></ul></li></ul><ul id="f4ffd1b9-58c6-4e1b-8f0a-8696131dcef6" class="bulleted-list"><li style="list-style-type:disc">Completa la instalación y abre Visual Studio Code.</li></ul></li></ol><h3 id="0f6ffe6e-4ba2-48ba-aefa-56ca997e4e42" class=""><strong>Instalación de Git:</strong></h3><ol type="1" id="4b6d935c-5a96-4546-ac41-ae4deaff4b11" class="numbered-list" start="1"><li><strong>Descarga Git:</strong><ul id="76fc16dc-1c69-4379-b2d9-7fb5daae747d" class="bulleted-list"><li style="list-style-type:disc">Ve a <a href="https://git-scm.com/downloads">Git Descarga</a>. 🌍</li></ul><ul id="6fb20340-76eb-4e76-aabb-5f54c75d1ade" class="bulleted-list"><li style="list-style-type:disc">Selecciona tu sistema operativo y descarga el instalador.</li></ul></li></ol><ol type="1" id="d01d1635-bd9a-4848-be53-a1683babb911" class="numbered-list" start="2"><li><strong>Instala Git:</strong><ul id="ae0401a1-99b6-46bc-9a50-9c9d7444974e" class="bulleted-list"><li style="list-style-type:disc">Ejecuta el instalador.</li></ul><ul id="49329ad6-be3c-40a5-9c7a-68d15ee5a615" class="bulleted-list"><li style="list-style-type:disc">Acepta los términos de licencia y sigue las instrucciones en pantalla.</li></ul><ul id="b3bf8f48-03f5-49d4-9500-05ce88e137b3" class="bulleted-list"><li style="list-style-type:disc">Acepta las opciones predeterminadas para una configuración estándar.</li></ul><ul id="9448e8f9-a224-4ac4-9f0c-2b1dfb0dc441" class="bulleted-list"><li style="list-style-type:disc">Finaliza la instalación. 🎉</li></ul></li></ol><h3 id="e29c089b-6c5a-4938-bd02-73bc4c9e74c7" class=""><strong>Clonación del Repositorio del Proyecto:</strong></h3><ol type="1" id="f24f322a-5fad-422b-aad3-5db2dd82c215" class="numbered-list" start="1"><li><strong>Abre Visual Studio Code o la Terminal:</strong><ul id="ad6da8c6-7d7b-4ca4-9d81-273d9766d728" class="bulleted-list"><li style="list-style-type:disc">Puedes usar la terminal integrada en Visual Studio Code o una terminal del sistema.</li></ul></li></ol><ol type="1" id="b1b25c6d-6915-467c-adf5-54b9de738398" class="numbered-list" start="2"><li><strong>Ejecuta el Comando de Clonación:</strong><ul id="41310d9d-eba4-466f-b99c-a263dd8b7f00" class="bulleted-list"><li style="list-style-type:disc">Usa el siguiente comando para clonar el repositorio del proyecto:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ae38dc7c-98aa-47c1-863c-b8c2bbe79801" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">git clone &lt;https://github.com/RubioJuan/Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge.git&gt;
+</code></pre></li></ul><ul id="f2729545-233d-4d65-a1e2-c35d1c625fa4" class="bulleted-list"><li style="list-style-type:disc">Espera a que el comando termine de ejecutarse. 📂</li></ul></li></ol><ol type="1" id="1cb15fe7-df91-4ed2-a94f-a0fcb7a583f5" class="numbered-list" start="3"><li><strong>Verifica la Clonación:</strong><ul id="1a2d9df1-1dea-477d-a6ee-eaceb3235ba6" class="bulleted-list"><li style="list-style-type:disc">Navega al directorio del proyecto:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="76bc2a1a-788f-4396-8abd-2d98a27abffb" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">cd Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge
+</code></pre></li></ul><ul id="4ab583b1-2cf2-42b4-bacf-2dc556380c31" class="bulleted-list"><li style="list-style-type:disc">Lista los archivos para asegurarte de que la clonación se completó correctamente:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="aeaab053-7525-4b3c-8d2e-1a1bea0cb8aa" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">ls
+</code></pre></li></ul></li></ol><hr id="ed435239-ccdc-4cfc-81dd-3d165edc9ede"/><h2 id="293dffc7-9a97-47c2-a5e9-10b2aa6a03d7" class="">🔧 <strong>2. Instalación Local</strong></h2><p id="5adb4bdd-cc67-402a-8cb5-de1656c96cd6" class="">Ahora que tienes los archivos y herramientas necesarios, sigamos con la configuración del entorno local.</p><h3 id="abe361d9-fff3-4f66-aa47-469faac87d6c" class=""><strong>Instalación del Java Development Kit (JDK) 17:</strong></h3><ol type="1" id="f4aa3a65-e3a4-4726-8763-1b811d60f68f" class="numbered-list" start="1"><li><strong>Descargar JDK 17:</strong><ul id="e860729e-2092-4722-8482-13a60d0d8504" class="bulleted-list"><li style="list-style-type:disc">Ve a <a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html">JDK 17 Descarga</a>. 📥</li></ul><ul id="6f2ec909-76d3-4bfe-a439-8f3af1a339f7" class="bulleted-list"><li style="list-style-type:disc">Elige la versión adecuada para tu sistema operativo.</li></ul></li></ol><ol type="1" id="4dd0109b-2263-4a83-aa18-2c8e34b6d5a8" class="numbered-list" start="2"><li><strong>Instalar JDK 17:</strong><ul id="9e2e6f9e-3c97-441b-8e42-8d9e302ad0c5" class="bulleted-list"><li style="list-style-type:disc">Ejecuta el archivo descargado y sigue las instrucciones.</li></ul><ul id="899198ee-9d26-4072-bebe-b1582a9a25c3" class="bulleted-list"><li style="list-style-type:disc">Acepta los términos de la licencia.</li></ul><ul id="f2225e62-cdef-475e-b0c0-c2a6d0be59b5" class="bulleted-list"><li style="list-style-type:disc">Selecciona el directorio de instalación y completa el proceso. ✔️</li></ul></li></ol><ol type="1" id="d2e85f45-f903-4dc0-802c-c9baca054abe" class="numbered-list" start="3"><li><strong>Configurar Variable de Entorno JAVA_HOME:</strong><ul id="8f072a70-8951-46e3-96cd-80c96738e620" class="bulleted-list"><li style="list-style-type:disc"><strong>En Windows:</strong><ul id="526fc433-fac0-4f4a-8c50-d961f345a4d2" class="bulleted-list"><li style="list-style-type:circle">Haz clic derecho en “Este PC” y selecciona “Propiedades”.</li></ul><ul id="d368c8b2-0118-46dd-a5f3-f79e03589d05" class="bulleted-list"><li style="list-style-type:circle">Haz clic en “Configuración avanzada del sistema” y luego en “Variables de entorno”.</li></ul><ul id="1940efe6-4293-40e5-862c-c4c0c0e21f03" class="bulleted-list"><li style="list-style-type:circle">Crea una nueva variable del sistema:<ul id="ca86a3da-63bf-4f82-89f9-11dc2d22a8d7" class="bulleted-list"><li style="list-style-type:square">Nombre: <code>JAVA_HOME</code></li></ul><ul id="8614d46d-6862-449c-b1aa-71f53626a8d8" class="bulleted-list"><li style="list-style-type:square">Valor: <code>C:\\\\Program Files\\\\Java\\\\jdk-17.0.7</code></li></ul></li></ul><ul id="0f8528ca-bda9-4fc2-9e96-51074845b70c" class="bulleted-list"><li style="list-style-type:circle">Agrega <code>%JAVA_HOME%\\\\bin</code> al final de la variable <code>Path</code>.</li></ul></li></ul><ul id="b141d782-3ce4-44fe-8000-b0957e77e7ba" class="bulleted-list"><li style="list-style-type:disc"><strong>En macOS/Linux:</strong><ul id="50f723c9-e5c0-4a15-86a4-83ed61c6eb1d" class="bulleted-list"><li style="list-style-type:circle">Abre la terminal y edita el archivo de perfil (como <code>.bash_profile</code>, <code>.bashrc</code> o <code>.zshrc</code>):<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="04b2b87d-4a30-43e4-9cff-313ea371b6d1" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.7.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+</code></pre></li></ul><ul id="ab662c16-65b1-4e42-a468-9936d5068327" class="bulleted-list"><li style="list-style-type:circle">Guarda el archivo y ejecuta <code>source ~/.bash_profile</code> para aplicar los cambios.</li></ul></li></ul></li></ol><ol type="1" id="f97ad873-41c4-42dd-9da2-00c4b63e5395" class="numbered-list" start="4"><li><strong>Verificar Instalación de Java:</strong><ul id="bbac2ffb-0e4f-4c1e-81dd-2c4b6cfd834a" class="bulleted-list"><li style="list-style-type:disc">Abre una terminal o línea de comandos y escribe:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="131adcf1-f78b-4a2a-b034-42c64ec10258" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">java -version
+</code></pre></li></ul><ul id="612c1197-b857-43d6-b8e7-a48d4389399f" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que la versión mostrada sea <code>17.0.07</code>. ✅</li></ul></li></ol><h3 id="091fbeb1-3b06-4125-8c63-11a35b7c8edf" class=""><strong>Instalación de MySQL:</strong></h3><ol type="1" id="eb0d28db-1920-4bd3-9af9-bc64614088dd" class="numbered-list" start="1"><li><strong>Descargar MySQL:</strong><ul id="4cb5b244-98a6-4bbd-9055-d33a7b301fce" class="bulleted-list"><li style="list-style-type:disc">Visita <a href="https://dev.mysql.com/downloads/mysql/">MySQL Descarga</a>. 🌐</li></ul><ul id="4d5645e8-c1b5-46aa-9024-ccbdc6245e10" class="bulleted-list"><li style="list-style-type:disc">Elige la versión para tu sistema operativo.</li></ul></li></ol><ol type="1" id="3ab47a87-8645-47ad-8fea-7e3700ea3fe4" class="numbered-list" start="2"><li><strong>Instalar MySQL:</strong><ul id="f7ff6b26-ace9-41bd-842a-7e3673f70f95" class="bulleted-list"><li style="list-style-type:disc">Ejecuta el instalador descargado.</li></ul><ul id="57cc1079-8eea-4851-9de2-9678ed0023c2" class="bulleted-list"><li style="list-style-type:disc">Selecciona “Developer Default” y sigue las instrucciones para configurar MySQL Server y otros componentes.</li></ul><ul id="df7d9e75-b790-44b1-8774-ab8cf8b4fa4a" class="bulleted-list"><li style="list-style-type:disc">Configura un usuario administrador (root) y una contraseña segura. 🔒</li></ul></li></ol><ol type="1" id="c3ca0fb2-2918-42b7-a668-e95676611db3" class="numbered-list" start="3"><li><strong>Configurar MySQL:</strong><ul id="14d25341-6a3d-4607-aee8-0f46f81f2c40" class="bulleted-list"><li style="list-style-type:disc">Inicia el servicio de MySQL (puedes usar MySQL Workbench o la línea de comandos).</li></ul><ul id="911ba2c7-91c6-4844-ba41-05476bfa7ba1" class="bulleted-list"><li style="list-style-type:disc">Importa el archivo de base de datos usando el siguiente enlace: <a href="Manual%20de%20usuario%20Anime%20Expo%20E%20X%20cb47cf13b66c4e6e858364ad81345ef4/BBDD.sql">BBDD.sql</a>.</li></ul></li></ol><h3 id="b4e1aaf3-0ca4-4547-9802-040adb93272c" class=""><strong>Instalación del MySQL JDBC Driver:</strong></h3><ol type="1" id="02b0ee1a-1a3c-4699-ba13-005dab082fb4" class="numbered-list" start="1"><li><strong>Descargar MySQL JDBC Driver:</strong><ul id="538e1d77-a732-4ec1-9cbe-549a7ca60951" class="bulleted-list"><li style="list-style-type:disc">Visita <a href="https://dev.mysql.com/downloads/connector/j/">MySQL Connector/J</a>. 📥</li></ul><ul id="69d8c380-e2a6-4044-8e09-bae0e7d16c47" class="bulleted-list"><li style="list-style-type:disc">Descarga el archivo <code>.zip</code> y extrae el contenido.</li></ul></li></ol><ol type="1" id="3246de6d-dc68-414f-a13e-2d3165a5a39e" class="numbered-list" start="2"><li><strong>Agregar el JDBC Driver al Proyecto:</strong><ul id="0f872208-8010-4216-842e-021c65bc110f" class="bulleted-list"><li style="list-style-type:disc">Copia el archivo <code>mysql-connector-java-8.0.xx.jar</code> al directorio <code>libs</code> dentro de tu proyecto en NetBeans.</li></ul><ul id="4f3cf0b5-fd7b-4f0a-b6a0-be50b80a0871" class="bulleted-list"><li style="list-style-type:disc">En NetBeans:<ul id="dd31e215-2a8c-45d3-afe3-9ef874407ee4" class="bulleted-list"><li style="list-style-type:circle">Haz clic derecho en tu proyecto y selecciona <strong>Propiedades</strong>.</li></ul><ul id="46b98699-6483-48e9-bd15-bc58dfbdd53a" class="bulleted-list"><li style="list-style-type:circle">Ve a <strong>Librerías</strong> &gt; <strong>Agregar JAR/Carpeta</strong>.</li></ul><ul id="150335c5-c18c-4ca5-bf64-c914e4b2854e" class="bulleted-list"><li style="list-style-type:circle">Selecciona el archivo <code>mysql-connector-java-8.0.xx.jar</code> y agrégalo al proyecto.</li></ul></li></ul></li></ol><h3 id="ee0ed104-de0c-44c3-bf29-0baa5fe5297b" class=""><strong>Importación y Configuración del Proyecto en NetBeans:</strong></h3><ol type="1" id="b56cf0fd-0b7b-499f-8913-65ab507cd00f" class="numbered-list" start="1"><li><strong>Abrir NetBeans IDE:</strong><ul id="1096fb49-9bb2-47eb-9552-4ae910699f7f" class="bulleted-list"><li style="list-style-type:disc">Inicia Apache NetBeans.</li></ul></li></ol><ol type="1" id="693d85f4-4705-4b9b-b971-9d69bda8a6de" class="numbered-list" start="2"><li><strong>Importar Proyecto:</strong><ul id="5768a082-b88d-4f4b-a153-890301b5cf0f" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Abrir Proyecto</strong>.</li></ul><ul id="d6282d4b-556e-42d6-826a-20ea8fa660a3" class="bulleted-list"><li style="list-style-type:disc">Navega a la carpeta donde clonaste el repositorio <code>Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge</code>.</li></ul><ul id="897bcef8-4d07-4510-a7c3-c928db5d5de3" class="bulleted-list"><li style="list-style-type:disc">Selecciona el proyecto y haz clic en <strong>Abrir</strong>.</li></ul></li></ol><ol type="1" id="ed2e5f7c-ffb6-4919-995e-1811a3af8886" class="numbered-list" start="3"><li><strong>Verificar Dependencias:</strong><ul id="9d49a4b1-51b9-4d39-a1d6-6887df9f8885" class="bulleted-list"><li style="list-style-type:disc">Si NetBeans detecta problemas con las dependencias, asegúrate de que todos los archivos <code>.jar</code> necesarios estén en la carpeta de bibliotecas.</li></ul><ul id="4afa26eb-5f73-4b62-8008-ad2fd7ad3a7b" class="bulleted-list"><li style="list-style-type:disc">Limpia y construye el proyecto usando las opciones <strong>Construir Proyecto</strong> y <strong>Limpiar y Construir Proyecto</strong> desde el menú o haciendo clic derecho en el nombre del proyecto. 🔄</li></ul></li></ol><p id="13e68b83-5936-46e4-b458-78f58fe6ee3e" class="">
+</p><h1 id="097a0918-3f6e-4c22-b8ab-4dfd82732089" class="">🌐 <strong>Instalación en Servidores Remotos</strong></h1><hr id="1432ce31-fc45-4517-aed1-c505e3d33890"/><p id="980cd981-2c81-4624-8481-b3714c6f2ceb" class="">Si necesitas configurar el software en un servidor remoto, sigue estos pasos para una instalación y configuración exitosas. ¡Vamos allá! 🚀</p><h2 id="481f25ae-354d-4e7d-acdb-175721c8fc1d" class="">🖥️ <strong>Acceso y Configuración del Servidor:</strong></h2><h3 id="8c62c6f5-69d6-4ede-98b5-d5bf37a61135" class=""><strong>1. Acceder al Servidor Remoto:</strong></h3><ul id="1548eebd-1d01-4962-93bb-49a60334d7bc" class="bulleted-list"><li style="list-style-type:disc">Conéctate al servidor remoto usando SSH:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8f096c8b-009a-4e20-9cdb-a1067e0746fa" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">ssh usuario@direccion_ip_servidor
+</code></pre><ul id="9f23ca5e-bf8e-43b3-b651-7c2f8e3dd7de" class="bulleted-list"><li style="list-style-type:circle">Reemplaza <code>usuario</code> con tu nombre de usuario y <code>direccion_ip_servidor</code> con la dirección IP del servidor. 🌐</li></ul></li></ul><h3 id="f80198d1-3a35-4441-8feb-e4885648cc60" class=""><strong>2. Transferir Archivos del Proyecto:</strong></h3><ul id="d07cfc95-a2fc-42d1-add3-8e69c3c370a7" class="bulleted-list"><li style="list-style-type:disc">Usa SCP o SFTP para transferir el proyecto desde tu máquina local al servidor:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ebb36f2c-d632-4e34-be0c-4d9afbff4213" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">scp -r /ruta/local/Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge usuario@direccion_ip_servidor:/ruta/destino
+</code></pre><ul id="fd75028c-595e-4a2c-9d09-ff881b0118ff" class="bulleted-list"><li style="list-style-type:circle">Reemplaza <code>/ruta/local/</code> con la ruta del proyecto en tu máquina local y <code>/ruta/destino</code> con el directorio de destino en el servidor. 📁</li></ul></li></ul><h3 id="3b0db0f9-26b1-4ee8-8f03-3dffa5b4e7a7" class=""><strong>3. Instalación y Configuración en el Servidor:</strong></h3><ul id="e61cb53c-3cf4-4d7c-aad1-b9af7146fb26" class="bulleted-list"><li style="list-style-type:disc"><strong>Instalar Java JDK 17 y MySQL:</strong><ul id="98b719f2-072a-4ee7-8744-f68f795a3f02" class="bulleted-list"><li style="list-style-type:circle">Sigue los mismos pasos de instalación que se describen en la sección de instalación local.</li></ul></li></ul><ul id="0eeb0d01-3d1f-4e05-904f-6c4d1b622c47" class="bulleted-list"><li style="list-style-type:disc"><strong>Configurar Variables de Entorno:</strong><ul id="89424f08-b7e8-4574-a5e8-f115a0b269b3" class="bulleted-list"><li style="list-style-type:circle">Asegúrate de que <code>JAVA_HOME</code> esté correctamente configurado y que el servidor de MySQL esté en funcionamiento.</li></ul></li></ul><h3 id="5dcf2ded-60c9-4dff-9827-6a446dcb111f" class=""><strong>4. Ejecutar el Software en el Servidor:</strong></h3><ul id="7fc5fbc9-ab12-428d-abe0-bc2270881dbc" class="bulleted-list"><li style="list-style-type:disc">Navega al directorio del proyecto y compílalo:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0b95e323-f4b9-4dca-99f2-cb8d2eafcc9d" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">cd /ruta/destino/Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge
+javac Main.java
+java Main
+</code></pre><ul id="cc02c793-1ccc-4f9c-b01d-2acc46060710" class="bulleted-list"><li style="list-style-type:circle">Reemplaza <code>/ruta/destino</code> con el directorio en el servidor donde transferiste el proyecto. 🚀</li></ul></li></ul><h2 id="6d1436a7-e7b9-4d39-9af8-be94d9064157" class="">🛠️ <strong>Resolución de Problemas Comunes de Instalación</strong></h2><p id="9743b028-0347-4ac0-87fe-17b3292590be" class="">Aquí tienes soluciones para algunos problemas comunes que podrías encontrar durante la instalación:</p><ul id="290a5b78-5eb1-4a0d-9031-350b6a2181cd" class="bulleted-list"><li style="list-style-type:disc"><strong>Problema:</strong> Apache NetBeans no reconoce algunos módulos o dependencias.<ul id="083557d4-dd8a-4294-a438-de9c10544070" class="bulleted-list"><li style="list-style-type:circle"><strong>Solución:</strong> Asegúrate de que NetBeans tenga acceso a Internet para descargar módulos faltantes y verifica que el archivo <code>pom.xml</code> esté correctamente configurado si estás usando Maven.</li></ul></li></ul><ul id="cac8c186-7ef9-4fc7-8e2b-9c981d3be757" class="bulleted-list"><li style="list-style-type:disc"><strong>Problema:</strong> Problemas de conexión con la base de datos MySQL.<ul id="f1424a43-e088-4dee-82ec-d49b0707b8c8" class="bulleted-list"><li style="list-style-type:circle"><strong>Solución:</strong> Verifica que el servidor MySQL esté en ejecución y que las credenciales de conexión en tu código Java sean correctas. También revisa la configuración del archivo <code>my.cnf</code> para asegurar que MySQL esté escuchando en la IP y puerto correctos.</li></ul></li></ul><ul id="212215db-dbc1-4395-b0fc-0e86e183b242" class="bulleted-list"><li style="list-style-type:disc"><strong>Problema:</strong> Error al iniciar el servicio MySQL después de la instalación.<ul id="7fb9cdd9-0ab5-437d-9af1-afc5189bc125" class="bulleted-list"><li style="list-style-type:circle"><strong>Solución:</strong> Revisa los archivos de registro de MySQL para obtener detalles sobre el error. Los problemas pueden estar relacionados con conflictos de puerto, configuraciones de permisos, o falta de espacio en disco.</li></ul></li></ul><ul id="f808c959-5c4e-444d-a0e3-3da62025f390" class="bulleted-list"><li style="list-style-type:disc"><strong>Problema:</strong> El archivo <code>mysql-connector-java-8.0.xx.jar</code> no se carga correctamente en NetBeans.<ul id="e7f26f94-6b5f-4b2f-bea0-f56597173d1b" class="bulleted-list"><li style="list-style-type:circle"><strong>Solución:</strong> Asegúrate de que el archivo <code>.jar</code> esté en el directorio correcto y vuelve a añadirlo a las bibliotecas del proyecto. Comprueba que el archivo no esté corrupto descargando una nueva copia desde el sitio web de MySQL.</li></ul></li></ul><p id="106198e4-fa03-4c5b-87aa-62d3dc7ff038" class="">Sigue estos pasos detallados para asegurar una instalación completa y sin problemas del software de gestión de eventos de Anime Expo en servidores remotos. Si encuentras problemas adicionales no cubiertos aquí, consulta con tu equipo de soporte técnico o revisa las secciones de preguntas frecuentes y documentación del software. ¡Buena suerte! 🍀</p><p id="f44dc6b9-4ef1-4b36-847a-ebda9a96de27" class="">
+</p><h3 id="afd23a9d-8f7d-474f-a7e2-74f5b815ebc2" class=""><strong>Adaptación al Entorno de Desarrollo</strong> 🌟</h3><hr id="d8e9fb6f-55fd-4470-b394-4b63f943686e"/><p id="7757eae1-3b0a-4a4e-87f5-8a8a12cbe6ff" class="">Una vez completada la instalación básica del software, el siguiente paso es adaptar el entorno de desarrollo para asegurar que el software funcione correctamente en el IDE de su elección. Aquí se proporcionan instrucciones detalladas para configurar y optimizar entornos de desarrollo integrados (IDEs) como Apache NetBeans, Visual Studio Code, IntelliJ IDEA, o Eclipse.</p><h3 id="55b402c0-9425-48c6-aade-fd2d4d39a0d9" class=""><strong>Configuración del Entorno de Desarrollo</strong> 🛠️</h3><h3 id="bbddb0e9-fb33-4bed-946a-bf697a5eea69" class=""><strong>1. Configuración en Apache NetBeans</strong> 💻</h3><p id="ffddf5ac-e1d1-423d-9ea9-387b178da073" class=""><strong>a. Abrir y Configurar el Proyecto:</strong></p><ol type="1" id="44bfa057-3ca0-498e-b431-1dc9a78cbbaa" class="numbered-list" start="1"><li><strong>Iniciar Apache NetBeans:</strong><ul id="301ef9e7-5a34-4d36-99f5-ba15c4955272" class="bulleted-list"><li style="list-style-type:disc">Abre Apache NetBeans desde su acceso directo o menú de aplicaciones.</li></ul></li></ol><ol type="1" id="44049e1d-600a-48d6-a909-0d89a478e1a8" class="numbered-list" start="2"><li><strong>Importar el Proyecto:</strong><ul id="3d25a117-e15b-4363-8bb8-1b5b4966b523" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Abrir Proyecto</strong>.</li></ul><ul id="9a863335-1719-488d-b0a1-94b989dbf4b6" class="bulleted-list"><li style="list-style-type:disc">Navega hasta la carpeta del proyecto clonada (<code>Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge</code>).</li></ul><ul id="d573effc-edc9-4097-87e4-1aa2ae6586ac" class="bulleted-list"><li style="list-style-type:disc">Selecciona el proyecto y haz clic en <strong>Abrir</strong>.</li></ul></li></ol><ol type="1" id="58330aed-ba91-4a47-9a4e-1bf25d41bbdb" class="numbered-list" start="3"><li><strong>Configurar el JDK:</strong><ul id="412fa256-5aeb-4a07-a4d2-d78cc391bc14" class="bulleted-list"><li style="list-style-type:disc">Haz clic derecho en el proyecto en el panel de proyectos y selecciona <strong>Propiedades</strong>.</li></ul><ul id="c19a34c5-6c3c-434a-bb12-8b88cf856994" class="bulleted-list"><li style="list-style-type:disc">En la categoría <strong>Fuentes</strong>, asegúrate de que el <strong>JDK</strong> configurado sea <code>JDK 17</code>. Si no está disponible, añádelo desde <strong>Plataformas Java</strong> en <strong>Herramientas</strong>.</li></ul></li></ol><ol type="1" id="9dc8b223-6387-42e2-a6d6-548042ed9e3d" class="numbered-list" start="4"><li><strong>Configurar Librerías:</strong><ul id="f0a3466f-7716-4d31-8f98-940c9cadb06e" class="bulleted-list"><li style="list-style-type:disc">En <strong>Propiedades del Proyecto</strong>, ve a <strong>Librerías</strong>.</li></ul><ul id="659e6884-72c3-4c2e-b16e-49708f22203c" class="bulleted-list"><li style="list-style-type:disc">Verifica que <code>mysql-connector-java-8.0.xx.jar</code> esté listado. Si no está, haz clic en <strong>Agregar JAR/Carpeta</strong> y selecciona el archivo <code>.jar</code> en el directorio <code>libs</code>.</li></ul></li></ol><ol type="1" id="81e5bcbb-cbde-4041-a5ef-46a571316c43" class="numbered-list" start="5"><li><strong>Configurar Variables de Entorno (si es necesario):</strong><ul id="17c30fe3-f4a6-49e6-9d93-74907fb863a1" class="bulleted-list"><li style="list-style-type:disc">En algunos casos, puedes necesitar configurar variables de entorno específicas para tu proyecto. Esto se puede hacer desde el archivo de configuración del proyecto o la configuración de ejecución.</li></ul></li></ol><p id="6a74ed60-73b7-4c56-9b41-e068638fa969" class=""><strong>b. Instalar Plugins Adicionales:</strong></p><ol type="1" id="c7edcc31-9cca-4e99-b0ed-9ba32be2345b" class="numbered-list" start="1"><li><strong>Acceder al Gestor de Plugins:</strong><ul id="db47ff31-73d3-4915-905d-04baef0cb3ae" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Herramientas</strong> &gt; <strong>Plugins</strong>.</li></ul></li></ol><ol type="1" id="bf5fffc6-4666-4113-b2a7-d1d76adcb989" class="numbered-list" start="2"><li><strong>Buscar e Instalar Plugins:</strong><ul id="52315717-b047-45f4-85c2-b5019199dbe8" class="bulleted-list"><li style="list-style-type:disc">En la pestaña <strong>Disponible</strong>, busca plugins útiles como soporte para bases de datos, herramientas de análisis de código, o integración con otros sistemas de control de versiones.</li></ul><ul id="991402b5-d543-4be9-83e4-cce09769c298" class="bulleted-list"><li style="list-style-type:disc">Selecciona los plugins deseados y haz clic en <strong>Instalar</strong>.</li></ul></li></ol><h3 id="65b4db70-35cf-4c67-ae2f-6678fbb209f0" class=""><strong>2. Configuración en Visual Studio Code</strong> 🖥️</h3><p id="fff784d0-5d9e-4520-8048-8ade12553d93" class=""><strong>a. Abrir el Proyecto en VS Code:</strong></p><ol type="1" id="a50597c8-a15b-4ad4-8b2b-8872f15d6f59" class="numbered-list" start="1"><li><strong>Iniciar Visual Studio Code:</strong><ul id="e431388d-1d8e-46da-9bb7-2b10bec45a48" class="bulleted-list"><li style="list-style-type:disc">Abre VS Code desde el menú de aplicaciones o el acceso directo.</li></ul></li></ol><ol type="1" id="f5ffb386-a089-4f23-b28e-ebc7c1456aea" class="numbered-list" start="2"><li><strong>Abrir la Carpeta del Proyecto:</strong><ul id="85b65f86-54c5-47f5-b366-c3f58779108e" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Abrir Carpeta</strong> y selecciona la carpeta del proyecto (<code>Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge</code>).</li></ul></li></ol><p id="3dcf9ecc-6b08-41a0-bb08-c300cdd493d8" class=""><strong>b. Configurar el Entorno:</strong></p><ol type="1" id="6155663e-6026-4a0f-b03d-e6396bb984b7" class="numbered-list" start="1"><li><strong>Instalar Extensiones Necesarias:</strong><ul id="ad195831-97d0-4a1f-af30-9a97bb4e86d7" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Extensiones</strong> (icono de cuadrado en la barra lateral izquierda) y busca extensiones útiles como:<ul id="1b5461bd-7071-4a26-917d-830e74945d51" class="bulleted-list"><li style="list-style-type:circle"><strong>Java Extension Pack</strong> (incluye soporte para Java, Maven, y otros).</li></ul><ul id="428bc8e6-1793-41af-8831-0e3bc508f2aa" class="bulleted-list"><li style="list-style-type:circle"><strong>MySQL</strong> (para administración de bases de datos directamente desde VS Code).</li></ul></li></ul><ul id="c561dd02-b735-41a2-80c3-4004f858e599" class="bulleted-list"><li style="list-style-type:disc">Haz clic en <strong>Instalar</strong> para cada extensión.</li></ul></li></ol><ol type="1" id="7fbdebc5-63a1-43eb-b8eb-ade2d22581dd" class="numbered-list" start="2"><li><strong>Configurar el JDK:</strong><ul id="bf98c55e-44ee-49e8-8c06-63753b186b46" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que el JDK 17 esté configurado. VS Code detectará automáticamente el JDK si está instalado en el sistema.</li></ul><ul id="a6c3316c-ba06-440c-ba8b-d0445b0d4782" class="bulleted-list"><li style="list-style-type:disc">Puedes verificar o ajustar la configuración del JDK desde la configuración de VS Code (<code>settings.json</code>) y agregar:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="80140a76-8260-4744-8d1c-002922a0f367" class="code"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">&quot;java.home&quot;: &quot;/path/to/jdk-17.0.7&quot;
+</code></pre></li></ul></li></ol><ol type="1" id="4297622a-fd39-4430-b4e3-91f4afad0e6a" class="numbered-list" start="3"><li><strong>Configurar el Archivo </strong><code><strong>launch.json</strong></code><strong>:</strong><ul id="e2f4b936-565d-4a65-be6c-fe9668d04aac" class="bulleted-list"><li style="list-style-type:disc">Si estás configurando configuraciones de depuración, crea o edita el archivo <code>.vscode/launch.json</code> para definir cómo debe iniciar la aplicación. Aquí hay un ejemplo de configuración básica:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="87f8b86c-ccc0-4198-83b1-2e67aca583b1" class="code"><code class="language-JSON" style="white-space:pre-wrap;word-break:break-all">{
+  &quot;version&quot;: &quot;0.2.0&quot;,
+  &quot;configurations&quot;: [
+    {
+      &quot;type&quot;: &quot;java&quot;,
+      &quot;name&quot;: &quot;Debug Java Application&quot;,
+      &quot;request&quot;: &quot;launch&quot;,
+      &quot;mainClass&quot;: &quot;com.example.Main&quot;,
+      &quot;projectName&quot;: &quot;Proyecto_JAVA_Rubio-Juan_Portilla-Andres_Mozo-Jorge&quot;
+    }
+  ]
+}
+</code></pre></li></ul></li></ol><hr id="39f5878b-6698-441b-b91f-22e10390a1f1"/><h3 id="d787f751-eb5b-4ea2-b984-0f38baacd5f5" class=""><strong>3. Configuración en IntelliJ IDEA</strong> ⚙️</h3><p id="2eb18491-2919-4a46-a4bf-28a1625b737b" class=""><strong>a. Importar el Proyecto:</strong></p><ol type="1" id="5df5b3f3-6b93-492e-8c56-bd1e0d6f782f" class="numbered-list" start="1"><li><strong>Iniciar IntelliJ IDEA:</strong><ul id="62bbadc1-b973-4882-bf86-ccf8ddb03122" class="bulleted-list"><li style="list-style-type:disc">Abre IntelliJ IDEA desde el menú de aplicaciones o el acceso directo.</li></ul></li></ol><ol type="1" id="ce500b0f-5ba3-4649-87be-242c7da377b4" class="numbered-list" start="2"><li><strong>Importar Proyecto desde el Repositorio:</strong><ul id="fb284c4e-9e4f-403e-8646-3cf8512b2fd4" class="bulleted-list"><li style="list-style-type:disc">En la pantalla de inicio, selecciona <strong>Importar Proyecto</strong> y navega hasta la carpeta del proyecto.</li></ul><ul id="2b5aa50e-2036-4d64-b6b6-85483602e97d" class="bulleted-list"><li style="list-style-type:disc">Selecciona la carpeta y sigue el asistente de importación. Asegúrate de seleccionar el tipo de proyecto adecuado (por ejemplo, Maven o Gradle, si corresponde).</li></ul></li></ol><p id="32536716-cb0c-4884-9eb5-096677baefdb" class=""><strong>b. Configurar el Entorno:</strong></p><ol type="1" id="7ce8f02d-8574-4483-a5c5-81538d3f2153" class="numbered-list" start="1"><li><strong>Configurar el JDK:</strong><ul id="4916406b-42dc-4b7a-af20-63a6bb375b5f" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Estructura del Proyecto</strong>.</li></ul><ul id="cead5a2f-9f69-44b8-89c3-2c255fa52c8a" class="bulleted-list"><li style="list-style-type:disc">En la sección <strong>Proyecto</strong>, selecciona <code>JDK 17</code>. Si no está disponible, añádelo desde el sistema de archivos.</li></ul></li></ol><ol type="1" id="517481fb-2c9c-4c47-bccf-a0c904284d69" class="numbered-list" start="2"><li><strong>Configurar Librerías:</strong><ul id="51981296-c433-44fc-b523-83dd77ccd6d6" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Estructura del Proyecto</strong> &gt; <strong>Librerías</strong>.</li></ul><ul id="e6865c5a-33c7-48ae-bffe-709c2069ad37" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que <code>mysql-connector-java-8.0.xx.jar</code> esté listado. Si no está, haz clic en <strong>Agregar</strong> y selecciona el archivo <code>.jar</code>.</li></ul></li></ol><ol type="1" id="95f60f74-d1df-42f7-8b64-d49560b341df" class="numbered-list" start="3"><li><strong>Configurar Variables de Entorno (si es necesario):</strong><ul id="68b0c894-cffc-47ba-9a24-f442476199b1" class="bulleted-list"><li style="list-style-type:disc">Configura las variables de entorno necesarias en la configuración de ejecución o depuración:<ul id="5850e6c9-c96d-4154-a3ec-d01b37cce779" class="bulleted-list"><li style="list-style-type:circle">Ve a <strong>Ejecutar</strong> &gt; <strong>Editar Configuraciones</strong>.</li></ul><ul id="9f69a59b-6cb5-412e-98b3-e3d191ef7b51" class="bulleted-list"><li style="list-style-type:circle">En la configuración de ejecución, agrega las variables de entorno requeridas.</li></ul></li></ul></li></ol><p id="fc3b97da-0f2a-49c3-989e-c4c2338391e2" class=""><strong>c. Instalar Plugins Adicionales:</strong></p><ol type="1" id="10049f88-a7d6-49c0-b9b4-1525ed555268" class="numbered-list" start="1"><li><strong>Acceder a los Plugins:</strong><ul id="5bb2cb31-ebd4-437a-85bc-d61e6425f7fe" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Configuración</strong> &gt; <strong>Plugins</strong>.</li></ul></li></ol><ol type="1" id="d0d3914d-0d0f-4079-ae0e-514b62532b61" class="numbered-list" start="2"><li><strong>Buscar e Instalar Plugins:</strong><ul id="7e9f1b95-17de-4f0a-b175-9ce97fea2ba6" class="bulleted-list"><li style="list-style-type:disc">Busca plugins necesarios como <strong>Database Navigator</strong> para la gestión de bases de datos o <strong>Lombok</strong> para soporte adicional.</li></ul><ul id="80bda6fb-2068-4a5b-a920-cb27a78691a4" class="bulleted-list"><li style="list-style-type:disc">Haz clic en <strong>Instalar</strong> para agregar los plugins a tu entorno.</li></ul></li></ol><hr id="dd780440-64e0-4246-be00-163820c486bc"/><h3 id="190a1f8f-7587-49d9-8913-dee3b03c3c8b" class=""><strong>4. Configuración en Eclipse</strong> 🌈</h3><p id="3074785e-33d7-4fa0-bf2d-c879f5840ef2" class=""><strong>a. Importar el Proyecto:</strong></p><ol type="1" id="49f2c1b7-e84f-423e-b00d-43891ea61c0d" class="numbered-list" start="1"><li><strong>Iniciar Eclipse:</strong><ul id="6a4698db-fcb7-40da-b514-aa9b353715fd" class="bulleted-list"><li style="list-style-type:disc">Abre Eclipse desde el menú de aplicaciones o el acceso directo.</li></ul></li></ol><ol type="1" id="019d3253-15f1-4694-abc4-18987577bd92" class="numbered-list" start="2"><li><strong>Importar el Proyecto:</strong><ul id="4d783d67-7225-4f0d-9b4f-de38bda2e14d" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Archivo</strong> &gt; <strong>Importar</strong>.</li></ul><ul id="160f721d-b0e6-47cf-afb0-573b714a3672" class="bulleted-list"><li style="list-style-type:disc">Selecciona <strong>Proyecto existente en el espacio de trabajo</strong> y haz clic en <strong>Siguiente</strong>.</li></ul><ul id="68121ed3-683c-4136-be43-b02dd1569a6d" class="bulleted-list"><li style="list-style-type:disc">Navega hasta la carpeta del proyecto y selecciona el directorio. Haz clic en <strong>Finalizar</strong>.</li></ul></li></ol><p id="ba5d507e-398e-4cd5-98e8-4aa88b796684" class=""><strong>b. Configurar el Entorno:</strong></p><ol type="1" id="9cd3e85f-8c63-4b68-a17e-f25f440bce6f" class="numbered-list" start="1"><li><strong>Configurar el JDK:</strong><ul id="bda368cd-6a0a-49b8-b18c-97651e9fa651" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Ventana</strong> &gt; <strong>Preferencias</strong> &gt; <strong>Java</strong> &gt; <strong>Instalaciones de Java</strong>.</li></ul><ul id="b82ebf09-0a89-43f3-8793-4e8383de8cde" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que el JDK 17 esté seleccionado. Si no está, haz clic en <strong>Agregar</strong> y selecciona la ubicación del JDK.</li></ul></li></ol><ol type="1" id="d9cf06e0-d8eb-4e16-b33a-33a41ef58932" class="numbered-list" start="2"><li><strong>Configurar Librerías:</strong><ul id="a3467e35-6c1c-4383-9225-5b2caac5c1e3" class="bulleted-list"><li style="list-style-type:disc">Haz clic derecho en el proyecto en el panel de proyectos y selecciona <strong>Propiedades</strong>.</li></ul><ul id="ec9bfe6d-0e17-4cb4-a9f6-964deb430417" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Java Build Path</strong> &gt; <strong>Librerías</strong>.</li></ul><ul id="3a2c7b8a-8354-4cd6-965a-5bc3659688a3" class="bulleted-list"><li style="list-style-type:disc">Haz clic en <strong>Agregar JARs</strong> y selecciona <code>mysql-connector-java-8.0.xx.jar</code> desde el directorio <code>libs</code>.</li></ul></li></ol><ol type="1" id="3417a869-2d21-4117-b01a-9ea116de04a7" class="numbered-list" start="3"><li><strong>Configurar Variables de Entorno (si es necesario):</strong><ul id="5c61287e-8039-45d2-be94-2d72346cb252" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Ejecutar</strong> &gt; <strong>Configurar Configuración</strong>.</li></ul><ul id="eb3a5f29-e54f-417e-b65b-115eb7644867" class="bulleted-list"><li style="list-style-type:disc">En la sección <strong>Variables de Entorno</strong>, agrega cualquier variable necesaria para la configuración del proyecto.</li></ul></li></ol><p id="3a6f2e3e-887e-45ba-9809-24d1b89eefae" class=""><strong>c. Instalar Plugins Adicionales:</strong></p><ol type="1" id="63094ecc-c069-4c22-90ea-8eb08eb2ba76" class="numbered-list" start="1"><li><strong>Acceder al Marketplace:</strong><ul id="1f78dc5f-b612-4572-a5b2-a931f290f293" class="bulleted-list"><li style="list-style-type:disc">Ve a <strong>Ayuda</strong> &gt; <strong>Eclipse Marketplace</strong>.</li></ul></li></ol><ol type="1" id="a6bbacaa-2c6d-4ce9-9488-6f5c05457e1a" class="numbered-list" start="2"><li><strong>Buscar e Instalar Plugins:</strong><ul id="1076f5c9-c45b-45c2-a3fe-4f5cb6e33841" class="bulleted-list"><li style="list-style-type:disc">Busca plugins como <strong>EGit</strong> para control de versiones o <strong>Data Tools Platform</strong> para administración de bases de datos.</li></ul><ul id="d6a8251c-a4be-491d-8ae1-5509e31b413e" class="bulleted-list"><li style="list-style-type:disc">Haz clic en <strong>Instalar</strong> para cada plugin deseado.</li></ul></li></ol><p id="f8003697-4c62-4806-8caf-f6dc8fc69234" class="">
+</p><p id="676d9908-4c13-43d0-9965-93395c2bec57" class="">
+</p><h3 id="ad3d8fe1-b7de-416f-96c2-403f8a743774" class=""><strong>Configuración del Archivo </strong><code><strong>DataBaseConfig.properties</strong></code> 📄</h3><hr id="e2a9f095-195c-4e16-88d8-dfc9079997b1"/><p id="fa8c6dbc-22a4-4f85-9d07-2e4e9e6224fe" class="">El archivo <code>DataBaseConfig.properties</code> es crucial para conectar la aplicación a una base de datos MySQL. Contiene la configuración necesaria, como el controlador JDBC, la URL de la base de datos, y las credenciales de acceso.</p><h3 id="911fef19-1b53-4b08-84b6-63a7fdc4bb63" class=""><strong>Contenido del Archivo:</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f21607a5-22ca-40fd-9b24-2f66ba2c71a2" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all"># Betty
+DRIVER=com.mysql.cj.jdbc.Driver
+jdbc=jdbc:mysql://172.16.101.166:3306/AnimeExpo
+USUARIO=root
+CLAVE=1146334004
+</code></pre><p id="b4bf49f8-6036-497a-8ffa-40285a1a8120" class="">Aquí te explico cómo configurar este archivo tanto en un entorno local como en Clever Cloud.</p><hr id="a5bbc20c-b0b9-47cd-a009-9b31a07c6d01"/><h3 id="c658df48-392d-46e4-b852-c408b258de38" class=""><strong>1. Configuración Local</strong> 🛠️</h3><h3 id="ae09fd1e-11f6-4724-9ff2-d3821888f576" class=""><strong>a. Actualización del Archivo </strong><code><strong>DataBaseConfig.properties</strong></code><strong>:</strong></h3><ol type="1" id="73df59e3-2f43-4e7d-98d9-b174894310a9" class="numbered-list" start="1"><li><strong>Localiza el Archivo:</strong><ul id="0c4b35c6-d98d-4b92-8dc4-6b7a52fafae0" class="bulleted-list"><li style="list-style-type:disc">Navega a la carpeta <code>connection</code> dentro del proyecto para encontrar el archivo <code>DataBaseConfig.properties</code>.</li></ul></li></ol><ol type="1" id="328293ef-975b-46b4-9b13-ed6c24a955e0" class="numbered-list" start="2"><li><strong>Editar el Archivo:</strong><ul id="d438c9b7-1649-4371-834b-eca681f414fe" class="bulleted-list"><li style="list-style-type:disc">Abre el archivo en un editor de texto o en tu IDE preferido.</li></ul></li></ol><ol type="1" id="19b31f6d-6780-4cba-b8d6-88cd6ad3fa6f" class="numbered-list" start="3"><li><strong>Actualizar la Configuración:</strong><ul id="b0c38a61-2c77-48f0-b663-ac37ca799cf4" class="bulleted-list"><li style="list-style-type:disc">Ajusta los valores para tu entorno local. Por ejemplo:<ul id="bd627baa-1df5-4a17-bba0-1273dde4f6e2" class="bulleted-list"><li style="list-style-type:circle"><strong>DRIVER</strong>: Mantén <code>com.mysql.cj.jdbc.Driver</code>.</li></ul><ul id="b38b9819-afae-4654-8b2e-5f288566f89d" class="bulleted-list"><li style="list-style-type:circle"><strong>jdbc</strong>: Cambia la URL a tu servidor MySQL local. Por ejemplo:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2289d872-95ac-4610-b8e9-58b09febae22" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">jdbc=jdbc:mysql://localhost:3306/AnimeExpo
+</code></pre></li></ul><ul id="2d61e583-4505-4b08-ae3a-c61f388b5c2f" class="bulleted-list"><li style="list-style-type:circle"><strong>USUARIO</strong> y <strong>CLAVE</strong>: Configura según tu configuración local de MySQL.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="18c73385-17e6-4da6-a49c-7016e04b4f0e" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">USUARIO=tu_usuario
+CLAVE=tu_contraseña
+</code></pre></li></ul></li></ul></li></ol><ol type="1" id="0931bbb5-088c-4c24-87a2-edf828ba233c" class="numbered-list" start="4"><li><strong>Guardar los Cambios:</strong><ul id="497b4cb1-df0d-4960-8035-2df4d11e558f" class="bulleted-list"><li style="list-style-type:disc">Guarda el archivo después de hacer las modificaciones.</li></ul></li></ol><ol type="1" id="d04bf340-f261-4921-a537-8d854a3ec6b7" class="numbered-list" start="5"><li><strong>Verificar la Conexión:</strong><ul id="dc1a1291-ccf6-43cd-b796-110489eebac8" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que el servidor MySQL esté en funcionamiento y que la base de datos <code>AnimeExpo</code> esté disponible.</li></ul></li></ol><ol type="1" id="cf16ae99-c47e-4dfe-9b7c-86c178dafc86" class="numbered-list" start="6"><li><strong>Prueba de Conexión:</strong><ul id="a078d118-874c-4806-ae09-8521572e9f64" class="bulleted-list"><li style="list-style-type:disc">Ejecuta la aplicación y verifica que la conexión a la base de datos funcione correctamente.</li></ul></li></ol><hr id="5840ce9e-a81a-4cfe-af64-096a29556112"/><h3 id="d0bf4a71-1bd1-4cc7-b1e6-6d2b67cf3ef3" class=""><strong>2. Configuración en Clever Cloud</strong> ☁️</h3><h3 id="9c0d338c-6027-4ceb-9299-b6bcc41aec82" class=""><strong>a. Actualización del Archivo </strong><code><strong>DataBaseConfig.properties</strong></code><strong>:</strong></h3><ol type="1" id="4fb50b4d-a3d3-4f3a-a2ca-ebae622a63c9" class="numbered-list" start="1"><li><strong>Obtener las Credenciales de Clever Cloud:</strong><ul id="4138d881-ff34-495d-836f-248929b39669" class="bulleted-list"><li style="list-style-type:disc">Accede al panel de administración de Clever Cloud.</li></ul><ul id="7a24fac1-6ee6-4451-abc0-1a012f2f2ed6" class="bulleted-list"><li style="list-style-type:disc">Dirígete a la sección de la base de datos MySQL para obtener las credenciales, que incluyen:<ul id="4abf5ad1-9680-4f52-812f-2b393384cb87" class="bulleted-list"><li style="list-style-type:circle"><strong>Host</strong>: Dirección del servidor MySQL.</li></ul><ul id="eb56dd38-7433-4f2b-bf36-b1ae3997a1d5" class="bulleted-list"><li style="list-style-type:circle"><strong>Puerto</strong>: Puerto del servidor MySQL.</li></ul><ul id="23670009-41a0-4593-bdef-78ec28878e62" class="bulleted-list"><li style="list-style-type:circle"><strong>Base de Datos</strong>: Nombre de la base de datos.</li></ul><ul id="b533918d-85a6-4f3b-9ec6-41d97bdb5bcc" class="bulleted-list"><li style="list-style-type:circle"><strong>Usuario</strong>: Nombre de usuario para la conexión.</li></ul><ul id="0f3f94ac-3402-4165-80e6-73f306f8acb2" class="bulleted-list"><li style="list-style-type:circle"><strong>Contraseña</strong>: Contraseña para la conexión.</li></ul></li></ul></li></ol><ol type="1" id="afab551a-a5f3-450b-9532-1f5c1b8ff177" class="numbered-list" start="2"><li><strong>Actualizar el Archivo </strong><code><strong>DataBaseConfig.properties</strong></code><strong>:</strong><ul id="906ce52b-9b73-4a9f-ac34-f1bc17f6b0a5" class="bulleted-list"><li style="list-style-type:disc">Abre el archivo en tu proyecto.</li></ul></li></ol><ol type="1" id="686f4fe6-ffbd-40b1-8cda-0ab19d1ed782" class="numbered-list" start="3"><li><strong>Modificar la Configuración:</strong><ul id="68d9048a-5b0b-4a60-9ada-8d6a236f4e4b" class="bulleted-list"><li style="list-style-type:disc">Actualiza los valores con la información de Clever Cloud. Por ejemplo:<ul id="26b49df0-b9e1-44c6-919a-ffba77e1dcce" class="bulleted-list"><li style="list-style-type:circle"><strong>DRIVER</strong>: Debe seguir siendo <code>com.mysql.cj.jdbc.Driver</code>.</li></ul><ul id="7982b87d-d2b7-48bd-a384-e5b9b7ee2169" class="bulleted-list"><li style="list-style-type:circle"><strong>jdbc</strong>: Cambia la URL para que apunte al servidor MySQL de Clever Cloud:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="62baf7fc-41ac-4da5-b126-8ffb8982e58d" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">jdbc=jdbc:mysql://db-clever-cloud-host:3306/AnimeExpo
+</code></pre></li></ul><ul id="27ce3284-b08c-4afa-9ea7-41f8f0f544f3" class="bulleted-list"><li style="list-style-type:circle"><strong>USUARIO</strong>: Nombre de usuario proporcionado por Clever Cloud.</li></ul><ul id="cb2e6d8b-0e22-4dcf-b8ed-7ed34e775554" class="bulleted-list"><li style="list-style-type:circle"><strong>CLAVE</strong>: Contraseña proporcionada por Clever Cloud.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="764598aa-36f2-4afb-a07d-a64eed1c55af" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">USUARIO=clevercloud_user
+CLAVE=clevercloud_password
+</code></pre></li></ul></li></ul></li></ol><ol type="1" id="f5ab6387-6a5e-4856-a42b-a02d3acdfaca" class="numbered-list" start="4"><li><strong>Guardar los Cambios:</strong><ul id="42866a51-cce1-44db-9f95-0543ca9d92ba" class="bulleted-list"><li style="list-style-type:disc">Guarda el archivo después de las modificaciones.</li></ul></li></ol><ol type="1" id="6a77f6c8-3c31-42db-8e4e-4dadd3951fab" class="numbered-list" start="5"><li><strong>Desplegar la Aplicación:</strong><ul id="16ec2ac6-a9a0-45df-b7a4-c363196ed5e4" class="bulleted-list"><li style="list-style-type:disc">Despliega la aplicación en Clever Cloud.</li></ul></li></ol><ol type="1" id="98c922d6-7a5c-4409-a575-d7a4674cb4ce" class="numbered-list" start="6"><li><strong>Verificar la Conexión en el Entorno de Producción:</strong><ul id="d1892036-daff-4eda-a6ac-3ec6ca8cc17e" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que la aplicación se conecte correctamente a la base de datos en Clever Cloud.</li></ul></li></ol><hr id="64bbc878-58ac-481e-a198-4840265f8cb3"/><h3 id="de9a7670-6de5-4068-a584-1ac700fe0152" class=""><strong>Ejecución del Software</strong> 🚀</h3><p id="5c8d5907-0513-40e6-96d2-b899ca685b10" class="">Una vez que hayas configurado tu entorno, es esencial saber cómo ejecutar el software correctamente para asegurar su funcionamiento óptimo.</p><hr id="2b44beac-1bb5-49c1-afed-93af646a480a"/><h3 id="be5039d9-2282-47c4-8ce5-5ed179975320" class=""><strong>Ejecución Local</strong> 🏠</h3><p id="e96e8e11-854a-4772-899a-3903123d2fb1" class="">Para ejecutar el software localmente en Apache NetBeans, sigue estos pasos:</p><ol type="1" id="df57a77e-f28d-4389-af25-179d6f1241bb" class="numbered-list" start="1"><li><strong>Abrir el Proyecto en NetBeans:</strong><ul id="838403ff-6e2f-4d70-9cac-f4751e778ff5" class="bulleted-list"><li style="list-style-type:disc">Inicia Apache NetBeans.</li></ul><ul id="fdfd4566-2781-47a3-9708-572594451d5f" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que el proyecto esté abierto. Si no lo está, ve a <strong>Archivo</strong> &gt; <strong>Abrir Proyecto</strong> y selecciona la carpeta del proyecto.</li></ul></li></ol><ol type="1" id="32a63e2c-cc76-45ac-97a9-715699791975" class="numbered-list" start="2"><li><strong>Configurar Parámetros de Ejecución (Opcional):</strong><ul id="abe675dd-5466-4c7b-9ed5-0634c4e40a5a" class="bulleted-list"><li style="list-style-type:disc">Si necesitas parámetros adicionales, configúralos en NetBeans.</li></ul><ul id="c7af1044-4bb0-4409-95bb-fa91419cd54b" class="bulleted-list"><li style="list-style-type:disc">Haz clic derecho en el proyecto y selecciona <strong>Propiedades</strong> &gt; <strong>Ejecutar</strong>.</li></ul><ul id="87b6f9c3-d952-4030-bcab-afba7f39c08c" class="bulleted-list"><li style="list-style-type:disc">Ingresa cualquier parámetro necesario en el campo <strong>Argumentos de Línea de Comandos</strong>.</li></ul></li></ol><ol type="1" id="10109f62-8a89-4438-8c59-741fd959cc54" class="numbered-list" start="3"><li><strong>Ejecutar el Proyecto:</strong><ul id="8ce151aa-3135-476e-9578-c4951bcad058" class="bulleted-list"><li style="list-style-type:disc">Haz clic en el botón de <strong>Ejecutar</strong> (ícono de triángulo verde) o usa el atajo <strong>Shift + F6</strong>.</li></ul></li></ol><ol type="1" id="4d88f190-6fde-4fb0-814b-1329fe614b29" class="numbered-list" start="4"><li><strong>Verificar la Ejecución:</strong><ul id="38a476f8-7ebe-4adf-8751-056b2b298640" class="bulleted-list"><li style="list-style-type:disc">Observa la consola para verificar que no haya errores y sigue las instrucciones si se requiere interacción del usuario.</li></ul></li></ol><h3 id="ae354dcf-e4f8-4551-be40-09875cc8910a" class=""><strong>Ejecución en un Entorno de Producción</strong> 🌍</h3><p id="1562a8d4-ee21-4fda-953c-375391d6174d" class="">Cuando despliegas tu software en producción, asegúrate de que esté optimizado y seguro.</p><h3 id="def253e9-2b88-42d3-b246-034eaf354fd6" class=""><strong>a. Preparativos para el Despliegue:</strong></h3><ol type="1" id="06a9bc0a-d352-44ac-944f-a9105a7d528e" class="numbered-list" start="1"><li><strong>Preparar el Entorno:</strong><ul id="0375a19b-592f-4012-b261-07f802c93347" class="bulleted-list"><li style="list-style-type:disc">Asegúrate de que todos los recursos necesarios estén disponibles en producción.</li></ul></li></ol><ol type="1" id="7aaa376a-090c-4303-aa82-3e3e05fa7c22" class="numbered-list" start="2"><li><strong>Empaquetar la Aplicación:</strong><ul id="8590c3a1-4174-489a-bcd2-35f62d00fed9" class="bulleted-list"><li style="list-style-type:disc">Genera un archivo JAR o WAR. En NetBeans, selecciona <strong>Construir Proyecto</strong> o <strong>Limpiar y Construir</strong>.</li></ul></li></ol><h3 id="b418924b-d30f-4360-8c9f-5cdf16068dc0" class=""><strong>b. Despliegue en Servicios de Nube:</strong></h3><p id="17719dbc-7dca-4ef1-8cee-93e8fc78f2d0" class=""><strong>1. Amazon Web Services (AWS):</strong></p><ul id="f93486cb-0b76-48b4-8840-70e81c9abba9" class="bulleted-list"><li style="list-style-type:disc"><strong>Crear una Instancia EC2:</strong><ul id="ebe3339b-54d2-4b0d-bac6-e220c44f32e3" class="bulleted-list"><li style="list-style-type:circle">Lanza una instancia EC2 y accede usando SSH.</li></ul></li></ul><ul id="8543cb05-959a-4d1c-a019-5c0f9042056c" class="bulleted-list"><li style="list-style-type:disc"><strong>Instalar Java y MySQL:</strong><ul id="cb1d5ca7-2d8e-4c28-b02c-69892a1d82dc" class="bulleted-list"><li style="list-style-type:circle">Instala Java JDK 17 y MySQL.</li></ul></li></ul><ul id="2c53f464-5b05-4e6f-8d52-ff8dac750134" class="bulleted-list"><li style="list-style-type:disc"><strong>Subir el Archivo JAR/WAR:</strong><ul id="73c0a159-ed2f-4f45-9f3e-3d54836aac95" class="bulleted-list"><li style="list-style-type:circle">Usa SCP o SFTP para transferir el archivo JAR/WAR:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="613b1e3d-504d-426d-9fdf-87cfbf77c709" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">scp -i path/to/key.pem /ruta/local/mi-aplicacion.jar usuario@direccion_ip:/ruta/destino
+</code></pre></li></ul></li></ul><ul id="08e29006-6bb1-41ab-ab18-0b39401d3922" class="bulleted-list"><li style="list-style-type:disc"><strong>Ejecutar la Aplicación:</strong><ul id="3dab2168-2705-4699-b2a8-ad230919f691" class="bulleted-list"><li style="list-style-type:circle">Accede a la instancia y ejecuta el archivo JAR/WAR:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ba583ac5-e681-4e3f-ba9f-793e94cca657" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">java -jar mi-aplicacion.jar
+</code></pre></li></ul></li></ul><p id="5ce18176-331e-4f36-9b25-919c26b85866" class=""><strong>2. Microsoft Azure:</strong></p><ul id="ec5475a8-b2ea-477c-a691-588412eb378f" class="bulleted-list"><li style="list-style-type:disc"><strong>Crear una Máquina Virtual:</strong><ul id="b12dd25f-7fba-404c-aaef-387b839f1669" class="bulleted-list"><li style="list-style-type:circle">Configura una máquina virtual.</li></ul></li></ul><ul id="696f94d2-e068-4054-a5a1-f009b55bc842" class="bulleted-list"><li style="list-style-type:disc"><strong>Instalar Java y MySQL:</strong><ul id="7588945e-a0d7-4b75-b0ea-036865e801ac" class="bulleted-list"><li style="list-style-type:circle">Instala Java JDK 17 y MySQL.</li></ul></li></ul><ul id="177d6dd8-e833-441b-9e43-217225f40416" class="bulleted-list"><li style="list-style-type:disc"><strong>Desplegar el Archivo JAR/WAR:</strong><ul id="96aa6169-0c63-43c6-8875-0ed27a496c4a" class="bulleted-list"><li style="list-style-type:circle">Usa Azure CLI o Azure Storage para transferir el archivo JAR/WAR.</li></ul></li></ul><ul id="6fdeef65-056b-42f6-954a-b290583baa6c" class="bulleted-list"><li style="list-style-type:disc"><strong>Ejecutar la Aplicación:</strong><ul id="82d1f6cd-bf21-4715-9f88-055fcb28d5ff" class="bulleted-list"><li style="list-style-type:circle">Conéctate a la máquina virtual y ejecuta el archivo JAR/WAR.</li></ul></li></ul><p id="1c0e2b4a-8b91-4dd9-9933-42af19c9d639" class=""><strong>3. Google Cloud Platform (GCP):</strong></p><ul id="291c5ba7-0ec6-4288-919b-4e42eef0edc1" class="bulleted-list"><li style="list-style-type:disc"><strong>Crear una Instancia de Computadora (VM):</strong><ul id="33c7b1f3-09c9-485f-85f0-e47df0947319" class="bulleted-list"><li style="list-style-type:circle">Configura una instancia de VM.</li></ul></li></ul><ul id="2a839c68-ae8c-47f6-91a5-70e6c5279520" class="bulleted-list"><li style="list-style-type:disc"><strong>Instalar Java y MySQL:</strong><ul id="ad068c5b-03bd-45d9-a3ab-5d5673e86690" class="bulleted-list"><li style="list-style-type:circle">Instala Java JDK 17 y MySQL.</li></ul></li></ul><ul id="ad46b03d-8250-4deb-8e49-53c0367a441a" class="bulleted-list"><li style="list-style-type:disc"><strong>Subir el Archivo JAR/WAR:</strong><ul id="5e77776b-0bb2-4d8b-9f03-d61ade47197a" class="bulleted-list"><li style="list-style-type:circle">Usa <code>gcloud</code> o herramientas de transferencia de archivos.</li></ul></li></ul><ul id="ef7cdaca-55f6-4ef6-92c9-f254db509f04" class="bulleted-list"><li style="list-style-type:disc"><strong>Ejecutar la Aplicación:</strong><ul id="c00c534d-ef6e-427e-8f47-87ba1c0c4168" class="bulleted-list"><li style="list-style-type:circle">Conéctate a la VM y ejecuta el archivo JAR/WAR.</li></ul></li></ul><h3 id="33a6350b-9402-491d-a9a0-811993216bbf" class=""><strong>c. Optimización y Seguridad:</strong></h3><ul id="e9024ace-0691-4934-b212-622145cdfe20" class="bulleted-list"><li style="list-style-type:disc"><strong>Optimización de Rendimiento:</strong><ul id="5228e7f7-a964-4d09-b83a-48f5e8fbdbab" class="bulleted-list"><li style="list-style-type:circle">Ajusta parámetros de JVM para mejorar el rendimiento.</li></ul></li></ul><ul id="cb85390e-15a8-446a-8e8e-3ed8275ac095" class="bulleted-list"><li style="list-style-type:disc"><strong>Configuración de Seguridad:</strong><ul id="0b966c03-4069-4e69-b488-a10776e19c73" class="bulleted-list"><li style="list-style-type:circle">Configura las reglas de firewall y seguridad, y usa conexiones seguras.</li></ul></li></ul><h3 id="6af571b2-9ece-4515-b8f5-b54e7d3d1589" class=""><strong>d. Monitorización y Mantenimiento:</strong></h3><ul id="c09c8c81-1b33-4b49-867f-1aa3366e1430" class="bulleted-list"><li style="list-style-type:disc"><strong>Monitorización:</strong><ul id="2380b619-73f1-4d99-8367-775e4fea2437" class="bulleted-list"><li style="list-style-type:circle">Utiliza herramientas de monitorización para vigilar la aplicación y el servidor.</li></ul></li></ul><ul id="11aee226-bba7-4244-9051-28bea9d6fd10" class="bulleted-list"><li style="list-style-type:disc"><strong>Mantenimiento:</strong><ul id="f54da824-2508-4db6-bd09-1d1549781e90" class="bulleted-list"><li style="list-style-type:circle">Programa tareas de mantenimiento y actualizaciones regulares.</li></ul></li></ul><hr id="a93d5b5c-0593-4ba8-a7c2-efae4e67746c"/><p id="088829de-108e-496b-aa1a-8abc636a70f0" class="">A continuación encontraras una explicación de como nuestro programa funciona desde terminal y que hace cada sección que escojas.</p><h3 id="25c7ba62-0486-4466-8da2-a3cac7e88695" class="">🌟 <strong>Bienvenido al Panel de Control</strong> 🌟</h3><p id="ec95266b-6331-4840-8d5c-b3c871c70ada" class="">¡Hola! Estás a punto de comenzar a explorar nuestro software de gestión de eventos. A continuación, te mostramos cómo interactuar con el menú principal.</p><hr id="7a7c968b-b937-4157-b2d4-13bcc902cd51"/><h3 id="e5d2a38d-a3c6-40f2-8655-d5e6733349ba" class=""><strong>1. Pantalla Inicial</strong></h3><p id="5d595131-0fea-4ccf-8006-5267a3ca4074" class="">Al iniciar el programa, verás una pantalla de bienvenida con un diseño atractivo que te da la bienvenida al software. En esta pantalla, se te pedirá que elijas tu rol dentro de la compañía.</p><hr id="8dfc0fb5-d60d-47e8-861f-506c6731171b"/><h3 id="04da9c4d-ce35-431d-86c3-fb09963ce8bb" class=""><strong>2. Menú de Opciones</strong></h3><p id="7c932c9f-0587-4191-a3e6-894cc52a6d45" class="">A continuación, se te presentará un menú con las siguientes opciones:</p><figure id="8c7aae67-7ad2-495b-9fe9-64f71b83a6e2" class="link-to-page"><a href="https://www.notion.so/Administrador-de-Evento-8c7aae677ad2495b9fe964f71b83a6e2?pvs=21"><span class="icon">⚫</span>Administrador de Evento 🎫</a></figure><figure id="97b8b3dd-eebe-45fd-9bb4-9ae6eaf14872" class="link-to-page"><a href="https://www.notion.so/Encargado-de-Actividades-97b8b3ddeebe45fd9bb49ae6eaf14872?pvs=21"><span class="icon">⚫</span>Encargado de Actividades 🗓️</a></figure><figure id="d6f77e5d-b703-4873-a861-aab2dead56af" class="link-to-page"><a href="https://www.notion.so/Administrador-de-Restaurante-d6f77e5db7034873a861aab2dead56af?pvs=21"><span class="icon">⚫</span>Administrador de Restaurante 🍽️</a></figure><figure id="48dd82f0-fc91-4e4a-be4e-965e246a3b74" class="link-to-page"><a href="https://www.notion.so/Administrador-de-Tiendas-48dd82f0fc914e4abe4e965e246a3b74?pvs=21"><span class="icon">⚫</span>Administrador de Tiendas 🛒</a></figure><figure id="7cb3df61-859e-4186-b675-9a296b5aafdc" class="link-to-page"><a href="https://www.notion.so/Encargado-de-Taquilla-7cb3df61859e4186b6759a296b5aafdc?pvs=21"><span class="icon">⚫</span>Encargado de Taquilla 🎟️</a></figure><ul id="f87c8412-2017-4ed8-9b0b-f7172412085e" class="bulleted-list"><li style="list-style-type:disc"><strong>Salir del Sistema</strong> 🚪</li></ul><hr id="b4288cd9-0f44-4f47-84d2-b8743c23e7d4"/><h3 id="f06823e0-d779-42a7-9e54-bc9ea1dae058" class=""><strong>3. Selección de Rol</strong></h3><p id="650cc077-f137-428f-8aa5-b59e21e2672e" class=""><strong>Paso 1:</strong> Usa el teclado para ingresar el número correspondiente a tu rol.</p><p id="bd6a0a40-8c89-45bf-9c84-62b0e1b0ce17" class=""><strong>Paso 2:</strong> Si seleccionas una opción válida (del 1 al 6), el sistema te llevará a la sección correspondiente para que realices las tareas de tu rol.</p><p id="d4b3277e-4054-4fac-8ed7-7c57bb4d3501" class=""><strong>Paso 3:</strong> Si eliges la opción &quot;Salir del Sistema&quot;, el programa se cerrará.</p><p id="1e840279-c6c2-4cb7-9339-e7881be73769" class=""><strong>Paso 4:</strong> Si eliges una opción incorrecta, el programa te pedirá que selecciones nuevamente. Después de tres intentos fallidos, te pedirá que elijas una opción válida.</p><p id="ee077b0d-6b18-458f-bbae-a5508a12ecf0" class=""><strong>Nota:</strong> Si ingresas algo que no sea un número, el sistema te indicará que la entrada no es válida y te pedirá que ingreses un número entero.</p><hr id="4ad93053-b606-42e5-a644-c04028be0d76"/><h3 id="afb07d6d-0d34-47da-b006-01e1d3ecd78f" class=""><strong>4. Mensajes de Error</strong></h3><p id="d4f9f750-8fd5-4e85-89fd-6f471357ba12" class="">Si cometes errores al ingresar tu selección o introduces un dato no válido, el programa te lo notificará y te permitirá corregir tu entrada.</p><p id="de3e885c-9d16-46fc-b1cb-ab34e27293e0" class=""><br/><br/><br/></p><p id="c371d570-74bb-4a92-b27f-8ec9067bdac4" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
